@@ -1,0 +1,291 @@
+﻿@model IEnumerable<Neeledhaage.Models.Cart.CartVM>
+
+@{
+    ViewBag.Title = "Cart Details";
+    int count = 1;
+}
+@if (ViewBag.Message != null)
+{
+    <h3>@ViewBag.Message</h3>
+}
+else
+{
+<div class="col-xs-9 col-md-9 cart-page">
+<h4>Your Shopping Cart</h4>
+   @foreach (var item in Model)
+   {
+<div class="cart_row_repeat">
+    <div class="row item">
+        <div class="parent_row clearfix">
+            <div>
+                <a href="#">
+                    @*<img class="cart_img_container" src="https://neeledhaage.com/Images/Uploads/Products/1/Thumbs/blue1.jpg">*@
+                    <img class="cart-img" src="/Images/Uploads/Products/@item.ProductId/Thumbs/@item.Image" />
+
+                </a>
+            </div>
+            <div class="cc_item_detail">
+                <div>
+                    <p class="hidden-xs">Item</p>
+                    <a style="font-size: 16px;
+    font-weight: 800;" href="#" id="">@item.ProductName</a>
+                    <div class="cc_color_code">
+                        <span>Color</span>
+                        <span>:</span>
+                        <span>Blue</span>
+                    </div>
+                    <div class="hidden-phone">
+                        <div class="cc_item_size">
+                            <span>Size</span>
+                            <span>:</span>
+                            <span>38</span>
+                        </div>
+
+
+                        <div class="visible-xs">
+                            <div class="cc_item_qty">
+                                <span>Quty</span>
+                                <div class="btn-group actions" role="group">
+                                    <button style="border:1px solid #e5cc76;" type="button" class="btn btn-default  minus" id="quantity">-</button>
+                                    <input name="quantity" readonly class="btn btn-default" id="count" value="1" style="width: 46px; text-align: center; border: solid 1px #e5cc76; height:34px;" type="text">
+                                    <button style="border:1px solid #e5cc76;" type="button" class="btn btn-default  plus" id="quantitys">+</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ko ifnot: productData().type == 'FBGiftOnly' -->
+            <div class="cc_item_qty hidden-xs clearfix">
+                <p>Quantity</p>
+                <div class="form-group quantity clearfix">
+                    <div class="btn-group actions" role="group">
+                        <button style="border:1px solid #e5cc76;" type="button" class="btn btn-default  minus" id="quantity">-</button>
+                        <input name="quantity" readonly class="btn btn-default" id="count" value="1" style="width: 46px; text-align: center; border: solid 1px #e5cc76; height:34px;" type="text">
+                        <button style="border:1px solid #e5cc76;" type="button" class="btn btn-default  plus" id="quantitys">+</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="cc_item_total hidden-xs ">
+                <p>Price</p>
+                <span>$@item.Price</span>
+
+            </div>
+            <div class="cc_item_total hidden-xs">
+                <a href="#" class="removeproduct" data-id="@item.ProductId">
+                    <img style="width: 20px;" src="https://www.fabindia.com/file/general/round-delete-button.svg" alt=""></a>
+                    @*Remove</a>*@
+
+</div>
+
+        </div>
+        @*<div class="cc_view_details hidden-xs">
+            <a href="#">View Details</a>
+
+        </div>*@
+        <div class="cc_view_details visible-xs">
+            <p>Price:  <span>$@item.Price</span></p>
+
+
+        </div>
+    </div>
+
+</div>
+   }
+
+</div>
+<div class="col-xs-3 col-md-3 cart-pages">
+    <div class="cart-item">
+        <h3 style="
+            padding-bottom 1rem;
+            border-bottom 1px solid #e5cc76 !important;
+            ">
+            Order Summary
+        </h3>
+    </div>
+    <p style="font-weight:bold;border-bottom: 1px solid #e5cc76;
+    padding-bottom: 1rem;"><span>Cart Sub Total</span><span style="float: right;">: @ViewBag.GrandTotal</span></p>
+    <p style="font-weight:bold "> <span>Total Cart Amount</span> <span style="float: right;">:$ @ViewBag.GrandTotal</span></p>
+    @*<button class="add_to_cart btn cart-btn">Proceed to Checkout</button>*@
+    @if (Request.IsAuthenticated)
+    {
+    <a href="#" class="placeorder btn cart-btn pull-right">Proceed to Checkout</a>
+    }
+    else
+    {
+    <a href="@Url.Action("Loginuser","account")" class="btn cart-btn pull-right">Proceed to Checkout</a>
+    }
+    <div>
+        @*<div id="CC-promotionDetails" class="col-md-12 col-sm-12 cc_promotion_details">
+            <h4>
+                <a class="panel-toggle collapsed" data-bind="widgetLocaleText: 'couponCodeText'" data-toggle="collapse" href="#couponToggle">Coupon Code</a>
+            </h4>
+            <div id="couponToggle" class="panel-collapse collapse" style="height: 0px;">
+                <div class="row">
+                    <div class="hidden-xs">
+                        <!-- ko if: cart().couponErrorMessage() --><!-- /ko -->
+                        <!-- ko ifnot: cart().couponErrorMessage() -->
+                        <p class="text-danger" id="CC-promotionDetails-promoCode-error" data-bind="validationMessage:promoCode" role="alert" style="display: none;"></p>
+                        <!-- /ko -->
+                        <p class="text-danger" style="display: none;">Please enter a valid coupon code</p>
+                    </div>
+                    <div class="visible-xs col-xs-12">
+                        <!-- ko if: cart().couponErrorMessage() --><!-- /ko -->
+                        <!-- ko ifnot: cart().couponErrorMessage() -->
+                        <p class="text-danger" id="CC-promotionDetails-promoCode-error-xs" role="alert" style="display: none;"></p>
+                        <!-- /ko -->
+                        <p class="text-danger" style="display: none;">Please enter a valid coupon code</p>
+                    </div>
+                    <!--ko if: cart().claimedCouponMultiPromotions().length === 0-->
+                    <div class="form-group clearfix">
+                        <div class="control">
+                            <input type="text" class="form-control input-inline" name="promoCode" id="CC-promotionDetails-promoCode" aria-label="Enter Promo Code">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <a href="javascript:void(0);" id="CC-promotion-applyCode" class="cc-button-primary cc_applyBtn" aria-label="Apply" tabindex="0">
+                            <!-- ko ifnot: isApplyCodeClicked -->
+                            <button class="add_to_cart btn cart-btn">Apply</button>
+                            <!-- /ko -->
+                            <!-- ko if: isApplyCodeClicked --><!-- /ko -->
+                        </a>
+                    </div>
+
+                    <!--/ko-->
+                </div>
+              
+                <!--ko if: cart().orderDiscount()--><!--/ko-->
+            </div>
+
+
+        </div>*@
+    </div>
+</div>
+}
+@section Scripts {
+    <script>
+
+        $(function () {
+
+            /*
+            * Increment product
+            */
+
+            $("a.incrproduct").click(function (e) {
+                e.preventDefault();
+
+                var productId = $(this).data("id");
+                var url = "/cart/IncrementProduct";
+
+                $.getJSON(url, { productId: productId }, function (data) {
+
+                    $("td.qty" + productId).html(data.qty);
+
+                    var price = data.qty * data.price;
+                    var priceHtml = "$" + price.toFixed(2);
+
+                    $("td.total" + productId).html(priceHtml);
+
+                    var gt = parseFloat($("td.grandtotal span").text());
+                    var grandtotal = (gt + data.price).toFixed(2);
+
+                    $("td.grandtotal span").text(grandtotal);
+                }).done(function (data) {
+                    var url2 = "/cart/PaypalPartial";
+
+                    $.get(url2, {}, function (data) {
+                        $('div.paypaldiv').html(data);
+                    });
+                });
+            });
+
+            //////////////////////////////////////////////////////////////
+
+            /*
+            * Decrement product
+            */
+
+            $("a.decrproduct").click(function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+                var productId = $(this).data("id");
+                var url = "/cart/DecrementProduct";
+
+                $.getJSON(url, { productId: productId }, function (data) {
+                    if (data.qty == 0) {
+                        $this.parent().parent().fadeOut("fast", function () {
+                            location.reload();
+                        });
+                    }
+                    else {
+                        $("td.qty" + productId).html(data.qty);
+
+                        var price = data.qty * data.price;
+                        var priceHtml = "$" + price.toFixed(2);
+
+                        $("td.total" + productId).html(priceHtml);
+
+                        var gt = parseFloat($("td.grandtotal span").text());
+                        var grandtotal = (gt - data.price).toFixed(2);
+
+                        $("td.grandtotal span").text(grandtotal);
+                    }
+
+                }).done(function (data) {
+                    var url2 = "/cart/PaypalPartial";
+
+                    $.get(url2, {}, function (data) {
+                        $('div.paypaldiv').html(data);
+                    });
+                });
+            });
+
+            //////////////////////////////////////////////////////////////
+
+            /*
+            * Remove product
+            */
+
+            $("a.removeproduct").click(function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+                var productId = $(this).data("id");
+                var url = "/cart/RemoveProduct";
+
+                $.get(url, { productId: productId }, function (data) {
+                    location.reload();
+                });
+            });
+
+            //////////////////////////////////////////////////////////////
+
+            /*
+            * Place order
+            */
+
+            $("a.placeorder").click(function (e) {
+                e.preventDefault();
+
+                var $this = $(this);
+
+                var url = "/cart/PlaceOrder";
+
+                $(".ajaxbg").show();
+
+                $.post(url, {}, function (data) {
+                    $(".ajaxbg span").text("Thank you. You will now be redirected to paypal.");
+                    setTimeout(function () {
+                        $('form input[name="submit"]').click();
+                    }, 2000);
+                });
+            });
+
+            //////////////////////////////////////////////////////////////
+
+        });
+
+</script>
+    }

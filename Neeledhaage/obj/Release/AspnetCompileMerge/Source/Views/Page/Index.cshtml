@@ -1,0 +1,13 @@
+﻿@model Neeledhaage.Dal.tblPage
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@{
+    ViewBag.Title = ViewBag.PageTitle;
+    TempData["PageTitle"] = ViewBag.PageTitle;
+}
+
+@Html.Raw(Model.Body)
+

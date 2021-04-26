@@ -1,0 +1,516 @@
+﻿@model Neeledhaage.Models.Shop.ProductVM
+@{
+    var ImageUrl = Model.Imagepath + "/" + Model.ImageName;
+}
+<link href="~/scripts/Magnifier/magnifier.css" rel="stylesheet" />
+<style>
+    #thumb-lens {
+        background: none !important;
+    }
+
+    .zoom-container {
+    }
+</style>
+<div class="middle-part">
+    <div class="container-fluid product-page-details">
+        <div class="row">
+            <div class="col-sm-5">
+                <div class="gallery-cloud-zoom" style="margin-top:20px;">
+                    @*<img src="@Model.Imagepath/@Model.ImageName" />*@
+                    <div class="zoom-container">
+                        <a class="magnifier-thumb-wrapper" href="javascript:void(0)">
+                            <img id="thumb" src="@ImageUrl">
+                        </a>
+                        <div class="magnifier-preview" id="preview"></div>
+                    </div>
+                    <div id="owl-demo4" class="owl-carousel owl-theme">
+
+                        <div class="item">
+                            <div class=" p-box">
+                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/02_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
+
+
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class=" p-box">
+                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/03_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
+
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class=" p-box">
+                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/04_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
+
+
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <ul class="recent_list">
+                        <li class="photo_container">
+
+                            @*<a href="@Model.Imagepath/@Model.ImageName" rel="gallerySwitchOnMouseOver: true, popupWin:'http://www.route2carrer.com/uploads///product/2/cC5hIcPLwN.jpg', useZoom: 'cloudZoom', smallImage: 'http://www.route2carrer.com/uploads///product/2/cC5hIcPLwN.jpg'" class="cloud-zoom-gallery">
+                                    <img src="@Model.Imagepath/@Model.ImageName" title="" alt="" width="150" height="150" class="img-responsive" itemprop="image">
+                                </a>*@
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-sm-7">
+                <div class="product-description">
+                    <div class="product-top">
+                        <h3>Cotton Handblock print saree </h3>
+                        @*<p>Ethnic Wear<p>*@
+                        <p class="availability in-stock" style="font-size:14px;">Availability:  <abbr style="color:#090;"> In stock </abbr> </p>
+                        <div class="product-price">
+                            <div style="position:relative; display:inline-block">
+                                <del>₹@Html.DisplayFor(model => model.Price)</del>
+                                ₹@Html.DisplayFor(model => model.Price)
+                                <!--<span class="sticker discount" style="top:-11px; right:-52px;"><strong>-->
+                                <!--10.1%-->
+                                <!--<br>off</strong></span>-->
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="size-choose">
+                        <label>Select Size:</label>
+                        <div class="radio-toolbar">
+                            <input type="radio" id="size36" name="size" value="96">
+                            <label for="size36">36</label>
+                            <input type="radio" id="size38" name="size" value="38">
+                            <label for="size38"> 38 </label>
+                            <input type="radio" id="size40" name="size" value="40">
+                            <label for="size40"> 40 </label>
+                            <input type="radio" id="size42" name="size" value="42">
+                            <label for="size42"> 42 </label>
+
+                        </div>
+                    </div>
+                    <!-- Product Color -->
+                    <div class="product-color">
+                        <div class="color-choose">
+                            <div>
+                                <span style="float:left; font-size:14px; letter-spacing:2px; line-height:35px; margin-right:10px;font-weight: 600;">Color</span>
+                                <input data-image="red" type="radio" id="red" name="color" value="red" checked>
+                                <label for="red"><span></span></label>
+                            </div>
+                            <div>
+                                <input data-image="blue" type="radio" id="blue" name="color" value="blue">
+                                <label for="blue"><span></span></label>
+                            </div>
+                            <div>
+                                <input data-image="black" type="radio" id="black" name="color" value="black">
+                                <label for="black"><span></span></label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="qty">
+                        <div class="btn-group actions" role="group">
+                            <span style="float:left; font-size:14px; letter-spacing:2px; line-height:35px; margin-right:10px;font-weight: 600;">Qty</span>
+                            <button style="border:1px solid #e5cc76;" type="button" class="btn btn-default  minus" id="quantity">-</button>
+                            <input name="quantity" readonly class="btn btn-default" id="count" value="1" style="width: 46px; text-align: center; border: solid 1px #e5cc76; height:33px;" type="text">
+                            <button style="border:1px solid #e5cc76;" type="button" class="btn btn-default  plus" id="quantitys">+</button>
+                        </div>
+                        @*<a href="javascript:" data-id="cotton-handblock-print-saree" class="addtocart btn"><i class="fa fa-shopping-basket"></i> Add to Cart</a>*@
+                        <a href="#" class="addtocart" style="background-color: #e5cc76 !important;padding: 1rem;height: auto !important;font-weight: bold;"><i class="fa fa-shopping-basket"></i>Add to cart</a>
+                    </div>
+
+                    <div class="wishlist-btn">
+                        <!--<div class="heart_list_holder2"><img src="images/heart-icon.png" class="heart_inactive" style="opacity:1"><img src="images/heart-icon1.png" class="heart_active" style="opacity:0"></div>-->
+                        <!--<a href="../../signin.html" title="Add To Wishlist"><i class="fa fa-heart"></i></a>									-->
+                        <!--
+                        <a title="Share"><i class="fa fa-share-alt"></i>
+                        </a>
+                        -->
+                        <div class="sharethis-inline-share-buttons"></div>
+                    </div>
+                </div>
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a data-toggle="collapse" data-parent="#accordion" href="#1" aria-expanded="true" aria-controls="collapseOne">
+                                    product description
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false">
+                            <div class="panel-body">
+                                <div class="products_description_holder">
+                                    <p><p>Cotton Handblock print saree</p></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row" style="margin-top:20px;">
+            <div class="col-sm-12">
+                <div class="product-tab">
+                    <ul class="nav nav-tabs nav-justified">
+                        <li class="active"><a href="#details" data-toggle="tab">Features</a></li>
+                        <li> <a href="#shipping" data-toggle="tab">Description</a></li>
+                    </ul>
+
+                    <!-- Tab panes -->
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="details">
+                            Cotton Handblock print saree <br>
+
+                            <h4 style="margin:15px 0;">Product Specification</h4>
+                            <table class="table table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <td>FABRIC</td>
+                                        <td>Cottons</td>
+                                    </tr>
+                                    <tr>
+                                        <td>WASH CARE</td>
+                                        <td>
+                                            Dry  Clean Recommended For This Product. Do Not Bleach And Expose This Product To Excessive Heat And Sunlight For Long.
+                                            , Hand Wash And Machine wash
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>MANUFACTURER ADDRESS</td>
+                                        <td>
+                                            Plot No. 8, Mahadev Nagar, Lal Khoti , Bagru (Jaipur), Rajasthan
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>PATTERN</td>
+                                        <td>
+                                            Indigo Dabu Print
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>FABRIC</td>
+                                        <td>
+                                            Ethnic Wear
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>CRAFT</td>
+                                        <td>
+                                            Neele Dhaage
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>LENGTH</td>
+                                        <td>
+                                            5 mtr
+                                        </td>
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+                            <p></p>
+                            <hr>
+                        </div>
+                        <div class="tab-pane" id="size-guide">
+                            <div class="row">
+                                <div class="col-sm-12">
+                                </div>
+                            </div>
+                            <hr>
+                        </div>
+                        <div class="tab-pane" id="shipping">
+                            <h4>Description</h4>
+                            <p>
+                            <p>Cotton Handblock print saree</p>
+                            </p>
+                            <hr>
+                        </div>
+                    </div>
+                    <!-- /.tab content -->
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="must-have">
+                    <div class="col-md-12 title-container">
+                        <div class="line hidden-xs hidden-sm"></div>
+                        <h4>Related Products</h4>
+                    </div>
+                    <div id="owl-demo2" class="owl-carousel owl-theme">
+                        <div class="item">
+                            <div class=" p-box">
+                                <a href="indigo-dabu-mud-print-saree.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/01_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
+
+                                <div class="img-title">Indigo Dabu(Mud) Print Saree</div>
+                                <div class="price-view">
+                                    <div class="col-md-6 col-xs-6 price">
+                                        <p>₹999.00</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <a href="indigo-dabu-mud-print-saree.html">view</a>
+                                        <div class="heart_list_holder2">
+
+                                            <a href="../../signin.html" style="color: transparent !important; background-color: transparent !important; padding: 0px !important;"><img src="../../assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1"></a>
+
+                                            <!--
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1">
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon1.png" class="heart_active" style="opacity:0">
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class=" p-box">
+                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/01_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
+
+                                <div class="img-title">New Stylish Scarves</div>
+                                <div class="price-view">
+                                    <div class="col-md-6 col-xs-6 price">
+                                        <p>₹899.00</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <a href="new-stylish-scarves.html">view</a>
+                                        <div class="heart_list_holder2">
+
+                                            <a href="../../signin.html" style="color: transparent !important; background-color: transparent !important; padding: 0px !important;"><img src="../../assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1"></a>
+
+                                            <!--
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1">
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon1.png" class="heart_active" style="opacity:0">
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class=" p-box">
+                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/02_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
+
+                                <div class="img-title">New Stylish Scarves</div>
+                                <div class="price-view">
+                                    <div class="col-md-6 col-xs-6 price">
+                                        <p>₹899.00</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <a href="new-stylish-scarves.html">view</a>
+                                        <div class="heart_list_holder2">
+
+                                            <a href="../../signin.html" style="color: transparent !important; background-color: transparent !important; padding: 0px !important;"><img src="../../assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1"></a>
+
+                                            <!--
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1">
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon1.png" class="heart_active" style="opacity:0">
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class=" p-box">
+                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/03_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
+
+                                <div class="img-title">New Stylish Scarves</div>
+                                <div class="price-view">
+                                    <div class="col-md-6 col-xs-6 price">
+                                        <p>₹899.00</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <a href="new-stylish-scarves.html">view</a>
+                                        <div class="heart_list_holder2">
+
+                                            <a href="../../signin.html" style="color: transparent !important; background-color: transparent !important; padding: 0px !important;"><img src="../../assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1"></a>
+
+                                            <!--
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1">
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon1.png" class="heart_active" style="opacity:0">
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class=" p-box">
+                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/04_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
+
+                                <div class="img-title">New Stylish Scarves</div>
+                                <div class="price-view">
+                                    <div class="col-md-6 col-xs-6 price">
+                                        <p>₹899.00</p>
+                                    </div>
+                                    <div class="col-md-6 col-xs-6">
+                                        <a href="new-stylish-scarves.html">view</a>
+                                        <div class="heart_list_holder2">
+
+                                            <a href="../../signin.html" style="color: transparent !important; background-color: transparent !important; padding: 0px !important;"><img src="../../assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1"></a>
+
+                                            <!--
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon.png" class="heart_inactive" style="opacity:1">
+                                                                                <img src="http://www.route2carrer.com/assets/default/images/heart-icon1.png" class="heart_active" style="opacity:0">
+                                            -->
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="clr"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 title-container">
+                <div class="line hidden-xs hidden-sm"></div>
+                <h4>Follow us</h4>
+            </div>
+            <div class="col-sm-12 text-center">
+                <a target="_blank" href="https://www.twitter.com"><img src="../../assets/default/images/icon1.png" width="31"></a>    <a target="_blank" href="https://www.instagram.com"><img src="../../assets/default/images/icon2.png" width="31"></a>    <a target="_blank" href="https://www.facebook.com"><img src="../../assets/default/images/icon3.png" width="31"></a>    <a target="_blank" href="https://www.pinterest.com" style="margin-right:0;"><img src="../../assets/default/images/icon4.png" width="31"></a>       <a target="_blank" href="https://www.youtube.com" style="margin-right:0;"><img src="../../assets/default/images/icon6.png" width="31"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@*<div class="clr"></div>
+    </div>
+    </div>*@
+
+<!-- Modal -->
+<div class="modal fade" id="enquiryModal" role="dialog">
+    <div class="modal-dialog modal-lg">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Leave an enquiry</h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="enquiryForm" class="ajaxform row" method="post" action="../../saveEnquiry.html">
+                    <div class="col-md-12">
+                        <div class="alert ajax_report alert-info alert-hide" role="alert" style="display:none; text-align: center;">
+                            <span class="close">&times;</span>
+                            <span class="ajax_message"><strong>Please wait! </strong>Your action is in proccess...</span>
+                        </div>
+                    </div>
+                    <input type="hidden" name="_token" value="YnWEo91Am7OaEbYzxNHlHpXs4zw2I30pEhcyup42" />
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Name</label>
+                            <input type="text" name="name" class="form-control" id="exampleInputEmail1" placeholder="Full Name">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Mobile No.</label>
+                            <input type="text" name="mobileno" class="form-control" id="exampleInputEmail1" placeholder="Mobile Number">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Email Address</label>
+                            <input type="email" name="email" class="form-control" value="" id="exampleInputEmail1" placeholder="Email">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <label for="exampleInputPassword1">Enquiry Message</label>
+                            <textarea name="message" class="form-control" id="exampleInputPassword1" placeholder="Message"></textarea>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12">
+                        <div class="form-group">
+                            <button type="submit" class="submit btn btn-black">Submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<link href="~/Content/jquery.fancybox.css" rel="stylesheet" />
+
+@section Scripts {
+    <script src="~/scripts/Magnifier/Event.js"></script>
+    <script src="~/scripts/Magnifier/Magnifier.js"></script>
+    <script>
+        var evt = new Event(),
+            m = new Magnifier(evt);
+        m.attach({
+            thumb: '#thumb',
+            large: '@ImageUrl',
+            largeWrapper: 'preview'
+        });
+    </script>
+
+    <script src="~/Scripts/jquery.fancybox.js"></script>
+    <script>
+$(function () {
+
+    /*
+    * Fancybox
+    */
+
+    $(".fancybox").fancybox();
+
+    ////////////////////////////////////////////////////////
+
+    /*
+    * Add to cart
+    */
+
+    $("a.addtocart").click(function (e) {
+        e.preventDefault();
+              $("span.loader").addClass("ib");
+
+        var url = "/cart/AddToCartPartial";
+
+        $.get(url, { id: @Model.Id }, function (data) {
+            $(".ajaxcart").html(data);
+            location.reload(true);
+        }).done(function () {
+            $("span.loader").removeClass("ib");
+            $("span.ajaxmsg").addClass("ib");
+            setTimeout(function () {
+                $("span.ajaxmsg").fadeOut("fast");
+                $("span.ajaxmsg").removeClass("ib");
+            }, 1000);
+        });
+    });
+
+    ////////////////////////////////////////////////////////
+
+});
+    </script>
+
+}

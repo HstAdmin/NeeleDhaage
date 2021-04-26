@@ -1,0 +1,554 @@
+﻿@model IEnumerable<Neeledhaage.Dal.Tbl_Inventory_Products>
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = ViewBag.CategoryName;
+}
+
+<h2 class="category_name">@ViewBag.CategoryName</h2>
+<div class="col-sm-3">
+    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+        <div class="panel s-menu">
+            <div class="panel-heading" role="tab" id="headingFive">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        sort by Women
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                <div class="panel-body smart-forms">
+                    <form method="GET" id="category_form">
+                        <label class="option block">
+                            <input name="category[]" value="all" class="allcheck" type="checkbox">
+                            <span class="checkbox"></span> All
+                        </label>
+
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <label class="option block">
+                                    <input name="category[]" data-id="1" class="parentcat" value="1" type="checkbox">
+                                    <span class="checkbox"></span> &nbsp;<strong>Ethnic Wear       </strong>
+                                </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="16" data-id="1" class="mycheck_1 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Saree
+                                        </label>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="17" data-id="1" class="mycheck_1 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Unstiched Suit
+                                        </label>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="18" data-id="1" class="mycheck_1 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Duppitas
+                                        </label>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="19" data-id="1" class="mycheck_1 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Stole
+                                        </label>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="20" data-id="1" class="mycheck_1 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Fabric
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item">
+                                <label class="option block">
+                                    <input name="category[]" data-id="2" class="parentcat" value="2" type="checkbox">
+                                    <span class="checkbox"></span> &nbsp;<strong>Accessories       </strong>
+                                </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="21" data-id="2" class="mycheck_2 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Bags
+                                        </label>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="22" data-id="2" class="mycheck_2 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Footwear
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--
+                         <div>
+                            <label class="option block">
+                                <input name="category[]" data-id="2" class="mycheck parentcat" value="all" type="checkbox">
+                                <span class="checkbox"></span> &nbsp;<strong>Accessories       </strong>
+                            </label>
+
+
+                        <div style="padding-left:20px;">
+                        <label class="option block">
+
+                            <input name="fabric[]" value="all" data-id="2" class="mycheck_2 subcat" type="checkbox">
+                            <span class="checkbox"></span> Footwear
+                        </label>
+                        </div>
+
+                        </div>-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel s-menu">
+            <div class="panel-heading" role="tab" id="headingSix">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                        sort by Men
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                <div class="panel-body smart-forms">
+                    <form method="GET" id="category_men_form">
+                        <label class="option block">
+                            <input name="category[]" value="all" class="allcheck" type="checkbox">
+                            <span class="checkbox"></span> All
+                        </label>
+
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <label class="option block">
+                                    <input name="category[]" data-id="4" class="parentcat" value="4" type="checkbox">
+                                    <span class="checkbox"></span> &nbsp;<strong>Shirts       </strong>
+                                </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="26" data-id="4" class="mycheck_4 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Shirts
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item">
+                                <label class="option block">
+                                    <input name="category[]" data-id="6" class="parentcat" value="6" type="checkbox">
+                                    <span class="checkbox"></span> &nbsp;<strong>T-shirts       </strong>
+                                </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="27" data-id="6" class="mycheck_6 subcat" type="checkbox">
+                                            <span class="checkbox"></span> T-shirts
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item">
+                                <label class="option block">
+                                    <input name="category[]" data-id="7" class="parentcat" value="7" type="checkbox">
+                                    <span class="checkbox"></span> &nbsp;<strong>Fabric       </strong>
+                                </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="25" data-id="7" class="mycheck_7 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Fabric
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--
+                         <div>
+                            <label class="option block">
+                                <input name="category[]" data-id="7" class="mycheck parentcat" value="all" type="checkbox">
+                                <span class="checkbox"></span> &nbsp;<strong>Fabric       </strong>
+                            </label>
+
+
+                        <div style="padding-left:20px;">
+                        <label class="option block">
+
+                            <input name="fabric[]" value="all" data-id="7" class="mycheck_7 subcat" type="checkbox">
+                            <span class="checkbox"></span> Fabric
+                        </label>
+                        </div>
+
+                        </div>-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel s-menu">
+            <div class="panel-heading" role="tab" id="headingSeven">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                        sort by Home Linen
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                <div class="panel-body smart-forms">
+                    <form method="GET" id="category_other_form">
+                        <label class="option block">
+                            <input name="category[]" value="all" class="allcheck" type="checkbox">
+                            <span class="checkbox"></span> All
+                        </label>
+
+
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <label class="option block">
+                                    <input name="category[]" data-id="8" class="parentcat" value="8" type="checkbox">
+                                    <span class="checkbox"></span> &nbsp;<strong>Bedsheets &amp; Bed Covers       </strong>
+                                </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="11" data-id="8" class="mycheck_8 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Bedsheets
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item">
+                                <label class="option block">
+                                    <input name="category[]" data-id="9" class="parentcat" value="9" type="checkbox">
+                                    <span class="checkbox"></span> &nbsp;<strong>Pillow Covers       </strong>
+                                </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="12" data-id="9" class="mycheck_9 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Pillow Covers
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="list-group-item">
+                                <label class="option block">
+                                    <input name="category[]" data-id="10" class="parentcat" value="10" type="checkbox">
+                                    <span class="checkbox"></span> &nbsp;<strong>Cushion Covers       </strong>
+                                </label>
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="13" data-id="10" class="mycheck_10 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Cushion Covers
+                                        </label>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="14" data-id="10" class="mycheck_10 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Dohars Quilts
+                                        </label>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <label class="option block">
+                                            <input name="category[]" value="15" data-id="10" class="mycheck_10 subcat" type="checkbox">
+                                            <span class="checkbox"></span> Rugs
+                                        </label>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <!--
+                         <div>
+                            <label class="option block">
+                                <input name="category[]" data-id="10" class="mycheck parentcat" value="all" type="checkbox">
+                                <span class="checkbox"></span> &nbsp;<strong>Cushion Covers       </strong>
+                            </label>
+
+
+                        <div style="padding-left:20px;">
+                        <label class="option block">
+
+                            <input name="fabric[]" value="all" data-id="10" class="mycheck_10 subcat" type="checkbox">
+                            <span class="checkbox"></span> Rugs
+                        </label>
+                        </div>
+
+                        </div>-->
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel s-menu">
+            <div class="panel-heading" role="tab" id="headingOne">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                        sort by Price
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                <form method="GET" id="price_form">
+                    <div class="panel-body price-list smart-forms">
+                        <label class="option block">
+                            <input name="price_type" value="all" type="radio">
+                            <span class="radio"></span> All
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="500-1500" type="radio">
+                            <span class="radio"></span> Rs.500-Rs.1500
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="1500-2500" type="radio">
+                            <span class="radio"></span> Rs.1500-Rs.2500
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="2500-3500" type="radio">
+                            <span class="radio"></span> Rs.2500-Rs.3500
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="3500-4500" type="radio">
+                            <span class="radio"></span> Rs.3500-Rs.4500
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="4500-5500" type="radio">
+                            <span class="radio"></span> Rs.4500-Rs.5500
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="5500-6500" type="radio">
+                            <span class="radio"></span> Rs.5500-Rs.6500
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="6500-7500" type="radio">
+                            <span class="radio"></span> Rs.6500-Rs.7500
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="7500-8500" type="radio">
+                            <span class="radio"></span> Rs.7500-Rs.8500
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="8500-9500" type="radio">
+                            <span class="radio"></span> Rs.8500-Rs.9500
+                        </label>
+                        <label class="option block">
+                            <input name="price_type" value="9500-10000" type="radio">
+                            <span class="radio"></span> Rs.9500-Rs.10000
+                        </label>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="panel s-menu">
+            <div class="panel-heading" role="tab" id="headingTwo">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        sort by Fabric
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                <div class="panel-body smart-forms">
+                    <form method="GET" id="fabric_form">
+                        <label class="option block">
+                            <input name="fabric[]" value="all" type="checkbox">
+                            <span class="checkbox"></span> All
+                        </label>
+
+                        <label class="option block">
+                            <input name="fabric[]" value="1" type="checkbox">
+                            <span class="checkbox"></span> Cottons
+                        </label>
+                        <label class="option block">
+                            <input name="fabric[]" value="3" type="checkbox">
+                            <span class="checkbox"></span> Linen
+                        </label>
+                        <label class="option block">
+                            <input name="fabric[]" value="4" type="checkbox">
+                            <span class="checkbox"></span> Silks
+                        </label>
+                        <label class="option block">
+                            <input name="fabric[]" value="2" type="checkbox">
+                            <span class="checkbox"></span> Wolen
+                        </label>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel s-menu">
+            <div class="panel-heading" role="tab" id="headingThree">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        sort by Craft
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+
+
+
+                <div class="panel-body smart-forms">
+                    <form method="GET" id="craft_form">
+                        <label class="option block">
+                            <input name="fabric[]" value="all" type="checkbox">
+                            <span class="checkbox"></span> All
+                        </label>
+
+
+                        <label class="option block">
+                            <input name="craft[]" value="2" type="checkbox">
+                            <span class="checkbox"></span> Batik Print
+                        </label>
+                        <label class="option block">
+                            <input name="craft[]" value="3" type="checkbox">
+                            <span class="checkbox"></span> Dabu Print
+                        </label>
+                        <label class="option block">
+                            <input name="craft[]" value="1" type="checkbox">
+                            <span class="checkbox"></span> Hand Block Print
+                        </label>
+                        <label class="option block">
+                            <input name="craft[]" value="5" type="checkbox">
+                            <span class="checkbox"></span> Tie and Die
+                        </label>
+                        <label class="option block">
+                            <input name="craft[]" value="4" type="checkbox">
+                            <span class="checkbox"></span> Traditional Bagru Print
+                        </label>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="panel s-menu">
+            <div class="panel-heading" role="tab" id="headingFour">
+                <h4 class="panel-title">
+                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                        sort by Color
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                <div class="panel-body  smart-forms">
+                    <form method="GET" id="color_form">
+                        <label class="option block">
+                            <input name="color[]" value="4" type="checkbox">
+                            <span class="checkbox" style="background:#0D56FF; border-radius:50%;border:none;"></span> Blue
+                        </label>
+                        <!--
+                                <label class="option block">
+                                      <input name="fabric[]" value="" type="checkbox">{&quot;id&quot;:4,&quot;color_name&quot;:&quot;Blue&quot;,&quot;color_value&quot;:&quot;0D56FF&quot;,&quot;created_at&quot;:&quot;2018-11-03 09:16:35&quot;,&quot;updated_at&quot;:&quot;2018-11-03 09:16:35&quot;,&quot;deleted_at&quot;:null,&quot;ip&quot;:&quot;103.118.168.153&quot;}
+                                      <span class="checkbox"></span>
+                                </label>
+                        -->
+                        <label class="option block">
+                            <input name="color[]" value="2" type="checkbox">
+                            <span class="checkbox" style="background:#116803; border-radius:50%;border:none;"></span> Green
+                        </label>
+                        <!--
+                                <label class="option block">
+                                      <input name="fabric[]" value="" type="checkbox">{&quot;id&quot;:2,&quot;color_name&quot;:&quot;Green&quot;,&quot;color_value&quot;:&quot;116803&quot;,&quot;created_at&quot;:&quot;2018-11-01 12:42:43&quot;,&quot;updated_at&quot;:&quot;2018-11-03 13:18:24&quot;,&quot;deleted_at&quot;:null,&quot;ip&quot;:&quot;103.118.168.153&quot;}
+                                      <span class="checkbox"></span>
+                                </label>
+                        -->
+                        <label class="option block">
+                            <input name="color[]" value="3" type="checkbox">
+                            <span class="checkbox" style="background:#87EA55; border-radius:50%;border:none;"></span> Light Green
+                        </label>
+                        <!--
+                                <label class="option block">
+                                      <input name="fabric[]" value="" type="checkbox">{&quot;id&quot;:3,&quot;color_name&quot;:&quot;Light Green&quot;,&quot;color_value&quot;:&quot;87EA55&quot;,&quot;created_at&quot;:&quot;2018-11-03 09:15:05&quot;,&quot;updated_at&quot;:&quot;2018-11-03 09:15:05&quot;,&quot;deleted_at&quot;:null,&quot;ip&quot;:&quot;103.118.168.153&quot;}
+                                      <span class="checkbox"></span>
+                                </label>
+                        -->
+                        <label class="option block">
+                            <input name="color[]" value="1" type="checkbox">
+                            <span class="checkbox" style="background:#FF0810; border-radius:50%;border:none;"></span> Red
+                        </label>
+                        <!--
+                                <label class="option block">
+                                      <input name="fabric[]" value="" type="checkbox">{&quot;id&quot;:1,&quot;color_name&quot;:&quot;Red&quot;,&quot;color_value&quot;:&quot;FF0810&quot;,&quot;created_at&quot;:&quot;2018-11-01 12:33:39&quot;,&quot;updated_at&quot;:&quot;2018-11-03 13:17:43&quot;,&quot;deleted_at&quot;:null,&quot;ip&quot;:&quot;103.118.168.153&quot;}
+                                      <span class="checkbox"></span>
+                                </label>
+                        -->
+                    </form>
+                    <!--
+                             <label class="option block">
+                                                        <input name="all" value="FR" type="checkbox">
+                                                        <span class="checkbox" style="background:#288ddb; border-radius:50%;border:none;"></span> Blue
+                                                    </label>
+                    <label class="option block">
+                                                        <input name="cotton" value="FR" type="checkbox">
+                                                        <span class="checkbox" style="background:#000; border-radius:50%;border:none;"></span> Black
+                                                    </label>
+                    <label class="option block">
+                                                        <input name="wolen" value="FR" type="checkbox">
+                                                        <span class="checkbox" style="background:#dbd928; border-radius:50%;border:none;"></span> Yellow
+                                                    </label>
+                     <label class="option block">
+                                                        <input name="linen" value="FR" type="checkbox">
+                                                        <span class="checkbox" style="background:#ee7ef5; border-radius:50%;border:none;"></span> Pink
+                                                    </label>
+                      <label class="option block">
+                                                        <input name="silk" value="FR" type="checkbox">
+                                                        <span class="checkbox" style="background:#77ce73; border-radius:50%;border:none;"></span> Green
+                                                    </label>
+                                                     <label class="option block">
+                                                        <input name="silk" value="FR" type="checkbox">
+                                                        <span class="checkbox" style="background:#f5f5f5; border-radius:50%;border:none;"></span> White
+                                                    </label>
+
+
+                    -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-sm-9">
+    @foreach (var item in Model)
+    {
+        <div class="col-md-3 col-sm-6 product-item">
+            <div class="single-product-item-6">
+                <div class="thumb">
+                    <a href="/shop/product-details/@item.IP_SKU">
+                        <div class="img-wrapper">
+                            <img src="/Images/Products/@ViewBag.Imageroot/@item.IP_ImageName" title="" alt="" class="img-responsive" width="" height="" />
+                        </div>
+                        
+                    </a>
+                    <span class="tag">New</span>
+                    <!--<ul class="meta-infos">-->
+                        <!--<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
+                        <!--<li><a href="#"><i class="fa fa-heart"></i></a></li>-->
+                        <!--<li><a href="#"><i class="fa fa-eye"></i></a></li>-->
+                    <!--</ul>-->
+					<div class="hover_addcart"> 
+                   	<a href="/shop/product-details/@item.IP_SKU" class="addtocart">Add To Cart</a>
+                  	<div>
+					<a href="/shop/product-details/@item.IP_SKU" class="addtocart" style="bottom: -125px;width: 50%;background-color: #e5cc76;">Quick View</a>
+                    <a href="/shop/product-details/@item.IP_SKU" class="addtocart" style="bottom: -125px;right: 0px;width: 50%;background-color: #333333;">Buy Now</a>
+				</div></div>
+                </div>
+                <div class="content">
+                    <a href="#">
+                        <h4 class="title">@Html.DisplayFor(modelItem => item.IP_ProductName)</h4>
+                    </a>
+                    <del class="del-price">₹@Html.DisplayFor(modelItem => item.IP_CostPrice)</del>
+                    <span class="price">₹@Html.DisplayFor(modelItem => item.IP_TargetPrice)</span>
+
+                </div>
+            </div>
+        </div>
+    }
+</div>

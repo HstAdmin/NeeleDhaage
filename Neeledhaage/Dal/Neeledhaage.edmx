@@ -1,0 +1,1605 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="NeeledhaageModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCategories">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Slug" Type="varchar" MaxLength="50" />
+          <Property Name="Sorting" Type="int" />
+        </EntityType>
+        <EntityType Name="tblOrderDetails">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="Quantity" Type="int" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblOrders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderCode" Type="varchar" MaxLength="50" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="RazorPayOrderId" Type="nvarchar" MaxLength="500" />
+          <Property Name="TotalOrderAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="RazorStatus" Type="varchar" MaxLength="50" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" />
+        </EntityType>
+        <EntityType Name="tblPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Title" Type="varchar" MaxLength="50" />
+          <Property Name="Slug" Type="varchar" MaxLength="50" />
+          <Property Name="Body" Type="varchar(max)" />
+          <Property Name="Sorting" Type="int" />
+          <Property Name="HasSidebar" Type="bit" />
+        </EntityType>
+        <EntityType Name="tblProducts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+          <Property Name="Slug" Type="varchar" MaxLength="50" />
+          <Property Name="Description" Type="varchar(max)" />
+          <Property Name="Price" Type="numeric" Precision="18" Scale="2" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="50" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="ImageName " Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="tblRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblSidebar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Body" Type="varchar(max)" />
+        </EntityType>
+        <EntityType Name="tblUserRoles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="RoleId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="varchar" MaxLength="50" />
+          <Property Name="LastName" Type="varchar" MaxLength="50" />
+          <Property Name="EmailAddress" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="15" />
+          <Property Name="CreatedDate" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
+        <EntityType Name="Mst_Customer_AddressType">
+          <Key>
+            <PropertyRef Name="CAT_AddressTypeID" />
+          </Key>
+          <Property Name="CAT_AddressTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CAT_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CAT_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="CAT_Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="CAT_IsActive" Type="bit" Nullable="false" />
+          <Property Name="CAT_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CAT_CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CAT_UpdatedDate" Type="datetime" />
+          <Property Name="CAT_UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Mst_Customer_Type">
+          <Key>
+            <PropertyRef Name="CT_CustomerTypeID" />
+          </Key>
+          <Property Name="CT_CustomerTypeID" Type="tinyint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CT_Code" Type="nvarchar" MaxLength="30" />
+          <Property Name="CT_Name" Type="nvarchar" MaxLength="80" />
+          <Property Name="CT_Description" Type="nvarchar" MaxLength="100" />
+          <Property Name="CT_IsActive" Type="bit" />
+          <Property Name="CT_CreatedDate" Type="datetime" />
+          <Property Name="CT_CreatedBy" Type="int" />
+          <Property Name="CT_UpdatedDate" Type="datetime" />
+          <Property Name="CT_UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Mst_Inventory_ProductType">
+          <Key>
+            <PropertyRef Name="IPT_ProductTypeID" />
+          </Key>
+          <Property Name="IPT_ProductTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IPT_Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="IPT_Name" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="IPT_IsActive" Type="bit" Nullable="false" />
+          <Property Name="IPT_Description" Type="varchar" MaxLength="150" />
+          <Property Name="IPT_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IPT_CreatedBy" Type="int" Nullable="false" />
+          <Property Name="IPT_UpdatedDate" Type="datetime" />
+          <Property Name="IPT_UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="System_MstCountry">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryCode" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CountryName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="PhoneLength" Type="int" />
+          <Property Name="PhonePrefix" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="System_MstState">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="StateCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="System_MstStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusType" Type="varchar" MaxLength="80" Nullable="false" />
+          <Property Name="Code" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedBy" Type="int" Nullable="false" />
+          <Property Name="UpdatedDate" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Customer_Address">
+          <Key>
+            <PropertyRef Name="CA_AddressID" />
+          </Key>
+          <Property Name="CA_AddressID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CA_C_CustomerID" Type="int" Nullable="false" />
+          <Property Name="CA_AddressTypeID" Type="int" Nullable="false" />
+          <Property Name="CA_Address1" Type="nvarchar" MaxLength="200" />
+          <Property Name="CA_Address2" Type="nvarchar" MaxLength="100" />
+          <Property Name="CA_Address3" Type="nvarchar" MaxLength="100" />
+          <Property Name="CA_Address4" Type="nvarchar" MaxLength="100" />
+          <Property Name="CA_Locality" Type="nvarchar" MaxLength="50" />
+          <Property Name="CA_Area" Type="nvarchar" MaxLength="50" />
+          <Property Name="CA_Town" Type="nvarchar" MaxLength="50" />
+          <Property Name="CA_CountryID" Type="int" />
+          <Property Name="CA_PostCode" Type="nvarchar" MaxLength="20" />
+          <Property Name="CA_StatusID" Type="int" />
+          <Property Name="CA_IsDefaultAddress" Type="bit" />
+          <Property Name="CA_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="CA_CreatedBy" Type="int" />
+          <Property Name="CA_UpdatedDate" Type="datetime" />
+          <Property Name="CA_UpdatedBy" Type="int" />
+          <Property Name="CA_StateID" Type="int" />
+          <Property Name="CA_IsDeleted" Type="bit" />
+          <Property Name="CA_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Customers">
+          <Key>
+            <PropertyRef Name="C_CustomerID" />
+          </Key>
+          <Property Name="C_CustomerID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="C_CustomerCode" Type="varchar" MaxLength="20" />
+          <Property Name="C_Title" Type="nvarchar" MaxLength="20" />
+          <Property Name="C_FirstName" Type="nvarchar" MaxLength="100" />
+          <Property Name="C_LastName" Type="nvarchar" MaxLength="100" />
+          <Property Name="C_StatusID" Type="int" Nullable="false" />
+          <Property Name="C_EmailID" Type="nvarchar" MaxLength="100" />
+          <Property Name="C_Pin" Type="nvarchar" MaxLength="100" />
+          <Property Name="C_HomePhone" Type="varchar" MaxLength="20" />
+          <Property Name="C_MobilePhone" Type="varchar" MaxLength="20" />
+          <Property Name="C_DirectPhone" Type="varchar" MaxLength="20" />
+          <Property Name="C_IsLocked" Type="bit" />
+          <Property Name="C_LockedDateTime" Type="datetime" />
+          <Property Name="C_PersonalAgentID" Type="int" />
+          <Property Name="C_BlockedReasonID" Type="int" />
+          <Property Name="C_CableProviderID" Type="int" />
+          <Property Name="C_CreatedBy" Type="int" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="C_UpdatedDate" Type="datetime" />
+          <Property Name="C_UpdatedBy" Type="int" />
+          <Property Name="C_CT_CustomerTypeID" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="Tbl_ExceptionLogger">
+          <Key>
+            <PropertyRef Name="ExcLog_Id" />
+          </Key>
+          <Property Name="ExcLog_Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExcLog_ExceptionId" Type="uniqueidentifier" />
+          <Property Name="ExcLog_ExceptionMessage" Type="nvarchar(max)" />
+          <Property Name="ExcLog_ExceptionType" Type="nvarchar(max)" />
+          <Property Name="ExcLog_ExceptionSource" Type="nvarchar(max)" />
+          <Property Name="ExcLog_Url" Type="nvarchar(max)" />
+          <Property Name="ExcLog_LogDate" Type="datetime" />
+          <Property Name="ExcLog_IsResolved" Type="bit" />
+          <Property Name="ExcLog_IsActive" Type="bit" />
+          <Property Name="ExcLog_CreatedDate" Type="datetime" />
+          <Property Name="ExcLog_CreatedBy" Type="int" />
+          <Property Name="ExcLog_UpdatedDate" Type="datetime" />
+          <Property Name="ExcLog_UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Inventory_Category">
+          <Key>
+            <PropertyRef Name="IC_CategoryID" />
+          </Key>
+          <Property Name="IC_CategoryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IC_ParentID" Type="int" />
+          <Property Name="IC_Name" Type="nvarchar" MaxLength="100" />
+          <Property Name="IC_Description" Type="nvarchar" MaxLength="255" />
+          <Property Name="IC_IsActive" Type="bit" Nullable="false" />
+          <Property Name="IC_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IC_CreatedBy" Type="int" Nullable="false" />
+          <Property Name="IC_UpdatedBy" Type="int" />
+          <Property Name="IC_UpdatedDate" Type="datetime" />
+          <Property Name="IC_Slug" Type="varchar" MaxLength="50" />
+          <Property Name="IC_Sorting" Type="int" />
+          <Property Name="Ic_OrderBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Inventory_CategoryType">
+          <Key>
+            <PropertyRef Name="ICT_CategoryTypeID" />
+          </Key>
+          <Property Name="ICT_CategoryTypeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ICT_ReportingCategoryID" Type="int" />
+          <Property Name="ICT_CategoryName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ICT_CategoryID" Type="int" />
+          <Property Name="ICT_IsActive" Type="bit" />
+          <Property Name="ICT_CreatedOn" Type="datetime" />
+          <Property Name="ICT_CreatedBy" Type="int" />
+          <Property Name="ICT_UpdatedOn" Type="datetime" />
+          <Property Name="ICT_UpdatedBy" Type="int" />
+        </EntityType>
+        <EntityType Name="Tbl_Inventory_ProductCategories">
+          <Key>
+            <PropertyRef Name="IPC_ProductCategoriesID" />
+          </Key>
+          <Property Name="IPC_ProductCategoriesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IPC_IP_ProductID" Type="int" Nullable="false" />
+          <Property Name="IPC_IC_CategoryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Tbl_Inventory_Products">
+          <Key>
+            <PropertyRef Name="IP_ProductID" />
+          </Key>
+          <Property Name="IP_ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IP_IC_CategoryID" Type="int" Nullable="false" />
+          <Property Name="IP_SKU" Type="varchar" MaxLength="15" Nullable="false" />
+          <Property Name="IP_ProductName" Type="nvarchar" MaxLength="300" />
+          <Property Name="IP_ImageName" Type="varchar" MaxLength="50" />
+          <Property Name="IP_Sizeable" Type="char" MaxLength="1" />
+          <Property Name="IP_CostPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IP_HighPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IP_MediumPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IP_LowPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IP_StartPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IP_TargetPrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IP_Margin" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IP_Brand" Type="nvarchar" MaxLength="50" />
+          <Property Name="IP_Remark" Type="nvarchar" MaxLength="300" />
+          <Property Name="IP_IsActive" Type="bit" />
+          <Property Name="IP_CreatedBy" Type="int" Nullable="false" />
+          <Property Name="IP_CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="IP_UpdatedBy" Type="int" />
+          <Property Name="IP_UpdatedDate" Type="datetime" />
+          <Property Name="IP_ClearancePrice" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="IP_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="IP_TaxCode" Type="varchar" MaxLength="15" />
+          <Property Name="IP_ImagePath" Type="nvarchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Tbl_Sales_OrderItems">
+          <Key>
+            <PropertyRef Name="SOI_SalesOrderLineID" />
+          </Key>
+          <Property Name="SOI_SalesOrderLineID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SOI_SO_SalesOrderID" Type="int" Nullable="false" />
+          <Property Name="SOI_ShoppingBasketDetailID" Type="int" />
+          <Property Name="SOI_IP_ProductID" Type="int" />
+          <Property Name="SOI_SKU" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SOI_ProductName" Type="nvarchar" MaxLength="500" />
+          <Property Name="SOI_Price" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SOI_Qty" Type="int" Nullable="false" />
+          <Property Name="SOI_VatRate" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="SOI_VatAmount" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SOI_DiscountAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SOI_TotalNetAmt" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SOI_IsReserved" Type="bit" Nullable="false" />
+          <Property Name="SOI_ShippingAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SOI_CreatedDate" Type="datetime" />
+          <Property Name="SOI_CreatedBy" Type="int" />
+          <Property Name="SOI_UpdatedDate" Type="datetime" />
+          <Property Name="SOI_UpdatedBy" Type="int" />
+          <Property Name="SOI_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="SOI_TaxCode" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Tbl_Sales_Orders">
+          <Key>
+            <PropertyRef Name="SO_SalesOrderID" />
+          </Key>
+          <Property Name="SO_SalesOrderID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SO_SalesOrderCode" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="SO_C_CustomerID" Type="int" Nullable="false" />
+          <Property Name="SO_IsVatable" Type="bit" />
+          <Property Name="SO_TotalVatAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SO_VatRate" Type="decimal" Precision="18" Scale="4" />
+          <Property Name="SO_TotalDiscountAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SO_TotalGrossAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SO_TotalNetAmount" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SO_ShippingCharges" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SO_StatusID" Type="int" />
+          <Property Name="SO_IsOnHold" Type="bit" />
+          <Property Name="SO_HoldDate" Type="datetime" />
+          <Property Name="SO_HoldBy" Type="int" />
+          <Property Name="SO_CancelReason" Type="nvarchar" MaxLength="150" />
+          <Property Name="SO_ShippingMethodID" Type="int" />
+          <Property Name="SO_VoucherAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SO_ShippingSchemeID" Type="int" />
+          <Property Name="SO_OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="SO_DispatchDate" Type="datetime" />
+          <Property Name="SO_CreatedDate" Type="datetime" />
+          <Property Name="SO_CreatedBy" Type="int" />
+          <Property Name="SO_UpdatedDate" Type="datetime" />
+          <Property Name="SO_UpdatedBy" Type="int" />
+          <Property Name="SO_CancelDate" Type="datetime" />
+          <Property Name="SO_CancelBy" Type="int" />
+          <Property Name="SO_ShippingAddressID" Type="int" />
+          <Property Name="SO_BillingAddressID" Type="int" />
+          <Property Name="SO_OrderDiscountAmt" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="SO_PaymentGatewayID" Type="int" />
+          <Property Name="SO_IsPriority" Type="bit" />
+          <Property Name="SO_CancelReasonId" Type="int" />
+          <Property Name="SO_IsPaymentReceived" Type="bit" />
+          <Property Name="SO_DeviceType" Type="varchar" MaxLength="500" />
+          <Property Name="SO_DeviceName" Type="varchar" MaxLength="500" />
+          <Property Name="SO_TimeStamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Customer_Address_Customers">
+          <End Role="Tbl_Customers" Type="Self.Tbl_Customers" Multiplicity="1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Customers">
+              <PropertyRef Name="C_CustomerID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_C_CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address_Mst_Customer_AddressType">
+          <End Role="Mst_Customer_AddressType" Type="Self.Mst_Customer_AddressType" Multiplicity="1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mst_Customer_AddressType">
+              <PropertyRef Name="CAT_AddressTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address_System_MstCountry">
+          <End Role="System_MstCountry" Type="Self.System_MstCountry" Multiplicity="0..1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System_MstCountry">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address_System_MstStatus">
+          <End Role="System_MstStatus" Type="Self.System_MstStatus" Multiplicity="0..1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System_MstStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address_System_States">
+          <End Role="System_MstState" Type="Self.System_MstState" Multiplicity="0..1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System_MstState">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_MstCustomerType">
+          <End Role="Mst_Customer_Type" Type="Self.Mst_Customer_Type" Multiplicity="0..1" />
+          <End Role="Tbl_Customers" Type="Self.Tbl_Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mst_Customer_Type">
+              <PropertyRef Name="CT_CustomerTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_Customers">
+              <PropertyRef Name="C_CT_CustomerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Category_Inventory_ProductCategories">
+          <End Role="Tbl_Inventory_Category" Type="Self.Tbl_Inventory_Category" Multiplicity="1" />
+          <End Role="Tbl_Inventory_ProductCategories" Type="Self.Tbl_Inventory_ProductCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Inventory_Category">
+              <PropertyRef Name="IC_CategoryID" />
+            </Principal>
+            <Dependent Role="Tbl_Inventory_ProductCategories">
+              <PropertyRef Name="IPC_IC_CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Inventory_Products_Inventory_ProductCategories">
+          <End Role="Tbl_Inventory_Products" Type="Self.Tbl_Inventory_Products" Multiplicity="1" />
+          <End Role="Tbl_Inventory_ProductCategories" Type="Self.Tbl_Inventory_ProductCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Inventory_Products">
+              <PropertyRef Name="IP_ProductID" />
+            </Principal>
+            <Dependent Role="Tbl_Inventory_ProductCategories">
+              <PropertyRef Name="IPC_IP_ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Orders_Sales_Orderlines">
+          <End Role="Tbl_Sales_Orders" Type="Self.Tbl_Sales_Orders" Multiplicity="1" />
+          <End Role="Tbl_Sales_OrderItems" Type="Self.Tbl_Sales_OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sales_Orders">
+              <PropertyRef Name="SO_SalesOrderID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales_OrderItems">
+              <PropertyRef Name="SOI_SO_SalesOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_System_MstCountry_System_States">
+          <End Role="System_MstCountry" Type="Self.System_MstCountry" Multiplicity="1" />
+          <End Role="System_MstState" Type="Self.System_MstState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System_MstCountry">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="System_MstState">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NeeledhaageModelStoreContainer">
+          <EntitySet Name="tblCategories" EntityType="Self.tblCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrderDetails" EntityType="Self.tblOrderDetails" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrders" EntityType="Self.tblOrders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPages" EntityType="Self.tblPages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProducts" EntityType="Self.tblProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSidebar" EntityType="Self.tblSidebar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRoles" EntityType="Self.tblUserRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Mst_Customer_AddressType" EntityType="Self.Mst_Customer_AddressType" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Mst_Customer_Type" EntityType="Self.Mst_Customer_Type" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Mst_Inventory_ProductType" EntityType="Self.Mst_Inventory_ProductType" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="System_MstCountry" EntityType="Self.System_MstCountry" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="System_MstState" EntityType="Self.System_MstState" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="System_MstStatus" EntityType="Self.System_MstStatus" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Tbl_Customer_Address" EntityType="Self.Tbl_Customer_Address" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Tbl_Customers" EntityType="Self.Tbl_Customers" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Tbl_ExceptionLogger" EntityType="Self.Tbl_ExceptionLogger" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Tbl_Inventory_Category" EntityType="Self.Tbl_Inventory_Category" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Tbl_Inventory_CategoryType" EntityType="Self.Tbl_Inventory_CategoryType" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Tbl_Inventory_ProductCategories" EntityType="Self.Tbl_Inventory_ProductCategories" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Tbl_Inventory_Products" EntityType="Self.Tbl_Inventory_Products" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Tbl_Sales_OrderItems" EntityType="Self.Tbl_Sales_OrderItems" Schema="ndh" store:Type="Tables" />
+          <EntitySet Name="Tbl_Sales_Orders" EntityType="Self.Tbl_Sales_Orders" Schema="ndh" store:Type="Tables" />
+          <AssociationSet Name="FK_Customer_Address_Customers" Association="Self.FK_Customer_Address_Customers">
+            <End Role="Tbl_Customers" EntitySet="Tbl_Customers" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address_Mst_Customer_AddressType" Association="Self.FK_Customer_Address_Mst_Customer_AddressType">
+            <End Role="Mst_Customer_AddressType" EntitySet="Mst_Customer_AddressType" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address_System_MstCountry" Association="Self.FK_Customer_Address_System_MstCountry">
+            <End Role="System_MstCountry" EntitySet="System_MstCountry" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address_System_MstStatus" Association="Self.FK_Customer_Address_System_MstStatus">
+            <End Role="System_MstStatus" EntitySet="System_MstStatus" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address_System_States" Association="Self.FK_Customer_Address_System_States">
+            <End Role="System_MstState" EntitySet="System_MstState" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_MstCustomerType" Association="Self.FK_Customers_MstCustomerType">
+            <End Role="Mst_Customer_Type" EntitySet="Mst_Customer_Type" />
+            <End Role="Tbl_Customers" EntitySet="Tbl_Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Category_Inventory_ProductCategories" Association="Self.FK_Inventory_Category_Inventory_ProductCategories">
+            <End Role="Tbl_Inventory_Category" EntitySet="Tbl_Inventory_Category" />
+            <End Role="Tbl_Inventory_ProductCategories" EntitySet="Tbl_Inventory_ProductCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Inventory_Products_Inventory_ProductCategories" Association="Self.FK_Inventory_Products_Inventory_ProductCategories">
+            <End Role="Tbl_Inventory_Products" EntitySet="Tbl_Inventory_Products" />
+            <End Role="Tbl_Inventory_ProductCategories" EntitySet="Tbl_Inventory_ProductCategories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Orders_Sales_Orderlines" Association="Self.FK_Sales_Orders_Sales_Orderlines">
+            <End Role="Tbl_Sales_Orders" EntitySet="Tbl_Sales_Orders" />
+            <End Role="Tbl_Sales_OrderItems" EntitySet="Tbl_Sales_OrderItems" />
+          </AssociationSet>
+          <AssociationSet Name="FK_System_MstCountry_System_States" Association="Self.FK_System_MstCountry_System_States">
+            <End Role="System_MstCountry" EntitySet="System_MstCountry" />
+            <End Role="System_MstState" EntitySet="System_MstState" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="NeeledhaageModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Sorting" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Sorting" Type="Int32" />
+          <Property Name="HasSidebar" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="ImageName_" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSidebar">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Body" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="RoleId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Mst_Customer_AddressType">
+          <Key>
+            <PropertyRef Name="CAT_AddressTypeID" />
+          </Key>
+          <Property Name="CAT_AddressTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CAT_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CAT_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CAT_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="CAT_IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CAT_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CAT_CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CAT_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CAT_UpdatedBy" Type="Int32" />
+          <NavigationProperty Name="Tbl_Customer_Address" Relationship="Self.FK_Customer_Address_Mst_Customer_AddressType" FromRole="Mst_Customer_AddressType" ToRole="Tbl_Customer_Address" />
+        </EntityType>
+        <EntityType Name="Mst_Customer_Type">
+          <Key>
+            <PropertyRef Name="CT_CustomerTypeID" />
+          </Key>
+          <Property Name="CT_CustomerTypeID" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CT_Code" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="CT_Name" Type="String" MaxLength="80" FixedLength="false" Unicode="true" />
+          <Property Name="CT_Description" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CT_IsActive" Type="Boolean" />
+          <Property Name="CT_CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CT_CreatedBy" Type="Int32" />
+          <Property Name="CT_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CT_UpdatedBy" Type="Int32" />
+          <NavigationProperty Name="Tbl_Customers" Relationship="Self.FK_Customers_MstCustomerType" FromRole="Mst_Customer_Type" ToRole="Tbl_Customers" />
+        </EntityType>
+        <EntityType Name="Mst_Inventory_ProductType">
+          <Key>
+            <PropertyRef Name="IPT_ProductTypeID" />
+          </Key>
+          <Property Name="IPT_ProductTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IPT_Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IPT_Name" Type="String" MaxLength="150" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="IPT_IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IPT_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="IPT_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IPT_CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="IPT_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IPT_UpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="System_MstCountry">
+          <Key>
+            <PropertyRef Name="CountryID" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryCode" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="PhoneLength" Type="Int32" />
+          <Property Name="PhonePrefix" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Customer_Address" Relationship="Self.FK_Customer_Address_System_MstCountry" FromRole="System_MstCountry" ToRole="Tbl_Customer_Address" />
+          <NavigationProperty Name="System_MstState" Relationship="Self.FK_System_MstCountry_System_States" FromRole="System_MstCountry" ToRole="System_MstState" />
+        </EntityType>
+        <EntityType Name="System_MstState">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="StateCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="System_MstCountry" Relationship="Self.FK_System_MstCountry_System_States" FromRole="System_MstState" ToRole="System_MstCountry" />
+          <NavigationProperty Name="Tbl_Customer_Address" Relationship="Self.FK_Customer_Address_System_States" FromRole="System_MstState" ToRole="Tbl_Customer_Address" />
+        </EntityType>
+        <EntityType Name="System_MstStatus">
+          <Key>
+            <PropertyRef Name="StatusID" />
+          </Key>
+          <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusType" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <NavigationProperty Name="Tbl_Customer_Address" Relationship="Self.FK_Customer_Address_System_MstStatus" FromRole="System_MstStatus" ToRole="Tbl_Customer_Address" />
+        </EntityType>
+        <EntityType Name="Tbl_Customer_Address">
+          <Key>
+            <PropertyRef Name="CA_AddressID" />
+          </Key>
+          <Property Name="CA_AddressID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CA_C_CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="CA_AddressTypeID" Type="Int32" Nullable="false" />
+          <Property Name="CA_Address1" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="CA_Address2" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CA_Address3" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CA_Address4" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CA_Locality" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CA_Area" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CA_Town" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CA_CountryID" Type="Int32" />
+          <Property Name="CA_PostCode" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="CA_StatusID" Type="Int32" />
+          <Property Name="CA_IsDefaultAddress" Type="Boolean" />
+          <Property Name="CA_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CA_CreatedBy" Type="Int32" />
+          <Property Name="CA_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="CA_UpdatedBy" Type="Int32" />
+          <Property Name="CA_StateID" Type="Int32" />
+          <Property Name="CA_IsDeleted" Type="Boolean" />
+          <Property Name="CA_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Mst_Customer_AddressType" Relationship="Self.FK_Customer_Address_Mst_Customer_AddressType" FromRole="Tbl_Customer_Address" ToRole="Mst_Customer_AddressType" />
+          <NavigationProperty Name="System_MstCountry" Relationship="Self.FK_Customer_Address_System_MstCountry" FromRole="Tbl_Customer_Address" ToRole="System_MstCountry" />
+          <NavigationProperty Name="System_MstState" Relationship="Self.FK_Customer_Address_System_States" FromRole="Tbl_Customer_Address" ToRole="System_MstState" />
+          <NavigationProperty Name="System_MstStatus" Relationship="Self.FK_Customer_Address_System_MstStatus" FromRole="Tbl_Customer_Address" ToRole="System_MstStatus" />
+          <NavigationProperty Name="Tbl_Customers" Relationship="Self.FK_Customer_Address_Customers" FromRole="Tbl_Customer_Address" ToRole="Tbl_Customers" />
+        </EntityType>
+        <EntityType Name="Tbl_Customers">
+          <Key>
+            <PropertyRef Name="C_CustomerID" />
+          </Key>
+          <Property Name="C_CustomerID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="C_CustomerCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_Title" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="C_FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_StatusID" Type="Int32" Nullable="false" />
+          <Property Name="C_EmailID" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_Pin" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="C_HomePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_MobilePhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_DirectPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="C_IsLocked" Type="Boolean" />
+          <Property Name="C_LockedDateTime" Type="DateTime" Precision="3" />
+          <Property Name="C_PersonalAgentID" Type="Int32" />
+          <Property Name="C_BlockedReasonID" Type="Int32" />
+          <Property Name="C_CableProviderID" Type="Int32" />
+          <Property Name="C_CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="C_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="C_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="C_UpdatedBy" Type="Int32" />
+          <Property Name="C_CT_CustomerTypeID" Type="Byte" />
+          <NavigationProperty Name="Mst_Customer_Type" Relationship="Self.FK_Customers_MstCustomerType" FromRole="Tbl_Customers" ToRole="Mst_Customer_Type" />
+          <NavigationProperty Name="Tbl_Customer_Address" Relationship="Self.FK_Customer_Address_Customers" FromRole="Tbl_Customers" ToRole="Tbl_Customer_Address" />
+        </EntityType>
+        <EntityType Name="Tbl_ExceptionLogger">
+          <Key>
+            <PropertyRef Name="ExcLog_Id" />
+          </Key>
+          <Property Name="ExcLog_Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExcLog_ExceptionId" Type="Guid" />
+          <Property Name="ExcLog_ExceptionMessage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExcLog_ExceptionType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExcLog_ExceptionSource" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExcLog_Url" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ExcLog_LogDate" Type="DateTime" Precision="3" />
+          <Property Name="ExcLog_IsResolved" Type="Boolean" />
+          <Property Name="ExcLog_IsActive" Type="Boolean" />
+          <Property Name="ExcLog_CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ExcLog_CreatedBy" Type="Int32" />
+          <Property Name="ExcLog_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="ExcLog_UpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Inventory_CategoryType">
+          <Key>
+            <PropertyRef Name="ICT_CategoryTypeID" />
+          </Key>
+          <Property Name="ICT_CategoryTypeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ICT_ReportingCategoryID" Type="Int32" />
+          <Property Name="ICT_CategoryName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ICT_CategoryID" Type="Int32" />
+          <Property Name="ICT_IsActive" Type="Boolean" />
+          <Property Name="ICT_CreatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ICT_CreatedBy" Type="Int32" />
+          <Property Name="ICT_UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="ICT_UpdatedBy" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Tbl_Inventory_ProductCategories">
+          <Key>
+            <PropertyRef Name="IPC_ProductCategoriesID" />
+          </Key>
+          <Property Name="IPC_ProductCategoriesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IPC_IP_ProductID" Type="Int32" Nullable="false" />
+          <Property Name="IPC_IC_CategoryID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Tbl_Inventory_Category" Relationship="NeeledhaageModel.FK_Inventory_Category_Inventory_ProductCategories" FromRole="Tbl_Inventory_ProductCategories" ToRole="Tbl_Inventory_Category" />
+          <NavigationProperty Name="Tbl_Inventory_Products" Relationship="NeeledhaageModel.FK_Inventory_Products_Inventory_ProductCategories" FromRole="Tbl_Inventory_ProductCategories" ToRole="Tbl_Inventory_Products" />
+        </EntityType>
+        <EntityType Name="Tbl_Sales_OrderItems">
+          <Key>
+            <PropertyRef Name="SOI_SalesOrderLineID" />
+          </Key>
+          <Property Name="SOI_SalesOrderLineID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SOI_SO_SalesOrderID" Type="Int32" Nullable="false" />
+          <Property Name="SOI_ShoppingBasketDetailID" Type="Int32" />
+          <Property Name="SOI_IP_ProductID" Type="Int32" />
+          <Property Name="SOI_SKU" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SOI_ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="SOI_Price" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SOI_Qty" Type="Int32" Nullable="false" />
+          <Property Name="SOI_VatRate" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SOI_VatAmount" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SOI_DiscountAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SOI_TotalNetAmt" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="SOI_IsReserved" Type="Boolean" Nullable="false" />
+          <Property Name="SOI_ShippingAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SOI_CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="SOI_CreatedBy" Type="Int32" />
+          <Property Name="SOI_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="SOI_UpdatedBy" Type="Int32" />
+          <Property Name="SOI_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="SOI_TaxCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Sales_Orders" Relationship="Self.FK_Sales_Orders_Sales_Orderlines" FromRole="Tbl_Sales_OrderItems" ToRole="Tbl_Sales_Orders" />
+        </EntityType>
+        <EntityType Name="Tbl_Sales_Orders">
+          <Key>
+            <PropertyRef Name="SO_SalesOrderID" />
+          </Key>
+          <Property Name="SO_SalesOrderID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SO_SalesOrderCode" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="SO_C_CustomerID" Type="Int32" Nullable="false" />
+          <Property Name="SO_IsVatable" Type="Boolean" />
+          <Property Name="SO_TotalVatAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SO_VatRate" Type="Decimal" Precision="18" Scale="4" />
+          <Property Name="SO_TotalDiscountAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SO_TotalGrossAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SO_TotalNetAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SO_ShippingCharges" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SO_StatusID" Type="Int32" />
+          <Property Name="SO_IsOnHold" Type="Boolean" />
+          <Property Name="SO_HoldDate" Type="DateTime" Precision="3" />
+          <Property Name="SO_HoldBy" Type="Int32" />
+          <Property Name="SO_CancelReason" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="SO_ShippingMethodID" Type="Int32" />
+          <Property Name="SO_VoucherAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SO_ShippingSchemeID" Type="Int32" />
+          <Property Name="SO_OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SO_DispatchDate" Type="DateTime" Precision="3" />
+          <Property Name="SO_CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="SO_CreatedBy" Type="Int32" />
+          <Property Name="SO_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="SO_UpdatedBy" Type="Int32" />
+          <Property Name="SO_CancelDate" Type="DateTime" Precision="3" />
+          <Property Name="SO_CancelBy" Type="Int32" />
+          <Property Name="SO_ShippingAddressID" Type="Int32" />
+          <Property Name="SO_BillingAddressID" Type="Int32" />
+          <Property Name="SO_OrderDiscountAmt" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="SO_PaymentGatewayID" Type="Int32" />
+          <Property Name="SO_IsPriority" Type="Boolean" />
+          <Property Name="SO_CancelReasonId" Type="Int32" />
+          <Property Name="SO_IsPaymentReceived" Type="Boolean" />
+          <Property Name="SO_DeviceType" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SO_DeviceName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="SO_TimeStamp" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <NavigationProperty Name="Tbl_Sales_OrderItems" Relationship="Self.FK_Sales_Orders_Sales_Orderlines" FromRole="Tbl_Sales_Orders" ToRole="Tbl_Sales_OrderItems" />
+        </EntityType>
+        <Association Name="FK_Customer_Address_Mst_Customer_AddressType">
+          <End Role="Mst_Customer_AddressType" Type="Self.Mst_Customer_AddressType" Multiplicity="1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mst_Customer_AddressType">
+              <PropertyRef Name="CAT_AddressTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_AddressTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customers_MstCustomerType">
+          <End Role="Mst_Customer_Type" Type="Self.Mst_Customer_Type" Multiplicity="0..1" />
+          <End Role="Tbl_Customers" Type="Self.Tbl_Customers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Mst_Customer_Type">
+              <PropertyRef Name="CT_CustomerTypeID" />
+            </Principal>
+            <Dependent Role="Tbl_Customers">
+              <PropertyRef Name="C_CT_CustomerTypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address_System_MstCountry">
+          <End Role="System_MstCountry" Type="Self.System_MstCountry" Multiplicity="0..1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System_MstCountry">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_System_MstCountry_System_States">
+          <End Role="System_MstCountry" Type="Self.System_MstCountry" Multiplicity="1" />
+          <End Role="System_MstState" Type="Self.System_MstState" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System_MstCountry">
+              <PropertyRef Name="CountryID" />
+            </Principal>
+            <Dependent Role="System_MstState">
+              <PropertyRef Name="CountryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address_System_States">
+          <End Role="System_MstState" Type="Self.System_MstState" Multiplicity="0..1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System_MstState">
+              <PropertyRef Name="StateID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_StateID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address_System_MstStatus">
+          <End Role="System_MstStatus" Type="Self.System_MstStatus" Multiplicity="0..1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="System_MstStatus">
+              <PropertyRef Name="StatusID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_StatusID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Customer_Address_Customers">
+          <End Role="Tbl_Customers" Type="Self.Tbl_Customers" Multiplicity="1" />
+          <End Role="Tbl_Customer_Address" Type="Self.Tbl_Customer_Address" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Customers">
+              <PropertyRef Name="C_CustomerID" />
+            </Principal>
+            <Dependent Role="Tbl_Customer_Address">
+              <PropertyRef Name="CA_C_CustomerID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Sales_Orders_Sales_Orderlines">
+          <End Role="Tbl_Sales_Orders" Type="Self.Tbl_Sales_Orders" Multiplicity="1" />
+          <End Role="Tbl_Sales_OrderItems" Type="Self.Tbl_Sales_OrderItems" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Sales_Orders">
+              <PropertyRef Name="SO_SalesOrderID" />
+            </Principal>
+            <Dependent Role="Tbl_Sales_OrderItems">
+              <PropertyRef Name="SOI_SO_SalesOrderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="NeeledhaageEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblCategories" EntityType="Self.tblCategory" />
+          <EntitySet Name="tblPages" EntityType="Self.tblPage" />
+          <EntitySet Name="tblProducts" EntityType="Self.tblProduct" />
+          <EntitySet Name="tblRoles" EntityType="Self.tblRole" />
+          <EntitySet Name="tblSidebars" EntityType="Self.tblSidebar" />
+          <EntitySet Name="tblUserRoles" EntityType="Self.tblUserRole" />
+          <EntitySet Name="Mst_Customer_AddressType" EntityType="Self.Mst_Customer_AddressType" />
+          <EntitySet Name="Mst_Customer_Type" EntityType="Self.Mst_Customer_Type" />
+          <EntitySet Name="Mst_Inventory_ProductType" EntityType="Self.Mst_Inventory_ProductType" />
+          <EntitySet Name="System_MstCountry" EntityType="Self.System_MstCountry" />
+          <EntitySet Name="System_MstState" EntityType="Self.System_MstState" />
+          <EntitySet Name="System_MstStatus" EntityType="Self.System_MstStatus" />
+          <EntitySet Name="Tbl_Customer_Address" EntityType="Self.Tbl_Customer_Address" />
+          <EntitySet Name="Tbl_Customers" EntityType="Self.Tbl_Customers" />
+          <EntitySet Name="Tbl_ExceptionLogger" EntityType="Self.Tbl_ExceptionLogger" />
+          <EntitySet Name="Tbl_Inventory_CategoryType" EntityType="Self.Tbl_Inventory_CategoryType" />
+          <EntitySet Name="Tbl_Inventory_ProductCategories" EntityType="Self.Tbl_Inventory_ProductCategories" />
+          <EntitySet Name="Tbl_Sales_OrderItems" EntityType="Self.Tbl_Sales_OrderItems" />
+          <EntitySet Name="Tbl_Sales_Orders" EntityType="Self.Tbl_Sales_Orders" />
+          <AssociationSet Name="FK_Customer_Address_Mst_Customer_AddressType" Association="Self.FK_Customer_Address_Mst_Customer_AddressType">
+            <End Role="Mst_Customer_AddressType" EntitySet="Mst_Customer_AddressType" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customers_MstCustomerType" Association="Self.FK_Customers_MstCustomerType">
+            <End Role="Mst_Customer_Type" EntitySet="Mst_Customer_Type" />
+            <End Role="Tbl_Customers" EntitySet="Tbl_Customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address_System_MstCountry" Association="Self.FK_Customer_Address_System_MstCountry">
+            <End Role="System_MstCountry" EntitySet="System_MstCountry" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_System_MstCountry_System_States" Association="Self.FK_System_MstCountry_System_States">
+            <End Role="System_MstCountry" EntitySet="System_MstCountry" />
+            <End Role="System_MstState" EntitySet="System_MstState" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address_System_States" Association="Self.FK_Customer_Address_System_States">
+            <End Role="System_MstState" EntitySet="System_MstState" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address_System_MstStatus" Association="Self.FK_Customer_Address_System_MstStatus">
+            <End Role="System_MstStatus" EntitySet="System_MstStatus" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Customer_Address_Customers" Association="Self.FK_Customer_Address_Customers">
+            <End Role="Tbl_Customers" EntitySet="Tbl_Customers" />
+            <End Role="Tbl_Customer_Address" EntitySet="Tbl_Customer_Address" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Sales_Orders_Sales_Orderlines" Association="Self.FK_Sales_Orders_Sales_Orderlines">
+            <End Role="Tbl_Sales_Orders" EntitySet="Tbl_Sales_Orders" />
+            <End Role="Tbl_Sales_OrderItems" EntitySet="Tbl_Sales_OrderItems" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_Inventory_Category" EntityType="NeeledhaageModel.Tbl_Inventory_Category" />
+          <AssociationSet Name="FK_Inventory_Category_Inventory_ProductCategories" Association="NeeledhaageModel.FK_Inventory_Category_Inventory_ProductCategories">
+            <End Role="Tbl_Inventory_Category" EntitySet="Tbl_Inventory_Category" />
+            <End Role="Tbl_Inventory_ProductCategories" EntitySet="Tbl_Inventory_ProductCategories" />
+          </AssociationSet>
+          <EntitySet Name="Tbl_Inventory_Products" EntityType="NeeledhaageModel.Tbl_Inventory_Products" />
+          <AssociationSet Name="FK_Inventory_Products_Inventory_ProductCategories" Association="NeeledhaageModel.FK_Inventory_Products_Inventory_ProductCategories">
+            <End Role="Tbl_Inventory_Products" EntitySet="Tbl_Inventory_Products" />
+            <End Role="Tbl_Inventory_ProductCategories" EntitySet="Tbl_Inventory_ProductCategories" />
+          </AssociationSet>
+          <EntitySet Name="tblUsers" EntityType="NeeledhaageModel.tblUser" />
+          <EntitySet Name="tblOrderDetails" EntityType="NeeledhaageModel.tblOrderDetail" />
+          <EntitySet Name="tblOrders" EntityType="NeeledhaageModel.tblOrder" />
+        </EntityContainer>
+        <EntityType Name="Tbl_Inventory_Category">
+          <Key>
+            <PropertyRef Name="IC_CategoryID" />
+          </Key>
+          <Property Name="IC_CategoryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IC_ParentID" Type="Int32" />
+          <Property Name="IC_Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IC_Description" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IC_IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="IC_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IC_CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="IC_UpdatedBy" Type="Int32" />
+          <Property Name="IC_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IC_Slug" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IC_Sorting" Type="Int32" />
+          <Property Name="Ic_OrderBy" Type="Int32" />
+          <NavigationProperty Name="Tbl_Inventory_ProductCategories" Relationship="NeeledhaageModel.FK_Inventory_Category_Inventory_ProductCategories" FromRole="Tbl_Inventory_Category" ToRole="Tbl_Inventory_ProductCategories" />
+        </EntityType>
+        <Association Name="FK_Inventory_Category_Inventory_ProductCategories">
+          <End Type="NeeledhaageModel.Tbl_Inventory_Category" Role="Tbl_Inventory_Category" Multiplicity="1" />
+          <End Type="NeeledhaageModel.Tbl_Inventory_ProductCategories" Role="Tbl_Inventory_ProductCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Inventory_Category">
+              <PropertyRef Name="IC_CategoryID" />
+            </Principal>
+            <Dependent Role="Tbl_Inventory_ProductCategories">
+              <PropertyRef Name="IPC_IC_CategoryID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Tbl_Inventory_Products">
+          <Key>
+            <PropertyRef Name="IP_ProductID" />
+          </Key>
+          <Property Name="IP_ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IP_IC_CategoryID" Type="Int32" Nullable="false" />
+          <Property Name="IP_SKU" Type="String" Nullable="false" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="IP_ProductName" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IP_ImageName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IP_Sizeable" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IP_CostPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IP_HighPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IP_MediumPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IP_LowPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IP_StartPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IP_TargetPrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IP_Margin" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IP_Brand" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IP_Remark" Type="String" MaxLength="300" FixedLength="false" Unicode="true" />
+          <Property Name="IP_IsActive" Type="Boolean" />
+          <Property Name="IP_CreatedBy" Type="Int32" Nullable="false" />
+          <Property Name="IP_CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IP_UpdatedBy" Type="Int32" />
+          <Property Name="IP_UpdatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IP_ClearancePrice" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="IP_TimeStamp" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="IP_TaxCode" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="IP_ImagePath" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Tbl_Inventory_ProductCategories" Relationship="NeeledhaageModel.FK_Inventory_Products_Inventory_ProductCategories" FromRole="Tbl_Inventory_Products" ToRole="Tbl_Inventory_ProductCategories" />
+        </EntityType>
+        <Association Name="FK_Inventory_Products_Inventory_ProductCategories">
+          <End Type="NeeledhaageModel.Tbl_Inventory_Products" Role="Tbl_Inventory_Products" Multiplicity="1" />
+          <End Type="NeeledhaageModel.Tbl_Inventory_ProductCategories" Role="Tbl_Inventory_ProductCategories" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Tbl_Inventory_Products">
+              <PropertyRef Name="IP_ProductID" />
+            </Principal>
+            <Dependent Role="Tbl_Inventory_ProductCategories">
+              <PropertyRef Name="IPC_IP_ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblOrderDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="Quantity" Type="Int32" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="RazorPayOrderId" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TotalOrderAmount" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="RazorStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="7" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="NeeledhaageModelStoreContainer" CdmEntityContainer="NeeledhaageEntities">
+          <EntitySetMapping Name="tblCategories">
+            <EntityTypeMapping TypeName="NeeledhaageModel.tblCategory">
+              <MappingFragment StoreEntitySet="tblCategories">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Sorting" ColumnName="Sorting" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPages">
+            <EntityTypeMapping TypeName="NeeledhaageModel.tblPage">
+              <MappingFragment StoreEntitySet="tblPages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+                <ScalarProperty Name="Sorting" ColumnName="Sorting" />
+                <ScalarProperty Name="HasSidebar" ColumnName="HasSidebar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProducts">
+            <EntityTypeMapping TypeName="NeeledhaageModel.tblProduct">
+              <MappingFragment StoreEntitySet="tblProducts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Slug" ColumnName="Slug" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="ImageName_" ColumnName="ImageName " />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblRoles">
+            <EntityTypeMapping TypeName="NeeledhaageModel.tblRole">
+              <MappingFragment StoreEntitySet="tblRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSidebars">
+            <EntityTypeMapping TypeName="NeeledhaageModel.tblSidebar">
+              <MappingFragment StoreEntitySet="tblSidebar">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRoles">
+            <EntityTypeMapping TypeName="NeeledhaageModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRoles">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_Customer_AddressType">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Mst_Customer_AddressType">
+              <MappingFragment StoreEntitySet="Mst_Customer_AddressType">
+                <ScalarProperty Name="CAT_AddressTypeID" ColumnName="CAT_AddressTypeID" />
+                <ScalarProperty Name="CAT_Code" ColumnName="CAT_Code" />
+                <ScalarProperty Name="CAT_Name" ColumnName="CAT_Name" />
+                <ScalarProperty Name="CAT_Description" ColumnName="CAT_Description" />
+                <ScalarProperty Name="CAT_IsActive" ColumnName="CAT_IsActive" />
+                <ScalarProperty Name="CAT_CreatedDate" ColumnName="CAT_CreatedDate" />
+                <ScalarProperty Name="CAT_CreatedBy" ColumnName="CAT_CreatedBy" />
+                <ScalarProperty Name="CAT_UpdatedDate" ColumnName="CAT_UpdatedDate" />
+                <ScalarProperty Name="CAT_UpdatedBy" ColumnName="CAT_UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_Customer_Type">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Mst_Customer_Type">
+              <MappingFragment StoreEntitySet="Mst_Customer_Type">
+                <ScalarProperty Name="CT_CustomerTypeID" ColumnName="CT_CustomerTypeID" />
+                <ScalarProperty Name="CT_Code" ColumnName="CT_Code" />
+                <ScalarProperty Name="CT_Name" ColumnName="CT_Name" />
+                <ScalarProperty Name="CT_Description" ColumnName="CT_Description" />
+                <ScalarProperty Name="CT_IsActive" ColumnName="CT_IsActive" />
+                <ScalarProperty Name="CT_CreatedDate" ColumnName="CT_CreatedDate" />
+                <ScalarProperty Name="CT_CreatedBy" ColumnName="CT_CreatedBy" />
+                <ScalarProperty Name="CT_UpdatedDate" ColumnName="CT_UpdatedDate" />
+                <ScalarProperty Name="CT_UpdatedBy" ColumnName="CT_UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Mst_Inventory_ProductType">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Mst_Inventory_ProductType">
+              <MappingFragment StoreEntitySet="Mst_Inventory_ProductType">
+                <ScalarProperty Name="IPT_ProductTypeID" ColumnName="IPT_ProductTypeID" />
+                <ScalarProperty Name="IPT_Code" ColumnName="IPT_Code" />
+                <ScalarProperty Name="IPT_Name" ColumnName="IPT_Name" />
+                <ScalarProperty Name="IPT_IsActive" ColumnName="IPT_IsActive" />
+                <ScalarProperty Name="IPT_Description" ColumnName="IPT_Description" />
+                <ScalarProperty Name="IPT_CreatedDate" ColumnName="IPT_CreatedDate" />
+                <ScalarProperty Name="IPT_CreatedBy" ColumnName="IPT_CreatedBy" />
+                <ScalarProperty Name="IPT_UpdatedDate" ColumnName="IPT_UpdatedDate" />
+                <ScalarProperty Name="IPT_UpdatedBy" ColumnName="IPT_UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_MstCountry">
+            <EntityTypeMapping TypeName="NeeledhaageModel.System_MstCountry">
+              <MappingFragment StoreEntitySet="System_MstCountry">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="PhoneLength" ColumnName="PhoneLength" />
+                <ScalarProperty Name="PhonePrefix" ColumnName="PhonePrefix" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_MstState">
+            <EntityTypeMapping TypeName="NeeledhaageModel.System_MstState">
+              <MappingFragment StoreEntitySet="System_MstState">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="System_MstStatus">
+            <EntityTypeMapping TypeName="NeeledhaageModel.System_MstStatus">
+              <MappingFragment StoreEntitySet="System_MstStatus">
+                <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+                <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Customer_Address">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Customer_Address">
+              <MappingFragment StoreEntitySet="Tbl_Customer_Address">
+                <ScalarProperty Name="CA_AddressID" ColumnName="CA_AddressID" />
+                <ScalarProperty Name="CA_C_CustomerID" ColumnName="CA_C_CustomerID" />
+                <ScalarProperty Name="CA_AddressTypeID" ColumnName="CA_AddressTypeID" />
+                <ScalarProperty Name="CA_Address1" ColumnName="CA_Address1" />
+                <ScalarProperty Name="CA_Address2" ColumnName="CA_Address2" />
+                <ScalarProperty Name="CA_Address3" ColumnName="CA_Address3" />
+                <ScalarProperty Name="CA_Address4" ColumnName="CA_Address4" />
+                <ScalarProperty Name="CA_Locality" ColumnName="CA_Locality" />
+                <ScalarProperty Name="CA_Area" ColumnName="CA_Area" />
+                <ScalarProperty Name="CA_Town" ColumnName="CA_Town" />
+                <ScalarProperty Name="CA_CountryID" ColumnName="CA_CountryID" />
+                <ScalarProperty Name="CA_PostCode" ColumnName="CA_PostCode" />
+                <ScalarProperty Name="CA_StatusID" ColumnName="CA_StatusID" />
+                <ScalarProperty Name="CA_IsDefaultAddress" ColumnName="CA_IsDefaultAddress" />
+                <ScalarProperty Name="CA_CreatedDate" ColumnName="CA_CreatedDate" />
+                <ScalarProperty Name="CA_CreatedBy" ColumnName="CA_CreatedBy" />
+                <ScalarProperty Name="CA_UpdatedDate" ColumnName="CA_UpdatedDate" />
+                <ScalarProperty Name="CA_UpdatedBy" ColumnName="CA_UpdatedBy" />
+                <ScalarProperty Name="CA_StateID" ColumnName="CA_StateID" />
+                <ScalarProperty Name="CA_IsDeleted" ColumnName="CA_IsDeleted" />
+                <ScalarProperty Name="CA_TimeStamp" ColumnName="CA_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Customers">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Customers">
+              <MappingFragment StoreEntitySet="Tbl_Customers">
+                <ScalarProperty Name="C_CustomerID" ColumnName="C_CustomerID" />
+                <ScalarProperty Name="C_CustomerCode" ColumnName="C_CustomerCode" />
+                <ScalarProperty Name="C_Title" ColumnName="C_Title" />
+                <ScalarProperty Name="C_FirstName" ColumnName="C_FirstName" />
+                <ScalarProperty Name="C_LastName" ColumnName="C_LastName" />
+                <ScalarProperty Name="C_StatusID" ColumnName="C_StatusID" />
+                <ScalarProperty Name="C_EmailID" ColumnName="C_EmailID" />
+                <ScalarProperty Name="C_Pin" ColumnName="C_Pin" />
+                <ScalarProperty Name="C_HomePhone" ColumnName="C_HomePhone" />
+                <ScalarProperty Name="C_MobilePhone" ColumnName="C_MobilePhone" />
+                <ScalarProperty Name="C_DirectPhone" ColumnName="C_DirectPhone" />
+                <ScalarProperty Name="C_IsLocked" ColumnName="C_IsLocked" />
+                <ScalarProperty Name="C_LockedDateTime" ColumnName="C_LockedDateTime" />
+                <ScalarProperty Name="C_PersonalAgentID" ColumnName="C_PersonalAgentID" />
+                <ScalarProperty Name="C_BlockedReasonID" ColumnName="C_BlockedReasonID" />
+                <ScalarProperty Name="C_CableProviderID" ColumnName="C_CableProviderID" />
+                <ScalarProperty Name="C_CreatedBy" ColumnName="C_CreatedBy" />
+                <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+                <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+                <ScalarProperty Name="C_UpdatedBy" ColumnName="C_UpdatedBy" />
+                <ScalarProperty Name="C_CT_CustomerTypeID" ColumnName="C_CT_CustomerTypeID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_ExceptionLogger">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_ExceptionLogger">
+              <MappingFragment StoreEntitySet="Tbl_ExceptionLogger">
+                <ScalarProperty Name="ExcLog_Id" ColumnName="ExcLog_Id" />
+                <ScalarProperty Name="ExcLog_ExceptionId" ColumnName="ExcLog_ExceptionId" />
+                <ScalarProperty Name="ExcLog_ExceptionMessage" ColumnName="ExcLog_ExceptionMessage" />
+                <ScalarProperty Name="ExcLog_ExceptionType" ColumnName="ExcLog_ExceptionType" />
+                <ScalarProperty Name="ExcLog_ExceptionSource" ColumnName="ExcLog_ExceptionSource" />
+                <ScalarProperty Name="ExcLog_Url" ColumnName="ExcLog_Url" />
+                <ScalarProperty Name="ExcLog_LogDate" ColumnName="ExcLog_LogDate" />
+                <ScalarProperty Name="ExcLog_IsResolved" ColumnName="ExcLog_IsResolved" />
+                <ScalarProperty Name="ExcLog_IsActive" ColumnName="ExcLog_IsActive" />
+                <ScalarProperty Name="ExcLog_CreatedDate" ColumnName="ExcLog_CreatedDate" />
+                <ScalarProperty Name="ExcLog_CreatedBy" ColumnName="ExcLog_CreatedBy" />
+                <ScalarProperty Name="ExcLog_UpdatedDate" ColumnName="ExcLog_UpdatedDate" />
+                <ScalarProperty Name="ExcLog_UpdatedBy" ColumnName="ExcLog_UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Inventory_CategoryType">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Inventory_CategoryType">
+              <MappingFragment StoreEntitySet="Tbl_Inventory_CategoryType">
+                <ScalarProperty Name="ICT_CategoryTypeID" ColumnName="ICT_CategoryTypeID" />
+                <ScalarProperty Name="ICT_ReportingCategoryID" ColumnName="ICT_ReportingCategoryID" />
+                <ScalarProperty Name="ICT_CategoryName" ColumnName="ICT_CategoryName" />
+                <ScalarProperty Name="ICT_CategoryID" ColumnName="ICT_CategoryID" />
+                <ScalarProperty Name="ICT_IsActive" ColumnName="ICT_IsActive" />
+                <ScalarProperty Name="ICT_CreatedOn" ColumnName="ICT_CreatedOn" />
+                <ScalarProperty Name="ICT_CreatedBy" ColumnName="ICT_CreatedBy" />
+                <ScalarProperty Name="ICT_UpdatedOn" ColumnName="ICT_UpdatedOn" />
+                <ScalarProperty Name="ICT_UpdatedBy" ColumnName="ICT_UpdatedBy" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Inventory_ProductCategories">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Inventory_ProductCategories">
+              <MappingFragment StoreEntitySet="Tbl_Inventory_ProductCategories">
+                <ScalarProperty Name="IPC_ProductCategoriesID" ColumnName="IPC_ProductCategoriesID" />
+                <ScalarProperty Name="IPC_IP_ProductID" ColumnName="IPC_IP_ProductID" />
+                <ScalarProperty Name="IPC_IC_CategoryID" ColumnName="IPC_IC_CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Sales_OrderItems">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Sales_OrderItems">
+              <MappingFragment StoreEntitySet="Tbl_Sales_OrderItems">
+                <ScalarProperty Name="SOI_SalesOrderLineID" ColumnName="SOI_SalesOrderLineID" />
+                <ScalarProperty Name="SOI_SO_SalesOrderID" ColumnName="SOI_SO_SalesOrderID" />
+                <ScalarProperty Name="SOI_ShoppingBasketDetailID" ColumnName="SOI_ShoppingBasketDetailID" />
+                <ScalarProperty Name="SOI_IP_ProductID" ColumnName="SOI_IP_ProductID" />
+                <ScalarProperty Name="SOI_SKU" ColumnName="SOI_SKU" />
+                <ScalarProperty Name="SOI_ProductName" ColumnName="SOI_ProductName" />
+                <ScalarProperty Name="SOI_Price" ColumnName="SOI_Price" />
+                <ScalarProperty Name="SOI_Qty" ColumnName="SOI_Qty" />
+                <ScalarProperty Name="SOI_VatRate" ColumnName="SOI_VatRate" />
+                <ScalarProperty Name="SOI_VatAmount" ColumnName="SOI_VatAmount" />
+                <ScalarProperty Name="SOI_DiscountAmt" ColumnName="SOI_DiscountAmt" />
+                <ScalarProperty Name="SOI_TotalNetAmt" ColumnName="SOI_TotalNetAmt" />
+                <ScalarProperty Name="SOI_IsReserved" ColumnName="SOI_IsReserved" />
+                <ScalarProperty Name="SOI_ShippingAmt" ColumnName="SOI_ShippingAmt" />
+                <ScalarProperty Name="SOI_CreatedDate" ColumnName="SOI_CreatedDate" />
+                <ScalarProperty Name="SOI_CreatedBy" ColumnName="SOI_CreatedBy" />
+                <ScalarProperty Name="SOI_UpdatedDate" ColumnName="SOI_UpdatedDate" />
+                <ScalarProperty Name="SOI_UpdatedBy" ColumnName="SOI_UpdatedBy" />
+                <ScalarProperty Name="SOI_TimeStamp" ColumnName="SOI_TimeStamp" />
+                <ScalarProperty Name="SOI_TaxCode" ColumnName="SOI_TaxCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Sales_Orders">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Sales_Orders">
+              <MappingFragment StoreEntitySet="Tbl_Sales_Orders">
+                <ScalarProperty Name="SO_SalesOrderID" ColumnName="SO_SalesOrderID" />
+                <ScalarProperty Name="SO_SalesOrderCode" ColumnName="SO_SalesOrderCode" />
+                <ScalarProperty Name="SO_C_CustomerID" ColumnName="SO_C_CustomerID" />
+                <ScalarProperty Name="SO_IsVatable" ColumnName="SO_IsVatable" />
+                <ScalarProperty Name="SO_TotalVatAmt" ColumnName="SO_TotalVatAmt" />
+                <ScalarProperty Name="SO_VatRate" ColumnName="SO_VatRate" />
+                <ScalarProperty Name="SO_TotalDiscountAmt" ColumnName="SO_TotalDiscountAmt" />
+                <ScalarProperty Name="SO_TotalGrossAmount" ColumnName="SO_TotalGrossAmount" />
+                <ScalarProperty Name="SO_TotalNetAmount" ColumnName="SO_TotalNetAmount" />
+                <ScalarProperty Name="SO_ShippingCharges" ColumnName="SO_ShippingCharges" />
+                <ScalarProperty Name="SO_StatusID" ColumnName="SO_StatusID" />
+                <ScalarProperty Name="SO_IsOnHold" ColumnName="SO_IsOnHold" />
+                <ScalarProperty Name="SO_HoldDate" ColumnName="SO_HoldDate" />
+                <ScalarProperty Name="SO_HoldBy" ColumnName="SO_HoldBy" />
+                <ScalarProperty Name="SO_CancelReason" ColumnName="SO_CancelReason" />
+                <ScalarProperty Name="SO_ShippingMethodID" ColumnName="SO_ShippingMethodID" />
+                <ScalarProperty Name="SO_VoucherAmt" ColumnName="SO_VoucherAmt" />
+                <ScalarProperty Name="SO_ShippingSchemeID" ColumnName="SO_ShippingSchemeID" />
+                <ScalarProperty Name="SO_OrderDate" ColumnName="SO_OrderDate" />
+                <ScalarProperty Name="SO_DispatchDate" ColumnName="SO_DispatchDate" />
+                <ScalarProperty Name="SO_CreatedDate" ColumnName="SO_CreatedDate" />
+                <ScalarProperty Name="SO_CreatedBy" ColumnName="SO_CreatedBy" />
+                <ScalarProperty Name="SO_UpdatedDate" ColumnName="SO_UpdatedDate" />
+                <ScalarProperty Name="SO_UpdatedBy" ColumnName="SO_UpdatedBy" />
+                <ScalarProperty Name="SO_CancelDate" ColumnName="SO_CancelDate" />
+                <ScalarProperty Name="SO_CancelBy" ColumnName="SO_CancelBy" />
+                <ScalarProperty Name="SO_ShippingAddressID" ColumnName="SO_ShippingAddressID" />
+                <ScalarProperty Name="SO_BillingAddressID" ColumnName="SO_BillingAddressID" />
+                <ScalarProperty Name="SO_OrderDiscountAmt" ColumnName="SO_OrderDiscountAmt" />
+                <ScalarProperty Name="SO_PaymentGatewayID" ColumnName="SO_PaymentGatewayID" />
+                <ScalarProperty Name="SO_IsPriority" ColumnName="SO_IsPriority" />
+                <ScalarProperty Name="SO_CancelReasonId" ColumnName="SO_CancelReasonId" />
+                <ScalarProperty Name="SO_IsPaymentReceived" ColumnName="SO_IsPaymentReceived" />
+                <ScalarProperty Name="SO_DeviceType" ColumnName="SO_DeviceType" />
+                <ScalarProperty Name="SO_DeviceName" ColumnName="SO_DeviceName" />
+                <ScalarProperty Name="SO_TimeStamp" ColumnName="SO_TimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Inventory_Category">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Inventory_Category">
+              <MappingFragment StoreEntitySet="Tbl_Inventory_Category">
+                <ScalarProperty Name="Ic_OrderBy" ColumnName="Ic_OrderBy" />
+                <ScalarProperty Name="IC_Sorting" ColumnName="IC_Sorting" />
+                <ScalarProperty Name="IC_Slug" ColumnName="IC_Slug" />
+                <ScalarProperty Name="IC_UpdatedDate" ColumnName="IC_UpdatedDate" />
+                <ScalarProperty Name="IC_UpdatedBy" ColumnName="IC_UpdatedBy" />
+                <ScalarProperty Name="IC_CreatedBy" ColumnName="IC_CreatedBy" />
+                <ScalarProperty Name="IC_CreatedDate" ColumnName="IC_CreatedDate" />
+                <ScalarProperty Name="IC_IsActive" ColumnName="IC_IsActive" />
+                <ScalarProperty Name="IC_Description" ColumnName="IC_Description" />
+                <ScalarProperty Name="IC_Name" ColumnName="IC_Name" />
+                <ScalarProperty Name="IC_ParentID" ColumnName="IC_ParentID" />
+                <ScalarProperty Name="IC_CategoryID" ColumnName="IC_CategoryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Tbl_Inventory_Products">
+            <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Inventory_Products">
+              <MappingFragment StoreEntitySet="Tbl_Inventory_Products">
+                <ScalarProperty Name="IP_ImagePath" ColumnName="IP_ImagePath" />
+                <ScalarProperty Name="IP_TaxCode" ColumnName="IP_TaxCode" />
+                <ScalarProperty Name="IP_TimeStamp" ColumnName="IP_TimeStamp" />
+                <ScalarProperty Name="IP_ClearancePrice" ColumnName="IP_ClearancePrice" />
+                <ScalarProperty Name="IP_UpdatedDate" ColumnName="IP_UpdatedDate" />
+                <ScalarProperty Name="IP_UpdatedBy" ColumnName="IP_UpdatedBy" />
+                <ScalarProperty Name="IP_CreatedDate" ColumnName="IP_CreatedDate" />
+                <ScalarProperty Name="IP_CreatedBy" ColumnName="IP_CreatedBy" />
+                <ScalarProperty Name="IP_IsActive" ColumnName="IP_IsActive" />
+                <ScalarProperty Name="IP_Remark" ColumnName="IP_Remark" />
+                <ScalarProperty Name="IP_Brand" ColumnName="IP_Brand" />
+                <ScalarProperty Name="IP_Margin" ColumnName="IP_Margin" />
+                <ScalarProperty Name="IP_TargetPrice" ColumnName="IP_TargetPrice" />
+                <ScalarProperty Name="IP_StartPrice" ColumnName="IP_StartPrice" />
+                <ScalarProperty Name="IP_LowPrice" ColumnName="IP_LowPrice" />
+                <ScalarProperty Name="IP_MediumPrice" ColumnName="IP_MediumPrice" />
+                <ScalarProperty Name="IP_HighPrice" ColumnName="IP_HighPrice" />
+                <ScalarProperty Name="IP_CostPrice" ColumnName="IP_CostPrice" />
+                <ScalarProperty Name="IP_Sizeable" ColumnName="IP_Sizeable" />
+                <ScalarProperty Name="IP_ImageName" ColumnName="IP_ImageName" />
+                <ScalarProperty Name="IP_ProductName" ColumnName="IP_ProductName" />
+                <ScalarProperty Name="IP_SKU" ColumnName="IP_SKU" />
+                <ScalarProperty Name="IP_IC_CategoryID" ColumnName="IP_IC_CategoryID" />
+                <ScalarProperty Name="IP_ProductID" ColumnName="IP_ProductID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="NeeledhaageModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUsers">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrderDetails">
+            <EntityTypeMapping TypeName="NeeledhaageModel.tblOrderDetail">
+              <MappingFragment StoreEntitySet="tblOrderDetails">
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrders">
+            <EntityTypeMapping TypeName="NeeledhaageModel.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrders">
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="RazorStatus" ColumnName="RazorStatus" />
+                <ScalarProperty Name="TotalOrderAmount" ColumnName="TotalOrderAmount" />
+                <ScalarProperty Name="RazorPayOrderId" ColumnName="RazorPayOrderId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,116 @@
+.magnifier-thumb-wrapper {
+    position: relative;
+    display: block;
+    top: 0;
+    left: 0
+}
+
+.magnifier-lens {
+    position: absolute;
+    /*border: solid 1px #ccc;*/
+    /*z-index: 1000;*/
+    top: 0;
+    left: 0;
+    overflow: hidden
+}
+
+.magnifier-loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border: solid 1px #ccc;
+    color: #fff;
+    text-align: center;
+    background: transparent;
+    background: rgba(50, 50, 50, 0.5);
+    z-index: 1000;
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F323232,endColorstr=#7F323232)";
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7F323232,endColorstr=#7F323232)
+}
+
+.magnifier-loader-text {
+    font: 13px Arial;
+    margin-top: 10px
+}
+
+.magnifier-large {
+    position: absolute;
+    z-index: 100
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .magnifier-preview {
+        display: none;
+    }
+ 
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .magnifier-preview {
+display:none;
+}
+ 
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .magnifier-preview {
+        display:block;
+    padding: 0;
+    width: 100%;
+    height: 500px;
+    position: absolute;
+    left: 538px;
+    top: 21px;
+    overflow: hidden;
+}
+ 
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .magnifier-preview {
+        display: block;
+        padding: 0;
+        width: 100%;
+        height: 500px;
+        position: absolute;
+        left: 538px;
+        top: 21px;
+        overflow: hidden;
+    }
+ 
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .magnifier-preview {
+        display: block;
+        padding: 0;
+        width: 100%;
+        height: 500px;
+        position: absolute;
+        left: 538px;
+        top: 21px;
+        overflow: hidden;
+    }
+ 
+}
+
+.magnifier-preview img {
+    position: absolute;
+    top: 0;
+    left: 0
+}
+
+.opaque {
+    opacity: .5;
+    filter: alpha(opacity=50);
+    -ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=50)
+}
+
+.hidden {
+    display: none
+}

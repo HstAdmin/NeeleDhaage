@@ -1,0 +1,80 @@
+﻿@*@model Neeledhaage.Models.Cart.CartVM
+
+Your cart: @Model.Quantity item(s) - $@Model.Price
+<br />
+@Html.ActionLink("View Cart", "Index")*@
+@model IEnumerable<Neeledhaage.Models.Cart.CartVM>
+<style>
+    .colordesign {
+        color: #fff;
+        width: 100%;
+        background: #e5cc76 !important;
+    }
+</style>
+<div style="padding: 1rem;" class="dropdown-menu col-lg-4 col-xs-12 col-md-4 ajaxcart">
+    <div id="miniCart" class="w100 miniCartTable scroll-pane">
+        <h6 style="text-align: center;border-bottom:1px solid #e5cc76; padding-bottom: 1rem;">Item(s) added to your bag</h6>
+        @if (ViewBag.Message != null)
+        {
+            <h3>@ViewBag.Message</h3>
+        }
+        else
+        {
+            foreach (var item in Model)
+            {
+
+                <ul style="display: block;border-bottom:1px solid #e5cc76; margin-top: -1rem; padding-bottom: 1rem;">
+                    <li class="cart_items cart_item clearfix">
+                        <a class="removeFromCartIcon" href="#">X</a>
+                        <!--ko with: productData-->
+                        <div class="product_image col-md-4" role="presentation">
+                            @*<a><img class="imageSize" src="https://neeledhaage.com/Images/Uploads/Products/1/Thumbs/blue1.jpg" /></a>*@
+                            <img class="imageSize" src="/Images/Uploads/Products/@item.ProductId/Thumbs/@item.Image" />
+                            <!-- /ko -->
+                        </div>
+                        <div style="font-weight: 600;
+    text-transform: capitalize;" class="product_details col-md-6">
+
+                            <a><h5 style="margin: 0px;">@item.ProductName</h5></a>
+                            <!-- /ko -->
+                            <div class="product_varient ">
+                                <div class="optionsText">
+                                    <small style="font-size: 12px;">
+
+                                        <label>Size:</label>
+                                        <span class="cc-text-overflow">36</span>
+                                    </small>
+                                </div>
+                                <div class="optionsText">
+                                    <small style="font-size: 12px;">
+
+                                        <label>Quantity:</label>
+                                        <span class="cc-text-overflow">@item.Quantity</span>
+                                    </small>
+                                </div>
+                                <div class="optionsText">
+                                    <small style="font-size: 12px;">
+
+                                        <label>Price:</label>
+                                        <span class="cc-text-overflow">$@item.Price</span>
+                                    </small>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+
+            }
+        }
+
+    </div>
+    <!--/.miniCartTable-->
+
+    <div class="miniCartFooter text-right">
+        <h3 class="text-right subtotal" id="cartTotal"> Total:<span style="text-transform: none;">Rs. </span>0.00</h3>
+        @*<a class="btn btn-black" href="view-cart.html" style="color:#fff;width: 100%;background: #e5cc76 !important;"> <i class="fa fa-shopping-cart"> </i> VIEW CART </a>*@
+        @Html.ActionLink("View Cart", "Index", null, new { @class = "colordesign btn btn-black" }) <i class="fa fa-shopping-cart"> </i>
+    </div>
+    <!--/.miniCartFooter-->
+
+</div>

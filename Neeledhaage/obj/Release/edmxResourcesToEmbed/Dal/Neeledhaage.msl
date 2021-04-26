@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="NeeledhaageModelStoreContainer" CdmEntityContainer="NeeledhaageEntities">
+    <EntitySetMapping Name="tblCategories">
+      <EntityTypeMapping TypeName="NeeledhaageModel.tblCategory">
+        <MappingFragment StoreEntitySet="tblCategories">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="Sorting" ColumnName="Sorting" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblPages">
+      <EntityTypeMapping TypeName="NeeledhaageModel.tblPage">
+        <MappingFragment StoreEntitySet="tblPages">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+          <ScalarProperty Name="Sorting" ColumnName="Sorting" />
+          <ScalarProperty Name="HasSidebar" ColumnName="HasSidebar" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblProducts">
+      <EntityTypeMapping TypeName="NeeledhaageModel.tblProduct">
+        <MappingFragment StoreEntitySet="tblProducts">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Slug" ColumnName="Slug" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+          <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+          <ScalarProperty Name="ImageName_" ColumnName="ImageName " />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRoles">
+      <EntityTypeMapping TypeName="NeeledhaageModel.tblRole">
+        <MappingFragment StoreEntitySet="tblRoles">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblSidebars">
+      <EntityTypeMapping TypeName="NeeledhaageModel.tblSidebar">
+        <MappingFragment StoreEntitySet="tblSidebar">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Body" ColumnName="Body" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserRoles">
+      <EntityTypeMapping TypeName="NeeledhaageModel.tblUserRole">
+        <MappingFragment StoreEntitySet="tblUserRoles">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Customer_AddressType">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Mst_Customer_AddressType">
+        <MappingFragment StoreEntitySet="Mst_Customer_AddressType">
+          <ScalarProperty Name="CAT_AddressTypeID" ColumnName="CAT_AddressTypeID" />
+          <ScalarProperty Name="CAT_Code" ColumnName="CAT_Code" />
+          <ScalarProperty Name="CAT_Name" ColumnName="CAT_Name" />
+          <ScalarProperty Name="CAT_Description" ColumnName="CAT_Description" />
+          <ScalarProperty Name="CAT_IsActive" ColumnName="CAT_IsActive" />
+          <ScalarProperty Name="CAT_CreatedDate" ColumnName="CAT_CreatedDate" />
+          <ScalarProperty Name="CAT_CreatedBy" ColumnName="CAT_CreatedBy" />
+          <ScalarProperty Name="CAT_UpdatedDate" ColumnName="CAT_UpdatedDate" />
+          <ScalarProperty Name="CAT_UpdatedBy" ColumnName="CAT_UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Customer_Type">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Mst_Customer_Type">
+        <MappingFragment StoreEntitySet="Mst_Customer_Type">
+          <ScalarProperty Name="CT_CustomerTypeID" ColumnName="CT_CustomerTypeID" />
+          <ScalarProperty Name="CT_Code" ColumnName="CT_Code" />
+          <ScalarProperty Name="CT_Name" ColumnName="CT_Name" />
+          <ScalarProperty Name="CT_Description" ColumnName="CT_Description" />
+          <ScalarProperty Name="CT_IsActive" ColumnName="CT_IsActive" />
+          <ScalarProperty Name="CT_CreatedDate" ColumnName="CT_CreatedDate" />
+          <ScalarProperty Name="CT_CreatedBy" ColumnName="CT_CreatedBy" />
+          <ScalarProperty Name="CT_UpdatedDate" ColumnName="CT_UpdatedDate" />
+          <ScalarProperty Name="CT_UpdatedBy" ColumnName="CT_UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Mst_Inventory_ProductType">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Mst_Inventory_ProductType">
+        <MappingFragment StoreEntitySet="Mst_Inventory_ProductType">
+          <ScalarProperty Name="IPT_ProductTypeID" ColumnName="IPT_ProductTypeID" />
+          <ScalarProperty Name="IPT_Code" ColumnName="IPT_Code" />
+          <ScalarProperty Name="IPT_Name" ColumnName="IPT_Name" />
+          <ScalarProperty Name="IPT_IsActive" ColumnName="IPT_IsActive" />
+          <ScalarProperty Name="IPT_Description" ColumnName="IPT_Description" />
+          <ScalarProperty Name="IPT_CreatedDate" ColumnName="IPT_CreatedDate" />
+          <ScalarProperty Name="IPT_CreatedBy" ColumnName="IPT_CreatedBy" />
+          <ScalarProperty Name="IPT_UpdatedDate" ColumnName="IPT_UpdatedDate" />
+          <ScalarProperty Name="IPT_UpdatedBy" ColumnName="IPT_UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_MstCountry">
+      <EntityTypeMapping TypeName="NeeledhaageModel.System_MstCountry">
+        <MappingFragment StoreEntitySet="System_MstCountry">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="PhoneLength" ColumnName="PhoneLength" />
+          <ScalarProperty Name="PhonePrefix" ColumnName="PhonePrefix" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_MstState">
+      <EntityTypeMapping TypeName="NeeledhaageModel.System_MstState">
+        <MappingFragment StoreEntitySet="System_MstState">
+          <ScalarProperty Name="StateID" ColumnName="StateID" />
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+          <ScalarProperty Name="StateName" ColumnName="StateName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="System_MstStatus">
+      <EntityTypeMapping TypeName="NeeledhaageModel.System_MstStatus">
+        <MappingFragment StoreEntitySet="System_MstStatus">
+          <ScalarProperty Name="StatusID" ColumnName="StatusID" />
+          <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+          <ScalarProperty Name="Code" ColumnName="Code" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="UpdatedDate" ColumnName="UpdatedDate" />
+          <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Customer_Address">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Customer_Address">
+        <MappingFragment StoreEntitySet="Tbl_Customer_Address">
+          <ScalarProperty Name="CA_AddressID" ColumnName="CA_AddressID" />
+          <ScalarProperty Name="CA_C_CustomerID" ColumnName="CA_C_CustomerID" />
+          <ScalarProperty Name="CA_AddressTypeID" ColumnName="CA_AddressTypeID" />
+          <ScalarProperty Name="CA_Address1" ColumnName="CA_Address1" />
+          <ScalarProperty Name="CA_Address2" ColumnName="CA_Address2" />
+          <ScalarProperty Name="CA_Address3" ColumnName="CA_Address3" />
+          <ScalarProperty Name="CA_Address4" ColumnName="CA_Address4" />
+          <ScalarProperty Name="CA_Locality" ColumnName="CA_Locality" />
+          <ScalarProperty Name="CA_Area" ColumnName="CA_Area" />
+          <ScalarProperty Name="CA_Town" ColumnName="CA_Town" />
+          <ScalarProperty Name="CA_CountryID" ColumnName="CA_CountryID" />
+          <ScalarProperty Name="CA_PostCode" ColumnName="CA_PostCode" />
+          <ScalarProperty Name="CA_StatusID" ColumnName="CA_StatusID" />
+          <ScalarProperty Name="CA_IsDefaultAddress" ColumnName="CA_IsDefaultAddress" />
+          <ScalarProperty Name="CA_CreatedDate" ColumnName="CA_CreatedDate" />
+          <ScalarProperty Name="CA_CreatedBy" ColumnName="CA_CreatedBy" />
+          <ScalarProperty Name="CA_UpdatedDate" ColumnName="CA_UpdatedDate" />
+          <ScalarProperty Name="CA_UpdatedBy" ColumnName="CA_UpdatedBy" />
+          <ScalarProperty Name="CA_StateID" ColumnName="CA_StateID" />
+          <ScalarProperty Name="CA_IsDeleted" ColumnName="CA_IsDeleted" />
+          <ScalarProperty Name="CA_TimeStamp" ColumnName="CA_TimeStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Customers">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Customers">
+        <MappingFragment StoreEntitySet="Tbl_Customers">
+          <ScalarProperty Name="C_CustomerID" ColumnName="C_CustomerID" />
+          <ScalarProperty Name="C_CustomerCode" ColumnName="C_CustomerCode" />
+          <ScalarProperty Name="C_Title" ColumnName="C_Title" />
+          <ScalarProperty Name="C_FirstName" ColumnName="C_FirstName" />
+          <ScalarProperty Name="C_LastName" ColumnName="C_LastName" />
+          <ScalarProperty Name="C_StatusID" ColumnName="C_StatusID" />
+          <ScalarProperty Name="C_EmailID" ColumnName="C_EmailID" />
+          <ScalarProperty Name="C_Pin" ColumnName="C_Pin" />
+          <ScalarProperty Name="C_HomePhone" ColumnName="C_HomePhone" />
+          <ScalarProperty Name="C_MobilePhone" ColumnName="C_MobilePhone" />
+          <ScalarProperty Name="C_DirectPhone" ColumnName="C_DirectPhone" />
+          <ScalarProperty Name="C_IsLocked" ColumnName="C_IsLocked" />
+          <ScalarProperty Name="C_LockedDateTime" ColumnName="C_LockedDateTime" />
+          <ScalarProperty Name="C_PersonalAgentID" ColumnName="C_PersonalAgentID" />
+          <ScalarProperty Name="C_BlockedReasonID" ColumnName="C_BlockedReasonID" />
+          <ScalarProperty Name="C_CableProviderID" ColumnName="C_CableProviderID" />
+          <ScalarProperty Name="C_CreatedBy" ColumnName="C_CreatedBy" />
+          <ScalarProperty Name="C_CreatedDate" ColumnName="C_CreatedDate" />
+          <ScalarProperty Name="C_UpdatedDate" ColumnName="C_UpdatedDate" />
+          <ScalarProperty Name="C_UpdatedBy" ColumnName="C_UpdatedBy" />
+          <ScalarProperty Name="C_CT_CustomerTypeID" ColumnName="C_CT_CustomerTypeID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_ExceptionLogger">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_ExceptionLogger">
+        <MappingFragment StoreEntitySet="Tbl_ExceptionLogger">
+          <ScalarProperty Name="ExcLog_Id" ColumnName="ExcLog_Id" />
+          <ScalarProperty Name="ExcLog_ExceptionId" ColumnName="ExcLog_ExceptionId" />
+          <ScalarProperty Name="ExcLog_ExceptionMessage" ColumnName="ExcLog_ExceptionMessage" />
+          <ScalarProperty Name="ExcLog_ExceptionType" ColumnName="ExcLog_ExceptionType" />
+          <ScalarProperty Name="ExcLog_ExceptionSource" ColumnName="ExcLog_ExceptionSource" />
+          <ScalarProperty Name="ExcLog_Url" ColumnName="ExcLog_Url" />
+          <ScalarProperty Name="ExcLog_LogDate" ColumnName="ExcLog_LogDate" />
+          <ScalarProperty Name="ExcLog_IsResolved" ColumnName="ExcLog_IsResolved" />
+          <ScalarProperty Name="ExcLog_IsActive" ColumnName="ExcLog_IsActive" />
+          <ScalarProperty Name="ExcLog_CreatedDate" ColumnName="ExcLog_CreatedDate" />
+          <ScalarProperty Name="ExcLog_CreatedBy" ColumnName="ExcLog_CreatedBy" />
+          <ScalarProperty Name="ExcLog_UpdatedDate" ColumnName="ExcLog_UpdatedDate" />
+          <ScalarProperty Name="ExcLog_UpdatedBy" ColumnName="ExcLog_UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Inventory_CategoryType">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Inventory_CategoryType">
+        <MappingFragment StoreEntitySet="Tbl_Inventory_CategoryType">
+          <ScalarProperty Name="ICT_CategoryTypeID" ColumnName="ICT_CategoryTypeID" />
+          <ScalarProperty Name="ICT_ReportingCategoryID" ColumnName="ICT_ReportingCategoryID" />
+          <ScalarProperty Name="ICT_CategoryName" ColumnName="ICT_CategoryName" />
+          <ScalarProperty Name="ICT_CategoryID" ColumnName="ICT_CategoryID" />
+          <ScalarProperty Name="ICT_IsActive" ColumnName="ICT_IsActive" />
+          <ScalarProperty Name="ICT_CreatedOn" ColumnName="ICT_CreatedOn" />
+          <ScalarProperty Name="ICT_CreatedBy" ColumnName="ICT_CreatedBy" />
+          <ScalarProperty Name="ICT_UpdatedOn" ColumnName="ICT_UpdatedOn" />
+          <ScalarProperty Name="ICT_UpdatedBy" ColumnName="ICT_UpdatedBy" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Inventory_ProductCategories">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Inventory_ProductCategories">
+        <MappingFragment StoreEntitySet="Tbl_Inventory_ProductCategories">
+          <ScalarProperty Name="IPC_ProductCategoriesID" ColumnName="IPC_ProductCategoriesID" />
+          <ScalarProperty Name="IPC_IP_ProductID" ColumnName="IPC_IP_ProductID" />
+          <ScalarProperty Name="IPC_IC_CategoryID" ColumnName="IPC_IC_CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Sales_OrderItems">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Sales_OrderItems">
+        <MappingFragment StoreEntitySet="Tbl_Sales_OrderItems">
+          <ScalarProperty Name="SOI_SalesOrderLineID" ColumnName="SOI_SalesOrderLineID" />
+          <ScalarProperty Name="SOI_SO_SalesOrderID" ColumnName="SOI_SO_SalesOrderID" />
+          <ScalarProperty Name="SOI_ShoppingBasketDetailID" ColumnName="SOI_ShoppingBasketDetailID" />
+          <ScalarProperty Name="SOI_IP_ProductID" ColumnName="SOI_IP_ProductID" />
+          <ScalarProperty Name="SOI_SKU" ColumnName="SOI_SKU" />
+          <ScalarProperty Name="SOI_ProductName" ColumnName="SOI_ProductName" />
+          <ScalarProperty Name="SOI_Price" ColumnName="SOI_Price" />
+          <ScalarProperty Name="SOI_Qty" ColumnName="SOI_Qty" />
+          <ScalarProperty Name="SOI_VatRate" ColumnName="SOI_VatRate" />
+          <ScalarProperty Name="SOI_VatAmount" ColumnName="SOI_VatAmount" />
+          <ScalarProperty Name="SOI_DiscountAmt" ColumnName="SOI_DiscountAmt" />
+          <ScalarProperty Name="SOI_TotalNetAmt" ColumnName="SOI_TotalNetAmt" />
+          <ScalarProperty Name="SOI_IsReserved" ColumnName="SOI_IsReserved" />
+          <ScalarProperty Name="SOI_ShippingAmt" ColumnName="SOI_ShippingAmt" />
+          <ScalarProperty Name="SOI_CreatedDate" ColumnName="SOI_CreatedDate" />
+          <ScalarProperty Name="SOI_CreatedBy" ColumnName="SOI_CreatedBy" />
+          <ScalarProperty Name="SOI_UpdatedDate" ColumnName="SOI_UpdatedDate" />
+          <ScalarProperty Name="SOI_UpdatedBy" ColumnName="SOI_UpdatedBy" />
+          <ScalarProperty Name="SOI_TimeStamp" ColumnName="SOI_TimeStamp" />
+          <ScalarProperty Name="SOI_TaxCode" ColumnName="SOI_TaxCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Sales_Orders">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Sales_Orders">
+        <MappingFragment StoreEntitySet="Tbl_Sales_Orders">
+          <ScalarProperty Name="SO_SalesOrderID" ColumnName="SO_SalesOrderID" />
+          <ScalarProperty Name="SO_SalesOrderCode" ColumnName="SO_SalesOrderCode" />
+          <ScalarProperty Name="SO_C_CustomerID" ColumnName="SO_C_CustomerID" />
+          <ScalarProperty Name="SO_IsVatable" ColumnName="SO_IsVatable" />
+          <ScalarProperty Name="SO_TotalVatAmt" ColumnName="SO_TotalVatAmt" />
+          <ScalarProperty Name="SO_VatRate" ColumnName="SO_VatRate" />
+          <ScalarProperty Name="SO_TotalDiscountAmt" ColumnName="SO_TotalDiscountAmt" />
+          <ScalarProperty Name="SO_TotalGrossAmount" ColumnName="SO_TotalGrossAmount" />
+          <ScalarProperty Name="SO_TotalNetAmount" ColumnName="SO_TotalNetAmount" />
+          <ScalarProperty Name="SO_ShippingCharges" ColumnName="SO_ShippingCharges" />
+          <ScalarProperty Name="SO_StatusID" ColumnName="SO_StatusID" />
+          <ScalarProperty Name="SO_IsOnHold" ColumnName="SO_IsOnHold" />
+          <ScalarProperty Name="SO_HoldDate" ColumnName="SO_HoldDate" />
+          <ScalarProperty Name="SO_HoldBy" ColumnName="SO_HoldBy" />
+          <ScalarProperty Name="SO_CancelReason" ColumnName="SO_CancelReason" />
+          <ScalarProperty Name="SO_ShippingMethodID" ColumnName="SO_ShippingMethodID" />
+          <ScalarProperty Name="SO_VoucherAmt" ColumnName="SO_VoucherAmt" />
+          <ScalarProperty Name="SO_ShippingSchemeID" ColumnName="SO_ShippingSchemeID" />
+          <ScalarProperty Name="SO_OrderDate" ColumnName="SO_OrderDate" />
+          <ScalarProperty Name="SO_DispatchDate" ColumnName="SO_DispatchDate" />
+          <ScalarProperty Name="SO_CreatedDate" ColumnName="SO_CreatedDate" />
+          <ScalarProperty Name="SO_CreatedBy" ColumnName="SO_CreatedBy" />
+          <ScalarProperty Name="SO_UpdatedDate" ColumnName="SO_UpdatedDate" />
+          <ScalarProperty Name="SO_UpdatedBy" ColumnName="SO_UpdatedBy" />
+          <ScalarProperty Name="SO_CancelDate" ColumnName="SO_CancelDate" />
+          <ScalarProperty Name="SO_CancelBy" ColumnName="SO_CancelBy" />
+          <ScalarProperty Name="SO_ShippingAddressID" ColumnName="SO_ShippingAddressID" />
+          <ScalarProperty Name="SO_BillingAddressID" ColumnName="SO_BillingAddressID" />
+          <ScalarProperty Name="SO_OrderDiscountAmt" ColumnName="SO_OrderDiscountAmt" />
+          <ScalarProperty Name="SO_PaymentGatewayID" ColumnName="SO_PaymentGatewayID" />
+          <ScalarProperty Name="SO_IsPriority" ColumnName="SO_IsPriority" />
+          <ScalarProperty Name="SO_CancelReasonId" ColumnName="SO_CancelReasonId" />
+          <ScalarProperty Name="SO_IsPaymentReceived" ColumnName="SO_IsPaymentReceived" />
+          <ScalarProperty Name="SO_DeviceType" ColumnName="SO_DeviceType" />
+          <ScalarProperty Name="SO_DeviceName" ColumnName="SO_DeviceName" />
+          <ScalarProperty Name="SO_TimeStamp" ColumnName="SO_TimeStamp" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Inventory_Category">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Inventory_Category">
+        <MappingFragment StoreEntitySet="Tbl_Inventory_Category">
+          <ScalarProperty Name="Ic_OrderBy" ColumnName="Ic_OrderBy" />
+          <ScalarProperty Name="IC_Sorting" ColumnName="IC_Sorting" />
+          <ScalarProperty Name="IC_Slug" ColumnName="IC_Slug" />
+          <ScalarProperty Name="IC_UpdatedDate" ColumnName="IC_UpdatedDate" />
+          <ScalarProperty Name="IC_UpdatedBy" ColumnName="IC_UpdatedBy" />
+          <ScalarProperty Name="IC_CreatedBy" ColumnName="IC_CreatedBy" />
+          <ScalarProperty Name="IC_CreatedDate" ColumnName="IC_CreatedDate" />
+          <ScalarProperty Name="IC_IsActive" ColumnName="IC_IsActive" />
+          <ScalarProperty Name="IC_Description" ColumnName="IC_Description" />
+          <ScalarProperty Name="IC_Name" ColumnName="IC_Name" />
+          <ScalarProperty Name="IC_ParentID" ColumnName="IC_ParentID" />
+          <ScalarProperty Name="IC_CategoryID" ColumnName="IC_CategoryID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Tbl_Inventory_Products">
+      <EntityTypeMapping TypeName="NeeledhaageModel.Tbl_Inventory_Products">
+        <MappingFragment StoreEntitySet="Tbl_Inventory_Products">
+          <ScalarProperty Name="IP_ImagePath" ColumnName="IP_ImagePath" />
+          <ScalarProperty Name="IP_TaxCode" ColumnName="IP_TaxCode" />
+          <ScalarProperty Name="IP_TimeStamp" ColumnName="IP_TimeStamp" />
+          <ScalarProperty Name="IP_ClearancePrice" ColumnName="IP_ClearancePrice" />
+          <ScalarProperty Name="IP_UpdatedDate" ColumnName="IP_UpdatedDate" />
+          <ScalarProperty Name="IP_UpdatedBy" ColumnName="IP_UpdatedBy" />
+          <ScalarProperty Name="IP_CreatedDate" ColumnName="IP_CreatedDate" />
+          <ScalarProperty Name="IP_CreatedBy" ColumnName="IP_CreatedBy" />
+          <ScalarProperty Name="IP_IsActive" ColumnName="IP_IsActive" />
+          <ScalarProperty Name="IP_Remark" ColumnName="IP_Remark" />
+          <ScalarProperty Name="IP_Brand" ColumnName="IP_Brand" />
+          <ScalarProperty Name="IP_Margin" ColumnName="IP_Margin" />
+          <ScalarProperty Name="IP_TargetPrice" ColumnName="IP_TargetPrice" />
+          <ScalarProperty Name="IP_StartPrice" ColumnName="IP_StartPrice" />
+          <ScalarProperty Name="IP_LowPrice" ColumnName="IP_LowPrice" />
+          <ScalarProperty Name="IP_MediumPrice" ColumnName="IP_MediumPrice" />
+          <ScalarProperty Name="IP_HighPrice" ColumnName="IP_HighPrice" />
+          <ScalarProperty Name="IP_CostPrice" ColumnName="IP_CostPrice" />
+          <ScalarProperty Name="IP_Sizeable" ColumnName="IP_Sizeable" />
+          <ScalarProperty Name="IP_ImageName" ColumnName="IP_ImageName" />
+          <ScalarProperty Name="IP_ProductName" ColumnName="IP_ProductName" />
+          <ScalarProperty Name="IP_SKU" ColumnName="IP_SKU" />
+          <ScalarProperty Name="IP_IC_CategoryID" ColumnName="IP_IC_CategoryID" />
+          <ScalarProperty Name="IP_ProductID" ColumnName="IP_ProductID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="NeeledhaageModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUsers">
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Username" ColumnName="Username" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrderDetails">
+      <EntityTypeMapping TypeName="NeeledhaageModel.tblOrderDetail">
+        <MappingFragment StoreEntitySet="tblOrderDetails">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblOrders">
+      <EntityTypeMapping TypeName="NeeledhaageModel.tblOrder">
+        <MappingFragment StoreEntitySet="tblOrders">
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="RazorStatus" ColumnName="RazorStatus" />
+          <ScalarProperty Name="TotalOrderAmount" ColumnName="TotalOrderAmount" />
+          <ScalarProperty Name="RazorPayOrderId" ColumnName="RazorPayOrderId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrderCode" ColumnName="OrderCode" />
+          <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

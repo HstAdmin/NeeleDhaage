@@ -1,0 +1,1795 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D4B4DE4C-1D87-43BD-A102-41E42278331D}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Neeledhaage</RootNamespace>
+    <AssemblyName>Neeledhaage</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Razorpay, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Razorpay.3.0.0\lib\net45\Razorpay.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Optimization">
+      <HintPath>C:\Users\INTEX\Desktop\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Web.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Deployment">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Webpages.Razor">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\default\css\bootstrap.min.css" />
+    <Content Include="assets\default\css\font-awesome.css" />
+    <Content Include="assets\default\css\jquery.mCustomScrollbar.css" />
+    <Content Include="assets\default\css\mCSB_buttons.png.html" />
+    <Content Include="assets\default\css\smart-forms.css" />
+    <Content Include="assets\default\css\smart-forms1.css" />
+    <Content Include="assets\default\css\template.css" />
+    <Content Include="assets\default\css\toastr.css" />
+    <Content Include="assets\default\fonts\AvenirNextLTPro-Regular.svg" />
+    <Content Include="assets\default\fonts\BookAntiqua-Bold.svg" />
+    <Content Include="assets\default\fonts\BookAntiqua.svg" />
+    <Content Include="assets\default\fonts\fontawesome-webfont-v=4.7.0.svg" />
+    <Content Include="assets\default\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="assets\default\images\banner_arrow.png" />
+    <Content Include="assets\default\images\banner_arrow2.png" />
+    <Content Include="assets\default\images\big-banner.jpg" />
+    <Content Include="assets\default\images\c5.jpg" />
+    <Content Include="assets\default\images\foobg.png.html" />
+    <Content Include="assets\default\images\heart-icon.png" />
+    <Content Include="assets\default\images\icon1.png" />
+    <Content Include="assets\default\images\icon2.png" />
+    <Content Include="assets\default\images\icon3.png" />
+    <Content Include="assets\default\images\icon4.png" />
+    <Content Include="assets\default\images\icon6.png" />
+    <Content Include="assets\default\images\img2.jpg" />
+    <Content Include="assets\default\images\logo.png" />
+    <Content Include="assets\default\images\modal-img-1.jpg" />
+    <Content Include="assets\default\images\p1.jpg" />
+    <Content Include="assets\default\images\p2.jpg" />
+    <Content Include="assets\default\images\p3.jpg" />
+    <Content Include="assets\default\images\p4.jpg" />
+    <Content Include="assets\default\images\payment-option.png" />
+    <Content Include="assets\default\images\search.png" />
+    <Content Include="assets\default\images\small-banner.jpg" />
+    <Content Include="assets\default\images\story-page-bg.jpg" />
+    <Content Include="assets\default\js\account.js" />
+    <Content Include="assets\default\js\bootstrap.min.js" />
+    <Content Include="assets\default\js\category.js" />
+    <Content Include="assets\default\js\cloud-zoom.1.0.2.min.js" />
+    <Content Include="assets\default\js\formClass.js" />
+    <Content Include="assets\default\js\jquery.form.js" />
+    <Content Include="assets\default\js\jquery.mCustomScrollbar.js" />
+    <Content Include="assets\default\js\jquery.mousewheel.min.js" />
+    <Content Include="assets\default\js\product.js" />
+    <Content Include="assets\default\js\script.js" />
+    <Content Include="assets\default\js\toastr.min.js" />
+    <Content Include="assets\default\lib\select2\js\select2.min.js" />
+    <Content Include="assets\default\owl-carousel\AjaxLoader.gif" />
+    <Content Include="assets\default\owl-carousel\grabbing.png" />
+    <Content Include="assets\default\owl-carousel\owl.carousel.css" />
+    <Content Include="assets\default\owl-carousel\owl.carousel.js" />
+    <Content Include="assets\default\owl-carousel\owl.theme.css" />
+    <Content Include="assets\default\owl-carousel\owl.transitions.css" />
+    <Content Include="assets\default\site_images\103.gif" />
+    <Content Include="assets\fav-icon.png" />
+    <Content Include="assets\fav-icon_old.png" />
+    <Content Include="assets\favicon.ico" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fancybox\blank.gif" />
+    <Content Include="Content\fancybox\fancybox_buttons.png" />
+    <Content Include="Content\fancybox\fancybox_loading%402x.gif" />
+    <Content Include="Content\fancybox\fancybox_loading.gif" />
+    <Content Include="Content\fancybox\fancybox_overlay.png" />
+    <Content Include="Content\fancybox\fancybox_sprite%402x.png" />
+    <Content Include="Content\fancybox\fancybox_sprite.png" />
+    <Content Include="Content\img\ajax-loader.gif" />
+    <Content Include="Content\jquery.fancybox-buttons.css" />
+    <Content Include="Content\jquery.fancybox-thumbs.css" />
+    <Content Include="Content\jquery.fancybox.css" />
+    <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Dal\Neeledhaage.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Neeledhaage.edmx</DependentUpon>
+      <LastGenOutput>Neeledhaage.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Dal\Neeledhaage.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Neeledhaage.edmx</DependentUpon>
+      <LastGenOutput>Neeledhaage.cs</LastGenOutput>
+    </Content>
+    <Content Include="fileman\css\images\animated-overlay.gif" />
+    <Content Include="fileman\css\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="fileman\css\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="fileman\css\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="fileman\css\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="fileman\css\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="fileman\css\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="fileman\css\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="fileman\css\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="fileman\css\images\ui-icons_222222_256x240.png" />
+    <Content Include="fileman\css\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="fileman\css\images\ui-icons_454545_256x240.png" />
+    <Content Include="fileman\css\images\ui-icons_888888_256x240.png" />
+    <Content Include="fileman\css\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="fileman\css\jquery-ui-1.10.4.custom.css" />
+    <Content Include="fileman\css\jquery-ui-1.10.4.custom.min.css" />
+    <Content Include="fileman\css\main.css" />
+    <Content Include="fileman\css\main.min.css" />
+    <Content Include="fileman\dev.html" />
+    <Content Include="fileman\images\action-folder-paste.png" />
+    <Content Include="fileman\images\action-folder-rename.png" />
+    <Content Include="fileman\images\arrow_down.png" />
+    <Content Include="fileman\images\arrow_up.png" />
+    <Content Include="fileman\images\blank.gif" />
+    <Content Include="fileman\images\copy.png" />
+    <Content Include="fileman\images\cut.png" />
+    <Content Include="fileman\images\dir-minus.png" />
+    <Content Include="fileman\images\dir-plus.png" />
+    <Content Include="fileman\images\file-add.png" />
+    <Content Include="fileman\images\file-delete.png" />
+    <Content Include="fileman\images\file-download.png" />
+    <Content Include="fileman\images\file-duplicate.png" />
+    <Content Include="fileman\images\file-upload.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_3gp.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_7z.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ace.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ai.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_aif.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_aiff.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_amr.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_asf.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_asx.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_bat.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_bin.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_bmp.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_bup.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_cab.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_cbr.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_cda.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_cdl.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_cdr.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_chm.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_dat.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_divx.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_dll.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_dmg.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_doc.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_dss.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_dvf.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_dwg.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_eml.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_eps.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_exe.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_fla.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_flv.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_gif.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_gz.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_hqx.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_htm.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_html.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ifo.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_indd.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_iso.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_jar.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_jpeg.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_jpg.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_lnk.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_log.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_m4a.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_m4b.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_m4p.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_m4v.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mcd.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mdb.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mid.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mov.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mp2.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mp3.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mp4.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mpeg.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mpg.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_msi.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_mswmm.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ogg.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_pdf.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_png.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_pps.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ps.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_psd.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_pst.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ptb.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_pub.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_qbb.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_qbw.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_qxd.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ram.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_rar.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_rm.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_rmvb.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_rtf.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_sea.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ses.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_sit.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_sitx.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ss.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_swf.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_tgz.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_thm.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_tif.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_tmp.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_torrent.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_ttf.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_txt.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_vcd.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_vob.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_wav.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_wma.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_wmv.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_wps.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_xls.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_xpi.png" />
+    <Content Include="fileman\images\filetypes\big\file_extension_zip.png" />
+    <Content Include="fileman\images\filetypes\big\unknown.png" />
+    <Content Include="fileman\images\filetypes\file_extension_3gp.png" />
+    <Content Include="fileman\images\filetypes\file_extension_7z.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ace.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ai.png" />
+    <Content Include="fileman\images\filetypes\file_extension_aif.png" />
+    <Content Include="fileman\images\filetypes\file_extension_aiff.png" />
+    <Content Include="fileman\images\filetypes\file_extension_amr.png" />
+    <Content Include="fileman\images\filetypes\file_extension_asf.png" />
+    <Content Include="fileman\images\filetypes\file_extension_asx.png" />
+    <Content Include="fileman\images\filetypes\file_extension_bat.png" />
+    <Content Include="fileman\images\filetypes\file_extension_bin.png" />
+    <Content Include="fileman\images\filetypes\file_extension_bmp.png" />
+    <Content Include="fileman\images\filetypes\file_extension_bup.png" />
+    <Content Include="fileman\images\filetypes\file_extension_cab.png" />
+    <Content Include="fileman\images\filetypes\file_extension_cbr.png" />
+    <Content Include="fileman\images\filetypes\file_extension_cda.png" />
+    <Content Include="fileman\images\filetypes\file_extension_cdl.png" />
+    <Content Include="fileman\images\filetypes\file_extension_cdr.png" />
+    <Content Include="fileman\images\filetypes\file_extension_chm.png" />
+    <Content Include="fileman\images\filetypes\file_extension_dat.png" />
+    <Content Include="fileman\images\filetypes\file_extension_divx.png" />
+    <Content Include="fileman\images\filetypes\file_extension_dll.png" />
+    <Content Include="fileman\images\filetypes\file_extension_dmg.png" />
+    <Content Include="fileman\images\filetypes\file_extension_doc.png" />
+    <Content Include="fileman\images\filetypes\file_extension_dss.png" />
+    <Content Include="fileman\images\filetypes\file_extension_dvf.png" />
+    <Content Include="fileman\images\filetypes\file_extension_dwg.png" />
+    <Content Include="fileman\images\filetypes\file_extension_eml.png" />
+    <Content Include="fileman\images\filetypes\file_extension_eps.png" />
+    <Content Include="fileman\images\filetypes\file_extension_exe.png" />
+    <Content Include="fileman\images\filetypes\file_extension_fla.png" />
+    <Content Include="fileman\images\filetypes\file_extension_flv.png" />
+    <Content Include="fileman\images\filetypes\file_extension_gif.png" />
+    <Content Include="fileman\images\filetypes\file_extension_gz.png" />
+    <Content Include="fileman\images\filetypes\file_extension_hqx.png" />
+    <Content Include="fileman\images\filetypes\file_extension_htm.png" />
+    <Content Include="fileman\images\filetypes\file_extension_html.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ifo.png" />
+    <Content Include="fileman\images\filetypes\file_extension_indd.png" />
+    <Content Include="fileman\images\filetypes\file_extension_iso.png" />
+    <Content Include="fileman\images\filetypes\file_extension_jar.png" />
+    <Content Include="fileman\images\filetypes\file_extension_jpeg.png" />
+    <Content Include="fileman\images\filetypes\file_extension_jpg.png" />
+    <Content Include="fileman\images\filetypes\file_extension_lnk.png" />
+    <Content Include="fileman\images\filetypes\file_extension_log.png" />
+    <Content Include="fileman\images\filetypes\file_extension_m4a.png" />
+    <Content Include="fileman\images\filetypes\file_extension_m4b.png" />
+    <Content Include="fileman\images\filetypes\file_extension_m4p.png" />
+    <Content Include="fileman\images\filetypes\file_extension_m4v.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mcd.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mdb.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mid.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mov.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mp2.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mp3.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mp4.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mpeg.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mpg.png" />
+    <Content Include="fileman\images\filetypes\file_extension_msi.png" />
+    <Content Include="fileman\images\filetypes\file_extension_mswmm.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ogg.png" />
+    <Content Include="fileman\images\filetypes\file_extension_pdf.png" />
+    <Content Include="fileman\images\filetypes\file_extension_png.png" />
+    <Content Include="fileman\images\filetypes\file_extension_pps.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ps.png" />
+    <Content Include="fileman\images\filetypes\file_extension_psd.png" />
+    <Content Include="fileman\images\filetypes\file_extension_pst.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ptb.png" />
+    <Content Include="fileman\images\filetypes\file_extension_pub.png" />
+    <Content Include="fileman\images\filetypes\file_extension_qbb.png" />
+    <Content Include="fileman\images\filetypes\file_extension_qbw.png" />
+    <Content Include="fileman\images\filetypes\file_extension_qxd.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ram.png" />
+    <Content Include="fileman\images\filetypes\file_extension_rar.png" />
+    <Content Include="fileman\images\filetypes\file_extension_rm.png" />
+    <Content Include="fileman\images\filetypes\file_extension_rmvb.png" />
+    <Content Include="fileman\images\filetypes\file_extension_rtf.png" />
+    <Content Include="fileman\images\filetypes\file_extension_sea.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ses.png" />
+    <Content Include="fileman\images\filetypes\file_extension_sit.png" />
+    <Content Include="fileman\images\filetypes\file_extension_sitx.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ss.png" />
+    <Content Include="fileman\images\filetypes\file_extension_swf.png" />
+    <Content Include="fileman\images\filetypes\file_extension_tgz.png" />
+    <Content Include="fileman\images\filetypes\file_extension_thm.png" />
+    <Content Include="fileman\images\filetypes\file_extension_tif.png" />
+    <Content Include="fileman\images\filetypes\file_extension_tmp.png" />
+    <Content Include="fileman\images\filetypes\file_extension_torrent.png" />
+    <Content Include="fileman\images\filetypes\file_extension_ttf.png" />
+    <Content Include="fileman\images\filetypes\file_extension_txt.png" />
+    <Content Include="fileman\images\filetypes\file_extension_vcd.png" />
+    <Content Include="fileman\images\filetypes\file_extension_vob.png" />
+    <Content Include="fileman\images\filetypes\file_extension_wav.png" />
+    <Content Include="fileman\images\filetypes\file_extension_wma.png" />
+    <Content Include="fileman\images\filetypes\file_extension_wmv.png" />
+    <Content Include="fileman\images\filetypes\file_extension_wps.png" />
+    <Content Include="fileman\images\filetypes\file_extension_xls.png" />
+    <Content Include="fileman\images\filetypes\file_extension_xpi.png" />
+    <Content Include="fileman\images\filetypes\file_extension_zip.png" />
+    <Content Include="fileman\images\filetypes\unknown.png" />
+    <Content Include="fileman\images\find.png" />
+    <Content Include="fileman\images\folder-add.png" />
+    <Content Include="fileman\images\folder-delete.png" />
+    <Content Include="fileman\images\folder-download.png" />
+    <Content Include="fileman\images\folder-green.png" />
+    <Content Include="fileman\images\folder-opened.png" />
+    <Content Include="fileman\images\folder.png" />
+    <Content Include="fileman\images\loading-dir.gif" />
+    <Content Include="fileman\images\loading.gif" />
+    <Content Include="fileman\images\paste.png" />
+    <Content Include="fileman\images\preview.png" />
+    <Content Include="fileman\images\remove-upload - Copy.png" />
+    <Content Include="fileman\images\remove-upload.png" />
+    <Content Include="fileman\images\rename.png" />
+    <Content Include="fileman\images\search.png" />
+    <Content Include="fileman\images\select.png" />
+    <Content Include="fileman\images\sprite.png" />
+    <Content Include="fileman\images\stripes-reverse.gif" />
+    <Content Include="fileman\images\stripes.gif" />
+    <Content Include="fileman\images\upload-big.png" />
+    <Content Include="fileman\images\view-list.png" />
+    <Content Include="fileman\images\view-tile.png" />
+    <Content Include="fileman\index.html" />
+    <Content Include="fileman\js\custom.js" />
+    <Content Include="fileman\js\directory.js" />
+    <Content Include="fileman\js\file.js" />
+    <Content Include="fileman\js\filetypes.js" />
+    <Content Include="fileman\js\jquery-1.10.2.min.js" />
+    <Content Include="fileman\js\jquery-1.11.1.min.js" />
+    <Content Include="fileman\js\jquery-2.1.1.min.js" />
+    <Content Include="fileman\js\jquery-dateFormat.min.js" />
+    <Content Include="fileman\js\jquery-ui-1.10.4.custom.min.js" />
+    <Content Include="fileman\js\main.js" />
+    <Content Include="fileman\js\main.min.js" />
+    <Content Include="fileman\js\mini-main.js" />
+    <Content Include="fileman\js\tiny_mce_popup.js" />
+    <Content Include="fileman\js\utils.js" />
+    <Content Include="fileman\LICENSE.txt" />
+    <Content Include="fileman\third-party.txt" />
+    <Content Include="fileman\Uploads\galadriel%27s path home.jpg" />
+    <Content Include="fileman\Uploads\Images\DSC_2987.jpg" />
+    <Content Include="fileman\Uploads\Images\DSC_5744.jpg" />
+    <Content Include="fileman\Uploads\LICENSE.txt" />
+    <Content Include="fileman\Uploads\roxy-fileman-logo.gif" />
+    <Content Include="fileman\Uploads\smiley 200x200.jpg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\1.jpg" />
+    <Content Include="Images\2.jpg" />
+    <Content Include="Images\3.jpg" />
+    <Content Include="Images\4.jpg" />
+    <Content Include="Images\5.jpg" />
+    <Content Include="Images\6.jpg" />
+    <Content Include="Images\7.jpg" />
+    <Content Include="Images\Logo\craftmark_logo.png" />
+    <Content Include="Images\Logo\favicon.ico" />
+    <Content Include="Images\Logo\Neele Dhaage logo 01.jpg" />
+    <Content Include="Images\Logo\Neele Dhaage logo 02.jpg" />
+    <Content Include="Images\Logo\neele-dhaage.jpg" />
+    <Content Include="Images\Neeledhaage_Images\1.jpg" />
+    <Content Include="Images\Neeledhaage_Images\2.jpg" />
+    <Content Include="Images\Neeledhaage_Images\3.jpg" />
+    <Content Include="Images\Neeledhaage_Images\4.jpg" />
+    <Content Include="Images\Neeledhaage_Images\5.jpg" />
+    <Content Include="Images\Neeledhaage_Images\6.jpg" />
+    <Content Include="Images\Neeledhaage_Images\7.jpg" />
+    <Content Include="Images\Products\0000001\0000001.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\1.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\5.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\6.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\7.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\blue2.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\blue3.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\blue4.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\Thumbs\1.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\Thumbs\5.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\Thumbs\6.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\Thumbs\7.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\Thumbs\blue2.jpg" />
+    <Content Include="Images\Products\0000001\Gallery\Thumbs\blue3.png" />
+    <Content Include="Images\Products\0000001\Gallery\Thumbs\blue4.png" />
+    <Content Include="Images\Products\0000001\Thumbs\0000001.jpg" />
+    <Content Include="Images\Products\0000002\0000002.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\1.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\5.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\6.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\7.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\blue2.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\blue3.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\blue4.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\Thumbs\1.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\Thumbs\5.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\Thumbs\6.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\Thumbs\7.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\Thumbs\blue2.jpg" />
+    <Content Include="Images\Products\0000002\Gallery\Thumbs\blue3.png" />
+    <Content Include="Images\Products\0000002\Gallery\Thumbs\blue4.png" />
+    <Content Include="Images\Products\0000002\Thumbs\0000002.jpg" />
+    <Content Include="Images\Products\0000003\0000003.png" />
+    <Content Include="Images\Products\0000003\Gallery\1.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\5.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\6.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\7.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\blue2.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\blue3.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\blue4.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\Thumbs\1.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\Thumbs\5.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\Thumbs\6.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\Thumbs\7.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\Thumbs\blue2.jpg" />
+    <Content Include="Images\Products\0000003\Gallery\Thumbs\blue3.png" />
+    <Content Include="Images\Products\0000003\Gallery\Thumbs\blue4.png" />
+    <Content Include="Images\Products\0000003\Thumbs\0000003.png" />
+    <Content Include="Images\Products\0000004\0000004.png" />
+    <Content Include="Images\Products\0000004\Gallery\1.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\5.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\6.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\7.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\blue2.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\blue3.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\blue4.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\Thumbs\1.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\Thumbs\5.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\Thumbs\6.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\Thumbs\7.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\Thumbs\blue2.jpg" />
+    <Content Include="Images\Products\0000004\Gallery\Thumbs\blue3.png" />
+    <Content Include="Images\Products\0000004\Gallery\Thumbs\blue4.png" />
+    <Content Include="Images\Products\0000004\Thumbs\0000004.png" />
+    <Content Include="Images\Products\0000005\0000005.png" />
+    <Content Include="Images\Products\0000005\Gallery\1.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\5.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\6.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\7.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\blue2.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\blue3.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\blue4.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\Thumbs\1.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\Thumbs\5.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\Thumbs\6.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\Thumbs\7.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\Thumbs\blue2.jpg" />
+    <Content Include="Images\Products\0000005\Gallery\Thumbs\blue3.png" />
+    <Content Include="Images\Products\0000005\Gallery\Thumbs\blue4.png" />
+    <Content Include="Images\Products\0000005\Thumbs\0000005.png" />
+    <Content Include="Images\Products\0000006\0000006.png" />
+    <Content Include="Images\Products\0000006\Gallery\1.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\5.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\6.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\7.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\blue2.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\blue3.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\blue4.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\Thumbs\1.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\Thumbs\5.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\Thumbs\6.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\Thumbs\7.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\Thumbs\blue2.jpg" />
+    <Content Include="Images\Products\0000006\Gallery\Thumbs\blue3.png" />
+    <Content Include="Images\Products\0000006\Gallery\Thumbs\blue4.png" />
+    <Content Include="Images\Products\0000006\Thumbs\0000006.png" />
+    <Content Include="Images\Products\0000007\0000007.png" />
+    <Content Include="Images\Products\0000007\Gallery\1.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\5.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\6.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\7.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\blue2.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\blue3.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\blue4.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\Thumbs\1.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\Thumbs\5.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\Thumbs\6.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\Thumbs\7.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\Thumbs\blue2.jpg" />
+    <Content Include="Images\Products\0000007\Gallery\Thumbs\blue3.png" />
+    <Content Include="Images\Products\0000007\Gallery\Thumbs\blue4.png" />
+    <Content Include="Images\Products\0000007\Thumbs\0000007.png" />
+    <Content Include="Images\Products\0000008\0000001.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\1.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\5.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\6.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\7.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\blue2.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\blue3.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\blue4.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\Thumbs\1.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\Thumbs\5.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\Thumbs\6.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\Thumbs\7.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\Thumbs\blue2.jpg" />
+    <Content Include="Images\Products\0000008\Gallery\Thumbs\blue3.png" />
+    <Content Include="Images\Products\0000008\Gallery\Thumbs\blue4.png" />
+    <Content Include="Images\Products\0000008\Thumbs\0000002.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000001.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000002.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000003.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000004.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000005.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000006.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000007.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000008.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000009.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000010.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000011.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000012.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000013.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000014.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000015.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000016.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000017.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000018.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000019.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000020.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000021.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000022.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000023.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000024.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000025.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000026.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000027.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000028.jpg" />
+    <Content Include="Images\Products\Accessories\Bags\BAG000029.jpg" />
+    <Content Include="Images\Products\HomeProduct\Prod1.jpg" />
+    <Content Include="Images\Products\HomeProduct\Prod2.jpg" />
+    <Content Include="Images\Products\HomeProduct\Prod3.jpg" />
+    <Content Include="Images\Products\HomeProduct\Prod4.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000001.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000002.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000003.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000004.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000005.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000006.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000007.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000008.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000009.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000010.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000011.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000012.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000013.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000014.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000015.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000016.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000017.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000018.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000019.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000020.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000021.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000022.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000023.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000024.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000025.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000026.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000027.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000028.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000029.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000030.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000031.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000032.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000033.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000034.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000035.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000036.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000037.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000038.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000039.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000040.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000041.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000042.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000043.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000044.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000045.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000046.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000047.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000048.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000049.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000050.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000051.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000052.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000053.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000054.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000055.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000056.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000057.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000058.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000059.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000060.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000061.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000062.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000063.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000064.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000065.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000066.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000067.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000068.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000069.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000070.jpg" />
+    <Content Include="Images\Products\Sarees\Cotton Sarees\00000071.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000001.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000002.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000003.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000004.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000005.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000006.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000007.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000008.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000009.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000010.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000011.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000012.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000013.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000014.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000015.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000016.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000017.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000018.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000019.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000020.jpg" />
+    <Content Include="Images\Products\Sarees\Linen Sarees\LS000021.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00001.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00002.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00003.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00004.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00005.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00006.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00007.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00008.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00009.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00010.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000100.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000101.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000102.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000103.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000104.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000105.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000106.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000107.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000108.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000109.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00011.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000110.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000111.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000112.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000113.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000114.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000115.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000116.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000117.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000118.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000119.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00012.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000120.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000121.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000122.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000123.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000124.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000125.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS000126.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00013.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00014.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00015.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00016.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00017.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00018.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00019.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00020.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00021.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00022.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00023.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00024.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00025.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00026.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00027.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00028.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00029.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00030.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00031.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00032.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00033.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00034.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00035.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00036.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00037.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00038.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00039.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00040.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00041.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00042.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00043.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00044.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00045.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00046.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00047.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00048.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00049.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00050.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00051.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00052.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00053.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00054.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00055.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00056.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00057.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00058.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00059.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00060.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00061.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00062.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00063.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00064.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00065.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00066.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00067.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00068.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00069.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00070.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00071.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00072.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00073.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00074.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00075.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00076.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00077.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00078.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00079.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00080.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00081.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00082.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00083.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00084.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00085.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00086.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00087.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00088.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00089.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00090.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00091.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00092.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00093.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00094.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00095.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00096.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00097.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00098.jpg" />
+    <Content Include="Images\Products\Sarees\Zari Cotton Sarees\ZCS00099.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000001.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000002.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000003.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000004.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000005.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000006.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000007.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000008.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000009.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000010.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000011.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000012.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000013.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000014.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000015.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000016.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000017.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000018.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000019.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000020.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000021.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000022.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000023.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000024.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000025.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000026.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000027.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000028.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000029.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000030.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000031.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000032.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000033.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000034.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000035.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000036.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000037.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000038.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000039.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000040.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000041.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000042.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000043.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000044.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000045.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000046.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000047.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000048.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000049.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000050.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000051.jpg" />
+    <Content Include="Images\Products\Suits\ChanderiSilk\CSS000052.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000001.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000002.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000003.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000004.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000005.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000006.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000007.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000008.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000009.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000010.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000011.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000012.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000013.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000014.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000015.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000016.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000017.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000018.jpg" />
+    <Content Include="Images\Products\Suits\Cotton Suits\COS000019.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000001.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000002.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000003.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000004.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000005.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000006.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000007.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000008.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000009.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000010.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000011.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000012.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000013.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000014.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000015.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000016.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000017.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000018.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000019.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000020.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000021.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000022.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000023.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000024.jpg" />
+    <Content Include="Images\Products\Suits\Kota Doria\KDS000025.jpg" />
+    <Content Include="Images\Uploads\Products\10\Gallery\orange2.jpg" />
+    <Content Include="Images\Uploads\Products\10\Gallery\orange3.jpg" />
+    <Content Include="Images\Uploads\Products\10\Gallery\orange4.jpg" />
+    <Content Include="Images\Uploads\Products\10\Gallery\Thumbs\orange2.jpg" />
+    <Content Include="Images\Uploads\Products\10\Gallery\Thumbs\orange3.jpg" />
+    <Content Include="Images\Uploads\Products\10\Gallery\Thumbs\orange4.jpg" />
+    <Content Include="Images\Uploads\Products\10\orange1.jpg" />
+    <Content Include="Images\Uploads\Products\10\Thumbs\orange1.jpg" />
+    <Content Include="Images\Uploads\Products\1\blue1.jpg" />
+    <Content Include="Images\Uploads\Products\1\Gallery\blue2.jpg" />
+    <Content Include="Images\Uploads\Products\1\Gallery\blue3.png" />
+    <Content Include="Images\Uploads\Products\1\Gallery\blue4.png" />
+    <Content Include="Images\Uploads\Products\1\Gallery\Thumbs\blue2.jpg" />
+    <Content Include="Images\Uploads\Products\1\Gallery\Thumbs\blue3.png" />
+    <Content Include="Images\Uploads\Products\1\Gallery\Thumbs\blue4.png" />
+    <Content Include="Images\Uploads\Products\1\Thumbs\blue1.jpg" />
+    <Content Include="Images\Uploads\Products\22\blue1.jpg" />
+    <Content Include="Images\Uploads\Products\2\Gallery\red2.png" />
+    <Content Include="Images\Uploads\Products\2\Gallery\red3.png" />
+    <Content Include="Images\Uploads\Products\2\Gallery\red4.png" />
+    <Content Include="Images\Uploads\Products\2\Gallery\Thumbs\red2.png" />
+    <Content Include="Images\Uploads\Products\2\Gallery\Thumbs\red3.png" />
+    <Content Include="Images\Uploads\Products\2\Gallery\Thumbs\red4.png" />
+    <Content Include="Images\Uploads\Products\2\red1.jpg" />
+    <Content Include="Images\Uploads\Products\2\Thumbs\red1.jpg" />
+    <Content Include="Images\Uploads\Products\3\Gallery\green2.png" />
+    <Content Include="Images\Uploads\Products\3\Gallery\green3.png" />
+    <Content Include="Images\Uploads\Products\3\Gallery\green4.png" />
+    <Content Include="Images\Uploads\Products\3\Gallery\Thumbs\green2.png" />
+    <Content Include="Images\Uploads\Products\3\Gallery\Thumbs\green3.png" />
+    <Content Include="Images\Uploads\Products\3\Gallery\Thumbs\green4.png" />
+    <Content Include="Images\Uploads\Products\3\green1.png" />
+    <Content Include="Images\Uploads\Products\3\Thumbs\green1.png" />
+    <Content Include="Images\Uploads\Products\4\Gallery\Thumbs\yellow2.jpg" />
+    <Content Include="Images\Uploads\Products\4\Gallery\Thumbs\yellow3.jpg" />
+    <Content Include="Images\Uploads\Products\4\Gallery\Thumbs\yellow4.jpg" />
+    <Content Include="Images\Uploads\Products\4\Gallery\yellow2.jpg" />
+    <Content Include="Images\Uploads\Products\4\Gallery\yellow3.jpg" />
+    <Content Include="Images\Uploads\Products\4\Gallery\yellow4.jpg" />
+    <Content Include="Images\Uploads\Products\4\Thumbs\yellow1.png" />
+    <Content Include="Images\Uploads\Products\4\yellow1.png" />
+    <Content Include="Images\Uploads\Products\5\Gallery\pink2.png" />
+    <Content Include="Images\Uploads\Products\5\Gallery\pink3.png" />
+    <Content Include="Images\Uploads\Products\5\Gallery\pink4.png" />
+    <Content Include="Images\Uploads\Products\5\Gallery\Thumbs\pink2.png" />
+    <Content Include="Images\Uploads\Products\5\Gallery\Thumbs\pink3.png" />
+    <Content Include="Images\Uploads\Products\5\Gallery\Thumbs\pink4.png" />
+    <Content Include="Images\Uploads\Products\5\pink1.png" />
+    <Content Include="Images\Uploads\Products\5\Thumbs\pink1.png" />
+    <Content Include="Images\Uploads\Products\6\apple1.jpg" />
+    <Content Include="Images\Uploads\Products\6\Gallery\apple2.jpg" />
+    <Content Include="Images\Uploads\Products\6\Gallery\apple3.jpg" />
+    <Content Include="Images\Uploads\Products\6\Gallery\apple4.jpg" />
+    <Content Include="Images\Uploads\Products\6\Gallery\Thumbs\apple2.jpg" />
+    <Content Include="Images\Uploads\Products\6\Gallery\Thumbs\apple3.jpg" />
+    <Content Include="Images\Uploads\Products\6\Gallery\Thumbs\apple4.jpg" />
+    <Content Include="Images\Uploads\Products\6\Thumbs\apple1.jpg" />
+    <Content Include="Images\Uploads\Products\7\Gallery\grapefruit2.jpg" />
+    <Content Include="Images\Uploads\Products\7\Gallery\grapefruit3.jpg" />
+    <Content Include="Images\Uploads\Products\7\Gallery\grapefruit4.jpg" />
+    <Content Include="Images\Uploads\Products\7\Gallery\Thumbs\grapefruit2.jpg" />
+    <Content Include="Images\Uploads\Products\7\Gallery\Thumbs\grapefruit3.jpg" />
+    <Content Include="Images\Uploads\Products\7\Gallery\Thumbs\grapefruit4.jpg" />
+    <Content Include="Images\Uploads\Products\7\grapefruit1.jpg" />
+    <Content Include="Images\Uploads\Products\7\Thumbs\grapefruit1.jpg" />
+    <Content Include="Images\Uploads\Products\8\Gallery\grapes2.jpg" />
+    <Content Include="Images\Uploads\Products\8\Gallery\grapes3.jpg" />
+    <Content Include="Images\Uploads\Products\8\Gallery\grapes4.jpg" />
+    <Content Include="Images\Uploads\Products\8\Gallery\Thumbs\grapes2.jpg" />
+    <Content Include="Images\Uploads\Products\8\Gallery\Thumbs\grapes3.jpg" />
+    <Content Include="Images\Uploads\Products\8\Gallery\Thumbs\grapes4.jpg" />
+    <Content Include="Images\Uploads\Products\8\grapes1.jpg" />
+    <Content Include="Images\Uploads\Products\8\Thumbs\grapes1.jpg" />
+    <Content Include="Images\Uploads\Products\9\Gallery\mand2.jpg" />
+    <Content Include="Images\Uploads\Products\9\Gallery\mand3.jpg" />
+    <Content Include="Images\Uploads\Products\9\Gallery\mand4.jpg" />
+    <Content Include="Images\Uploads\Products\9\Gallery\Thumbs\mand2.jpg" />
+    <Content Include="Images\Uploads\Products\9\Gallery\Thumbs\mand3.jpg" />
+    <Content Include="Images\Uploads\Products\9\Gallery\Thumbs\mand4.jpg" />
+    <Content Include="Images\Uploads\Products\9\mand1.jpg" />
+    <Content Include="Images\Uploads\Products\9\Thumbs\mand1.jpg" />
+    <Content Include="scripts\ai.0.22.9-build00167.js" />
+    <Content Include="scripts\ai.0.22.9-build00167.min.js" />
+    <Content Include="scripts\bootstrap.js" />
+    <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="scripts\ckeditor\adapters\jquery.js" />
+    <Content Include="scripts\ckeditor\CHANGES.html" />
+    <Content Include="scripts\ckeditor\ckeditor.asp" />
+    <Content Include="scripts\ckeditor\ckeditor.js" />
+    <Content Include="scripts\ckeditor\ckeditor_basic.js" />
+    <Content Include="scripts\ckeditor\ckeditor_basic_source.js" />
+    <Content Include="scripts\ckeditor\ckeditor_source.js" />
+    <Content Include="scripts\ckeditor\config.js" />
+    <Content Include="scripts\ckeditor\contents.css" />
+    <Content Include="scripts\ckeditor\images\spacer.gif" />
+    <Content Include="scripts\ckeditor\INSTALL.html" />
+    <Content Include="scripts\ckeditor\lang\af.js" />
+    <Content Include="scripts\ckeditor\lang\ar.js" />
+    <Content Include="scripts\ckeditor\lang\bg.js" />
+    <Content Include="scripts\ckeditor\lang\bn.js" />
+    <Content Include="scripts\ckeditor\lang\bs.js" />
+    <Content Include="scripts\ckeditor\lang\ca.js" />
+    <Content Include="scripts\ckeditor\lang\cs.js" />
+    <Content Include="scripts\ckeditor\lang\cy.js" />
+    <Content Include="scripts\ckeditor\lang\da.js" />
+    <Content Include="scripts\ckeditor\lang\de.js" />
+    <Content Include="scripts\ckeditor\lang\el.js" />
+    <Content Include="scripts\ckeditor\lang\en-au.js" />
+    <Content Include="scripts\ckeditor\lang\en-ca.js" />
+    <Content Include="scripts\ckeditor\lang\en-gb.js" />
+    <Content Include="scripts\ckeditor\lang\en.js" />
+    <Content Include="scripts\ckeditor\lang\eo.js" />
+    <Content Include="scripts\ckeditor\lang\es.js" />
+    <Content Include="scripts\ckeditor\lang\et.js" />
+    <Content Include="scripts\ckeditor\lang\eu.js" />
+    <Content Include="scripts\ckeditor\lang\fa.js" />
+    <Content Include="scripts\ckeditor\lang\fi.js" />
+    <Content Include="scripts\ckeditor\lang\fo.js" />
+    <Content Include="scripts\ckeditor\lang\fr-ca.js" />
+    <Content Include="scripts\ckeditor\lang\fr.js" />
+    <Content Include="scripts\ckeditor\lang\gl.js" />
+    <Content Include="scripts\ckeditor\lang\gu.js" />
+    <Content Include="scripts\ckeditor\lang\he.js" />
+    <Content Include="scripts\ckeditor\lang\hi.js" />
+    <Content Include="scripts\ckeditor\lang\hr.js" />
+    <Content Include="scripts\ckeditor\lang\hu.js" />
+    <Content Include="scripts\ckeditor\lang\id.js" />
+    <Content Include="scripts\ckeditor\lang\is.js" />
+    <Content Include="scripts\ckeditor\lang\it.js" />
+    <Content Include="scripts\ckeditor\lang\ja.js" />
+    <Content Include="scripts\ckeditor\lang\ka.js" />
+    <Content Include="scripts\ckeditor\lang\km.js" />
+    <Content Include="scripts\ckeditor\lang\ko.js" />
+    <Content Include="scripts\ckeditor\lang\lt.js" />
+    <Content Include="scripts\ckeditor\lang\lv.js" />
+    <Content Include="scripts\ckeditor\lang\mk.js" />
+    <Content Include="scripts\ckeditor\lang\mn.js" />
+    <Content Include="scripts\ckeditor\lang\ms.js" />
+    <Content Include="scripts\ckeditor\lang\nb.js" />
+    <Content Include="scripts\ckeditor\lang\nl.js" />
+    <Content Include="scripts\ckeditor\lang\no.js" />
+    <Content Include="scripts\ckeditor\lang\pl.js" />
+    <Content Include="scripts\ckeditor\lang\pt-br.js" />
+    <Content Include="scripts\ckeditor\lang\pt.js" />
+    <Content Include="scripts\ckeditor\lang\ro.js" />
+    <Content Include="scripts\ckeditor\lang\ru.js" />
+    <Content Include="scripts\ckeditor\lang\sk.js" />
+    <Content Include="scripts\ckeditor\lang\sl.js" />
+    <Content Include="scripts\ckeditor\lang\sr-latn.js" />
+    <Content Include="scripts\ckeditor\lang\sr.js" />
+    <Content Include="scripts\ckeditor\lang\sv.js" />
+    <Content Include="scripts\ckeditor\lang\th.js" />
+    <Content Include="scripts\ckeditor\lang\tr.js" />
+    <Content Include="scripts\ckeditor\lang\ug.js" />
+    <Content Include="scripts\ckeditor\lang\uk.js" />
+    <Content Include="scripts\ckeditor\lang\vi.js" />
+    <Content Include="scripts\ckeditor\lang\zh-cn.js" />
+    <Content Include="scripts\ckeditor\lang\zh.js" />
+    <Content Include="scripts\ckeditor\lang\_languages.js" />
+    <Content Include="scripts\ckeditor\lang\_translationstatus.txt" />
+    <Content Include="scripts\ckeditor\LICENSE.html" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\dialogs\a11yhelp.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\cs.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\cy.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\da.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\de.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\el.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\en.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\eo.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\fa.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\fi.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\fr.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\gu.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\he.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\it.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\mk.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\nb.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\nl.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\no.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\pt-br.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\ro.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\tr.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\ug.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\vi.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\zh-cn.js" />
+    <Content Include="scripts\ckeditor\plugins\a11yhelp\lang\_translationstatus.txt" />
+    <Content Include="scripts\ckeditor\plugins\about\dialogs\about.js" />
+    <Content Include="scripts\ckeditor\plugins\about\dialogs\logo_ckeditor.png" />
+    <Content Include="scripts\ckeditor\plugins\adobeair\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\ajax\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\autogrow\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\bbcode\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\clipboard\dialogs\paste.js" />
+    <Content Include="scripts\ckeditor\plugins\colordialog\dialogs\colordialog.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\bg.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\cs.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\cy.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\da.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\de.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\el.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\en.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\eo.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\et.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\fa.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\fi.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\fr.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\gu.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\he.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\hr.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\it.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\nb.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\nl.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\no.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\pl.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\pt-br.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\tr.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\ug.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\uk.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\vi.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\zh-cn.js" />
+    <Content Include="scripts\ckeditor\plugins\devtools\lang\_translationstatus.txt" />
+    <Content Include="scripts\ckeditor\plugins\devtools\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\dialog\dialogDefinition.js" />
+    <Content Include="scripts\ckeditor\plugins\div\dialogs\div.js" />
+    <Content Include="scripts\ckeditor\plugins\docprops\dialogs\docprops.js" />
+    <Content Include="scripts\ckeditor\plugins\docprops\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\find\dialogs\find.js" />
+    <Content Include="scripts\ckeditor\plugins\flash\dialogs\flash.js" />
+    <Content Include="scripts\ckeditor\plugins\flash\images\placeholder.png" />
+    <Content Include="scripts\ckeditor\plugins\forms\dialogs\button.js" />
+    <Content Include="scripts\ckeditor\plugins\forms\dialogs\checkbox.js" />
+    <Content Include="scripts\ckeditor\plugins\forms\dialogs\form.js" />
+    <Content Include="scripts\ckeditor\plugins\forms\dialogs\hiddenfield.js" />
+    <Content Include="scripts\ckeditor\plugins\forms\dialogs\radio.js" />
+    <Content Include="scripts\ckeditor\plugins\forms\dialogs\select.js" />
+    <Content Include="scripts\ckeditor\plugins\forms\dialogs\textarea.js" />
+    <Content Include="scripts\ckeditor\plugins\forms\dialogs\textfield.js" />
+    <Content Include="scripts\ckeditor\plugins\forms\images\hiddenfield.gif" />
+    <Content Include="scripts\ckeditor\plugins\iframedialog\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\iframe\dialogs\iframe.js" />
+    <Content Include="scripts\ckeditor\plugins\iframe\images\placeholder.png" />
+    <Content Include="scripts\ckeditor\plugins\image\dialogs\image.js" />
+    <Content Include="scripts\ckeditor\plugins\link\dialogs\anchor.js" />
+    <Content Include="scripts\ckeditor\plugins\link\dialogs\link.js" />
+    <Content Include="scripts\ckeditor\plugins\link\images\anchor.gif" />
+    <Content Include="scripts\ckeditor\plugins\liststyle\dialogs\liststyle.js" />
+    <Content Include="scripts\ckeditor\plugins\pagebreak\images\pagebreak.gif" />
+    <Content Include="scripts\ckeditor\plugins\pastefromword\filter\default.js" />
+    <Content Include="scripts\ckeditor\plugins\pastetext\dialogs\pastetext.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\dialogs\placeholder.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\bg.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\cs.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\cy.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\da.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\de.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\el.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\en.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\eo.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\et.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\fa.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\fi.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\fr.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\he.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\hr.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\it.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\nb.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\nl.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\no.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\pl.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\pt-br.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\tr.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\ug.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\uk.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\vi.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\zh-cn.js" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\lang\_translationstatus.txt" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\placeholder.gif" />
+    <Content Include="scripts\ckeditor\plugins\placeholder\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\preview\preview.html" />
+    <Content Include="scripts\ckeditor\plugins\scayt\dialogs\options.js" />
+    <Content Include="scripts\ckeditor\plugins\scayt\dialogs\toolbar.css" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_address.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_blockquote.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_div.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_h1.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_h2.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_h3.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_h4.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_h5.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_h6.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_p.png" />
+    <Content Include="scripts\ckeditor\plugins\showblocks\images\block_pre.png" />
+    <Content Include="scripts\ckeditor\plugins\smiley\dialogs\smiley.js" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\angel_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\angry_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\broken_heart.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\confused_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\cry_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\devil_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\embaressed_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\envelope.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\heart.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\kiss.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\lightbulb.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\omg_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\regular_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\sad_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\shades_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\teeth_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\thumbs_down.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\thumbs_up.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\tounge_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\whatchutalkingabout_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\smiley\images\wink_smile.gif" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\dialogs\specialchar.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\cs.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\cy.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\de.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\el.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\en.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\eo.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\et.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\fa.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\fi.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\fr.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\he.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\hr.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\it.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\nb.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\nl.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\no.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\pt-br.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\tr.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\ug.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\zh-cn.js" />
+    <Content Include="scripts\ckeditor\plugins\specialchar\lang\_translationstatus.txt" />
+    <Content Include="scripts\ckeditor\plugins\stylesheetparser\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\styles\styles\default.js" />
+    <Content Include="scripts\ckeditor\plugins\tableresize\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\tabletools\dialogs\tableCell.js" />
+    <Content Include="scripts\ckeditor\plugins\table\dialogs\table.js" />
+    <Content Include="scripts\ckeditor\plugins\templates\dialogs\templates.js" />
+    <Content Include="scripts\ckeditor\plugins\templates\templates\default.js" />
+    <Content Include="scripts\ckeditor\plugins\templates\templates\images\template1.gif" />
+    <Content Include="scripts\ckeditor\plugins\templates\templates\images\template2.gif" />
+    <Content Include="scripts\ckeditor\plugins\templates\templates\images\template3.gif" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\dialogs\uicolor.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\bg.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\cs.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\cy.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\da.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\de.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\el.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\en.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\eo.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\et.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\fa.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\fi.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\fr.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\he.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\hr.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\it.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\mk.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\nb.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\nl.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\no.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\pl.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\pt-br.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\tr.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\ug.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\uk.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\vi.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\zh-cn.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\lang\_translationstatus.txt" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\plugin.js" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\uicolor.gif" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\yui\assets\hue_bg.png" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\yui\assets\hue_thumb.png" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\yui\assets\picker_mask.png" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\yui\assets\picker_thumb.png" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\yui\assets\yui.css" />
+    <Content Include="scripts\ckeditor\plugins\uicolor\yui\yui.js" />
+    <Content Include="scripts\ckeditor\plugins\wsc\dialogs\ciframe.html" />
+    <Content Include="scripts\ckeditor\plugins\wsc\dialogs\tmpFrameset.html" />
+    <Content Include="scripts\ckeditor\plugins\wsc\dialogs\wsc.css" />
+    <Content Include="scripts\ckeditor\plugins\wsc\dialogs\wsc.js" />
+    <Content Include="scripts\ckeditor\plugins\xml\plugin.js" />
+    <Content Include="scripts\ckeditor\skins\kama\dialog.css" />
+    <Content Include="scripts\ckeditor\skins\kama\editor.css" />
+    <Content Include="scripts\ckeditor\skins\kama\icons.png" />
+    <Content Include="scripts\ckeditor\skins\kama\icons_rtl.png" />
+    <Content Include="scripts\ckeditor\skins\kama\images\dialog_sides.gif" />
+    <Content Include="scripts\ckeditor\skins\kama\images\dialog_sides.png" />
+    <Content Include="scripts\ckeditor\skins\kama\images\dialog_sides_rtl.png" />
+    <Content Include="scripts\ckeditor\skins\kama\images\mini.gif" />
+    <Content Include="scripts\ckeditor\skins\kama\images\noimage.png" />
+    <Content Include="scripts\ckeditor\skins\kama\images\sprites.png" />
+    <Content Include="scripts\ckeditor\skins\kama\images\sprites_ie6.png" />
+    <Content Include="scripts\ckeditor\skins\kama\images\toolbar_start.gif" />
+    <Content Include="scripts\ckeditor\skins\kama\skin.js" />
+    <Content Include="scripts\ckeditor\skins\kama\templates.css" />
+    <Content Include="scripts\ckeditor\skins\office2003\dialog.css" />
+    <Content Include="scripts\ckeditor\skins\office2003\editor.css" />
+    <Content Include="scripts\ckeditor\skins\office2003\icons.png" />
+    <Content Include="scripts\ckeditor\skins\office2003\icons_rtl.png" />
+    <Content Include="scripts\ckeditor\skins\office2003\images\dialog_sides.gif" />
+    <Content Include="scripts\ckeditor\skins\office2003\images\dialog_sides.png" />
+    <Content Include="scripts\ckeditor\skins\office2003\images\dialog_sides_rtl.png" />
+    <Content Include="scripts\ckeditor\skins\office2003\images\mini.gif" />
+    <Content Include="scripts\ckeditor\skins\office2003\images\noimage.png" />
+    <Content Include="scripts\ckeditor\skins\office2003\images\sprites.png" />
+    <Content Include="scripts\ckeditor\skins\office2003\images\sprites_ie6.png" />
+    <Content Include="scripts\ckeditor\skins\office2003\skin.js" />
+    <Content Include="scripts\ckeditor\skins\office2003\templates.css" />
+    <Content Include="scripts\ckeditor\skins\v2\dialog.css" />
+    <Content Include="scripts\ckeditor\skins\v2\editor.css" />
+    <Content Include="scripts\ckeditor\skins\v2\icons.png" />
+    <Content Include="scripts\ckeditor\skins\v2\icons_rtl.png" />
+    <Content Include="scripts\ckeditor\skins\v2\images\dialog_sides.gif" />
+    <Content Include="scripts\ckeditor\skins\v2\images\dialog_sides.png" />
+    <Content Include="scripts\ckeditor\skins\v2\images\dialog_sides_rtl.png" />
+    <Content Include="scripts\ckeditor\skins\v2\images\mini.gif" />
+    <Content Include="scripts\ckeditor\skins\v2\images\noimage.png" />
+    <Content Include="scripts\ckeditor\skins\v2\images\sprites.png" />
+    <Content Include="scripts\ckeditor\skins\v2\images\sprites_ie6.png" />
+    <Content Include="scripts\ckeditor\skins\v2\images\toolbar_start.gif" />
+    <Content Include="scripts\ckeditor\skins\v2\skin.js" />
+    <Content Include="scripts\ckeditor\skins\v2\templates.css" />
+    <Content Include="scripts\ckeditor\themes\default\theme.js" />
+    <Content Include="scripts\dropzone\basic.css" />
+    <Content Include="scripts\dropzone\basic.min.css" />
+    <Content Include="scripts\dropzone\dropzone-amd-module.js" />
+    <Content Include="scripts\dropzone\dropzone-amd-module.min.js" />
+    <Content Include="scripts\dropzone\dropzone.css" />
+    <Content Include="scripts\dropzone\dropzone.js" />
+    <Content Include="scripts\dropzone\dropzone.min.css" />
+    <Content Include="scripts\dropzone\dropzone.min.js" />
+    <Content Include="scripts\jquery-1.10.2.min.map" />
+    <Content Include="assets\default\css.zip" />
+    <Content Include="assets\default\fonts\AvenirNextLTPro-Regular-.eot" />
+    <Content Include="assets\default\fonts\AvenirNextLTPro-Regular.ttf" />
+    <Content Include="assets\default\fonts\AvenirNextLTPro-Regular.woff" />
+    <Content Include="assets\default\fonts\BookAntiqua-.eot" />
+    <Content Include="assets\default\fonts\BookAntiqua-Bold-.eot" />
+    <Content Include="assets\default\fonts\BookAntiqua-Bold.ttf" />
+    <Content Include="assets\default\fonts\BookAntiqua-Bold.woff" />
+    <Content Include="assets\default\fonts\BookAntiqua.ttf" />
+    <Content Include="assets\default\fonts\BookAntiqua.woff" />
+    <Content Include="assets\default\fonts\fontawesome-webfont-.eot" />
+    <Content Include="assets\default\fonts\fontawesome-webfont-v=4.7.0.eot" />
+    <Content Include="assets\default\fonts\fontawesome-webfont-v=4.7.0.ttf" />
+    <Content Include="assets\default\fonts\fontawesome-webfont-v=4.7.0.woff" />
+    <Content Include="assets\default\fonts\fontawesome-webfont-v=4.7.0.woff2" />
+    <Content Include="assets\default\fonts\glyphicons-halflings-regular-.eot" />
+    <Content Include="assets\default\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="assets\default\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\default\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\default\fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fileman\asp_net\main.ashx" />
+    <Content Include="fileman\conf.json" />
+    <Content Include="fileman\lang\bg.json" />
+    <Content Include="fileman\lang\ca.json" />
+    <Content Include="fileman\lang\cs.json" />
+    <Content Include="fileman\lang\cs1.json" />
+    <Content Include="fileman\lang\da.json" />
+    <Content Include="fileman\lang\de.json" />
+    <Content Include="fileman\lang\en.json" />
+    <Content Include="fileman\lang\es.json" />
+    <Content Include="fileman\lang\fr.json" />
+    <Content Include="fileman\lang\hu.json" />
+    <Content Include="fileman\lang\it.json" />
+    <Content Include="fileman\lang\nl.json" />
+    <Content Include="fileman\lang\pl.json" />
+    <Content Include="fileman\lang\pt.json" />
+    <Content Include="fileman\lang\ru.json" />
+    <Content Include="fileman\lang\sk.json" />
+    <Content Include="fileman\lang\tr.json" />
+    <Content Include="fileman\web.config" />
+    <Content Include="Images\Logo\neele dhaage.psd" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <None Include="scripts\_references.js" />
+    <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\jquery-1.10.2.js" />
+    <Content Include="scripts\jquery-1.10.2.min.js" />
+    <Content Include="scripts\jquery.fancybox-buttons.js" />
+    <Content Include="scripts\jquery.fancybox-media.js" />
+    <Content Include="scripts\jquery.fancybox-thumbs.js" />
+    <Content Include="scripts\jquery.fancybox.js" />
+    <Content Include="scripts\jquery.fancybox.pack.js" />
+    <Content Include="scripts\jquery.mousewheel-3.0.6.pack.js" />
+    <None Include="scripts\jquery.validate-vsdoc.js" />
+    <Content Include="scripts\jquery.validate.js" />
+    <Content Include="scripts\jquery.validate.min.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="scripts\Magnifier\Event.js" />
+    <Content Include="scripts\Magnifier\magnifier.css" />
+    <Content Include="scripts\Magnifier\Magnifier.js" />
+    <Content Include="scripts\modernizr-2.6.2.js" />
+    <Content Include="scripts\respond.js" />
+    <Content Include="scripts\respond.min.js" />
+    <Content Include="shop\detail\cotton-handblock-print-saree.html" />
+    <Content Include="shop\detail\indigo-dabu-mud-print-saree.html" />
+    <Content Include="shop\detail\new-stylish-scarves.html" />
+    <Content Include="shop\detail\shop.html" />
+    <Content Include="shop\search-result.html" />
+    <Content Include="shop\shop.html" />
+    <Content Include="uploads\150\150\ff=ffffff\product\1\GbXxVii2hs.jpg" />
+    <Content Include="uploads\150\150\ff=ffffff\product\1\mHqMR76bQJ.jpg" />
+    <Content Include="uploads\150\150\ff=ffffff\product\1\YoDnPG5qvU.jpg" />
+    <Content Include="uploads\150\150\ff=ffffff\product\2\cC5hIcPLwN.jpg" />
+    <Content Include="uploads\150\150\ff=ffffff\product\3\xlHfhy54OO.jpg" />
+    <Content Include="uploads\400\550\cf\product\1\GbXxVii2hs.jpg" />
+    <Content Include="uploads\400\550\cf\product\2\cC5hIcPLwN.jpg" />
+    <Content Include="uploads\400\550\cf\product\3\xlHfhy54OO.jpg" />
+    <Content Include="uploads\683\900\cf\product\1\GbXxVii2hs.jpg" />
+    <Content Include="uploads\683\900\cf\product\2\cC5hIcPLwN.jpg" />
+    <Content Include="uploads\683\900\cf\product\3\xlHfhy54OO.jpg" />
+    <Content Include="uploads\750\1000\cf\product\1\GbXxVii2hs.jpg" />
+    <Content Include="uploads\750\1000\cf\product\2\cC5hIcPLwN.jpg" />
+    <Content Include="uploads\750\1000\cf\product\3\xlHfhy54OO.jpg" />
+    <Content Include="uploads\banner\7BZfG2gRW1.jpg" />
+    <Content Include="uploads\banner\banner1.jpg" />
+    <Content Include="uploads\banner\banner2.jpg" />
+    <Content Include="uploads\banner\banner3.jpg" />
+    <Content Include="uploads\banner\banner4.jpg" />
+    <Content Include="uploads\banner\banner5.jpg" />
+    <Content Include="uploads\banner\banner6.jpg" />
+    <Content Include="uploads\banner\BhteSxVzXZ.jpeg" />
+    <Content Include="uploads\banner\BysRmIXPfY.jpg" />
+    <Content Include="uploads\banner\CcERlJcQ0i.jpg" />
+    <Content Include="uploads\banner\ffmELZTQ7N.jpg" />
+    <Content Include="uploads\banner\m385gMUa05.jpg" />
+    <Content Include="uploads\banner\M3bN5xH5Zg.jpg" />
+    <Content Include="uploads\banner\MueGFweA90.jpg" />
+    <Content Include="uploads\banner\tai74znZYO.jpg" />
+    <Content Include="uploads\banner\tEhD9RlBWW.jpg" />
+    <Content Include="uploads\banner\XD9G76Z3rd.JPG.jpeg" />
+    <Content Include="uploads\banner\Xg0h8oz58S.jpg" />
+    <Content Include="uploads\banner\xURUlHWiAh.jpg" />
+    <Content Include="uploads\banner\y6hSw4amnM.jpg" />
+    <Content Include="uploads\banner\yNzziVSsE1.jpg" />
+    <Content Include="uploads\product\HomeProduct\P_1.jpg" />
+    <Content Include="uploads\product\HomeProduct\P_2.jpg" />
+    <Content Include="uploads\product\HomeProduct\P_3.jpg" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="uploads\.DS_Store" />
+    <Content Include="uploads\400\.DS_Store" />
+    <Content Include="uploads\400\550\.DS_Store" />
+    <Content Include="uploads\400\550\cf\.DS_Store" />
+    <Content Include="uploads\400\550\cf\product\.DS_Store" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\CreateAccount.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Orders.cshtml" />
+    <Content Include="Views\Account\UserNavPartial.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Cart\AddToCartPartial.cshtml" />
+    <Content Include="Views\Cart\CartPartial.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Cart\CheckOut.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Page\Index.cshtml" />
+    <Content Include="Views\Page\PagesMenuPartial.cshtml" />
+    <Content Include="Views\Page\SidebarPartial.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shop\Category.cshtml" />
+    <Content Include="Views\Shop\CategoryMenuPartial.cshtml" />
+    <Content Include="Views\Shop\ProductDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CartController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PageController.cs" />
+    <Compile Include="Controllers\ShopController.cs" />
+    <Compile Include="Dal\Mst_Customer_AddressType.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Mst_Customer_Type.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Mst_Inventory_ProductType.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Neeledhaage.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Neeledhaage.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Neeledhaage.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Neeledhaage.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Neeledhaage.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\System_MstCountry.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\System_MstState.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\System_MstStatus.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\tblCategory.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\tblOrder.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\tblOrderDetail.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\tblPage.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\tblProduct.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\tblRole.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\tblSidebar.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\tblUser.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\tblUserRole.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Tbl_Customers.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Tbl_Customer_Address.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Tbl_ExceptionLogger.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Tbl_Inventory_Category.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Tbl_Inventory_CategoryType.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Tbl_Inventory_ProductCategories.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Tbl_Inventory_Products.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Tbl_Sales_OrderItems.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Dal\Tbl_Sales_Orders.cs">
+      <DependentUpon>Neeledhaage.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Account\CommonviewModel.cs" />
+    <Compile Include="Models\Account\LoginUserVM.cs" />
+    <Compile Include="Models\Account\OrdersForUserVM.cs" />
+    <Compile Include="Models\Account\UserNavPartialVM.cs" />
+    <Compile Include="Models\Account\UserProfileVM.cs" />
+    <Compile Include="Models\Account\UserVM.cs" />
+    <Compile Include="Models\Cart\CartVM.cs" />
+    <Compile Include="Models\Cart\CheckOutModel.cs" />
+    <Compile Include="Models\Pages\PageVM.cs" />
+    <Compile Include="Models\Pages\SidebarVM.cs" />
+    <Compile Include="Models\Shop\CategoryVM.cs" />
+    <Compile Include="Models\Shop\OrderVM.cs" />
+    <Compile Include="Models\Shop\ProductVM.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\web.config" />
+    <Content Include="packages.config" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <EntityDeploy Include="Dal\Neeledhaage.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Neeledhaage.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Dal\Neeledhaage.edmx.diagram">
+      <DependentUpon>Neeledhaage.edmx</DependentUpon>
+    </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="scripts\ckeditor\ckeditor.pack" />
+    <Content Include="scripts\ckeditor\ckeditor.php" />
+    <Content Include="scripts\ckeditor\ckeditor_php4.php" />
+    <Content Include="scripts\ckeditor\ckeditor_php5.php" />
+    <Content Include="Views\Account\LoginUser.cshtml" />
+    <Content Include="Views\Home\_AboutUs.cshtml" />
+    <Content Include="Views\Home\_ArtisansWork.cshtml" />
+    <Content Include="Views\Home\_ContactUs.cshtml" />
+    <Content Include="Views\Home\_OurProcess.cshtml" />
+    <Content Include="Views\Home\_ReturnsExchanges.cshtml" />
+    <Content Include="Views\Home\_ShippingPolicy.cshtml" />
+    <Content Include="Views\Home\_Shop.cshtml" />
+    <Content Include="Views\Home\_TermsConditions.cshtml" />
+    <Content Include="Views\Home\_Video.cshtml" />
+    <Content Include="Views\Cart\Payment.cshtml" />
+    <Content Include="Views\Home\TrackOrder.cshtml" />
+    <Content Include="Views\Home\BulkOrders.cshtml" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="fileman\aspnet_client\system_web\2_0_50727\" />
+    <Folder Include="fileman\aspnet_client\system_web\4_0_30319\" />
+    <Folder Include="fileman\tmp\" />
+    <Folder Include="fileman\Uploads\Documents\" />
+    <Folder Include="fileman\Uploads\FLV\" />
+    <Folder Include="Images\Uploads\Products\22\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\22\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\23\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\23\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\24\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\24\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\25\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\25\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\26\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\26\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\27\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\27\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\28\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\28\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\29\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\29\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\30\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\30\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\31\Gallery\Thumbs\" />
+    <Folder Include="Images\Uploads\Products\31\Thumbs\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>49464</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:49464/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
