@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Neeledhaage.Dal.Tbl_Inventory_Products>
+﻿@model ProductBaseModelVM
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -516,39 +516,42 @@
     </div>
 </div>
 <div class="col-sm-9">
-    @foreach (var item in Model)
+    @if (Model != null && Model.productLists != null)
     {
-        <div class="col-md-3 col-sm-6 product-item">
-            <div class="single-product-item-6">
-                <div class="thumb">
-                    <a href="/shop/product-details/@item.IP_SKU">
-                        <div class="img-wrapper">
-                            <img src="/Images/Products/@ViewBag.Imageroot/@item.IP_ImageName" title="" alt="" class="img-responsive" width="" height="" />
-                        </div>
-                        
-                    </a>
-                    <span class="tag">New</span>
-                    <!--<ul class="meta-infos">-->
+        foreach (var item in Model.productLists)
+        {
+            <div class="col-md-3 col-sm-6 product-item">
+                <div class="single-product-item-6">
+                    <div class="thumb">
+                        <a href="/shop/product-details/@item.Id">
+                            <div class="img-wrapper">
+                                <img src="/Images/Products/@ViewBag.Imageroot/@item.ImagePath" title="" alt="" class="img-responsive" width="" height="" />
+                            </div>
+                        </a>
+                        <span class="tag">New</span>
+                        <!--<ul class="meta-infos">-->
                         <!--<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
                         <!--<li><a href="#"><i class="fa fa-heart"></i></a></li>-->
                         <!--<li><a href="#"><i class="fa fa-eye"></i></a></li>-->
-                    <!--</ul>-->
-					<div class="hover_addcart"> 
-                   	<a href="/shop/product-details/@item.IP_SKU" class="addtocart">Add To Cart</a>
-                  	<div>
-					<a href="/shop/product-details/@item.IP_SKU" class="addtocart" style="bottom: -125px;width: 50%;background-color: #e5cc76;">Quick View</a>
-                    <a href="/shop/product-details/@item.IP_SKU" class="addtocart" style="bottom: -125px;right: 0px;width: 50%;background-color: #333333;">Buy Now</a>
-				</div></div>
-                </div>
-                <div class="content">
-                    <a href="#">
-                        <h4 class="title">@Html.DisplayFor(modelItem => item.IP_ProductName)</h4>
-                    </a>
-                    <del class="del-price">₹@Html.DisplayFor(modelItem => item.IP_CostPrice)</del>
-                    <span class="price">₹@Html.DisplayFor(modelItem => item.IP_TargetPrice)</span>
+                        <!--</ul>-->
+                        <div class="hover_addcart">
+                            <a href="/shop/product-details/@item.Id" class="addtocart">Add To Cart</a>
+                            <div>
+                                <a href="/shop/product-details/@item.Id" class="addtocart" style="bottom: -125px;width: 50%;background-color: #e5cc76;">Quick View</a>
+                                <a href="/shop/product-details/@item.Id" class="addtocart" style="bottom: -125px;right: 0px;width: 50%;background-color: #333333;">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <a href="#">
+                            <h4 class="title">@Html.DisplayFor(modelItem => item.ProductName)</h4>
+                        </a>
+                        <del class="del-price">₹@Html.DisplayFor(modelItem => item.MRP)</del>
+                        <span class="price">₹@Html.DisplayFor(modelItem => item.SalesPrice)</span>
 
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     }
 </div>

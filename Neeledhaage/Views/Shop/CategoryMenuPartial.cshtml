@@ -1,68 +1,71 @@
-﻿@model IEnumerable<Neeledhaage.Dal.Tbl_Inventory_Category>
+﻿@model List<ProductCategoriesModel>
 
+@{
+    var parentCats = Model != null ? Model.Where(m => m.ParentId == 0).ToList() : new List<ProductCategoriesModel>();
+}
 @*<h3>Categories</h3>*@
 
 @*<ul>*@
-@foreach (var item in Model.Where(x => x.IC_ParentID == 0))
+@foreach (var item in parentCats)
 {
     int Ishsow_slider = 0; int IscheckParentChild = 0;
-    IscheckParentChild = @Model.Where(x => x.IC_ParentID == item.IC_CategoryID).Count();
-<li class="dropdown megamenu-fullwidth">
+    IscheckParentChild = Model.Where(x => x.ParentId == item.PC_ID).Count();
+    <li class="dropdown megamenu-fullwidth">
 
-    <a href="javascript:" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-        @item.IC_Name
+        <a href="/shop/category/@item.PC_ID/@item.PC_NAME.ToLower().Replace(" ","-")" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+            @item.PC_NAME
+            @if (IscheckParentChild > 0)
+            {<span class="caret"> </span>}
+
+        </a>
         @if (IscheckParentChild > 0)
-        {<span class="caret"> </span>}
-
-    </a>
-    @if (IscheckParentChild > 0)
-    {
-        <ul class="dropdown-menu">
-            <li class="megamenu-content">
-                @foreach (var C_item in Model.Where(x => x.IC_ParentID == item.IC_CategoryID).OrderBy(O => O.Ic_OrderBy))
-                {
-                    Ishsow_slider = 1;
-                    <ul class="col-lg-3  col-sm-3 col-md-3 unstyled">
-                        <li class="no-border">
-                            <p> <strong> <a href="/shop/category/@C_item.IC_Name.ToLower()">@C_item.IC_Name </a>  </strong> </p>
-                        </li>
-                        @foreach (var C_C_item in Model.Where(x => x.IC_ParentID == C_item.IC_CategoryID))
-                        {
-                            <li>
-                                <a href="/shop/category/@C_C_item.IC_Name.ToLower()">
-                                    @C_C_item.IC_Name
-                                </a>
+        {
+            <ul class="dropdown-menu">
+                <li class="megamenu-content">
+                    @foreach (var C_item in Model.Where(x => x.ParentId == item.PC_ID).OrderBy(O => O.PC_NAME))
+                    {
+                        Ishsow_slider = 1;
+                        <ul class="col-lg-3  col-sm-3 col-md-3 unstyled">
+                            <li class="no-border">
+                                <p> <strong> <a href="/shop/category/@C_item.PC_ID/@C_item.PC_NAME.ToLower().Replace(" ","-")">@C_item.PC_NAME </a>  </strong> </p>
                             </li>
-                        }
-                    </ul>
-                }
-                @if (@Ishsow_slider == 1)
-                {
-                    <ul class="col-lg-3  col-sm-3 col-md-3 unstyled l-slide">
-                        <div id="carousel-example-generic2" class="carousel slide " data-ride="carousel">
-                            <div class="carousel-inner" role="listbox">
-                                <div class="item active">
-                                    <center> <a href="#"><img src="~/assets/default/images/p1.jpg" class="img-responsive"></a> </center>
-                                </div>
-                                <div class="item">
-                                    <center> <a href="#">  <img src="~/assets/default/images/p2.jpg" class="img-responsive"></a> </center>
-                                </div>
-                                <div class="item">
-                                    <center> <a href="#"> <img src="~/assets/default/images/p3.jpg" class="img-responsive"></a> </center>
+                            @foreach (var C_C_item in Model.Where(x => x.ParentId == C_item.PC_ID))
+                            {
+                                <li>
+                                    <a href="/shop/category/@C_C_item.PC_ID/@C_C_item.PC_NAME.ToLower().Replace(" ","-")">
+                                        @C_C_item.PC_NAME
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    }
+                    @if (@Ishsow_slider == 1)
+                    {
+                        <ul class="col-lg-3  col-sm-3 col-md-3 unstyled l-slide">
+                            <div id="carousel-example-generic2" class="carousel slide " data-ride="carousel">
+                                <div class="carousel-inner" role="listbox">
+                                    <div class="item active">
+                                        <center> <a href="#"><img src="~/assets/default/images/p1.jpg" class="img-responsive"></a> </center>
+                                    </div>
+                                    <div class="item">
+                                        <center> <a href="#">  <img src="~/assets/default/images/p2.jpg" class="img-responsive"></a> </center>
+                                    </div>
+                                    <div class="item">
+                                        <center> <a href="#"> <img src="~/assets/default/images/p3.jpg" class="img-responsive"></a> </center>
 
-                                </div>
-                                <div class="item">
-                                    <center> <a href="#"> <img src="~/assets/default/images/p4.jpg" class="img-responsive"></a> </center>
+                                    </div>
+                                    <div class="item">
+                                        <center> <a href="#"> <img src="~/assets/default/images/p4.jpg" class="img-responsive"></a> </center>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                    </ul>
-                }
-            </li>
-        </ul>
-    }
+                        </ul>
+                    }
+                </li>
+            </ul>
+        }
     </li>
 
 }

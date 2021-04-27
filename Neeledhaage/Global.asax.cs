@@ -1,6 +1,8 @@
-﻿using Neeledhaage.Dal;
+﻿using Neeledhaage.Common;
+using Neeledhaage.Dal;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Security.Principal;
 using System.Web;
@@ -19,6 +21,8 @@ namespace Neeledhaage
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            ApiPath.APIBaseUrl = ConfigurationManager.AppSettings["ApiPath"];
         }
     }
 }
