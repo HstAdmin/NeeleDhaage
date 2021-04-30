@@ -1681,12 +1681,14 @@
     <Compile Include="Models\Account\UserVM.cs" />
     <Compile Include="Models\Cart\CartVM.cs" />
     <Compile Include="Models\Cart\CheckOutModel.cs" />
+    <Compile Include="Models\Common\DropdownModel.cs" />
     <Compile Include="Models\Common\ResponseData.cs" />
     <Compile Include="Models\Pages\PageVM.cs" />
     <Compile Include="Models\Pages\SidebarVM.cs" />
     <Compile Include="Models\ProductCategory\ProductCategoriesModel.cs" />
     <Compile Include="Models\Product\ProductBaseModelVM.cs" />
     <Compile Include="Models\Product\ProductListFilterVM.cs" />
+    <Compile Include="Models\Product\ProductVM.cs" />
     <Compile Include="Models\Shop\CategoryVM.cs" />
     <Compile Include="Models\Shop\OrderVM.cs" />
     <Compile Include="Models\Shop\ProductVM.cs" />
@@ -1725,6 +1727,7 @@
     <Content Include="Views\Cart\Payment.cshtml" />
     <Content Include="Views\Home\TrackOrder.cshtml" />
     <Content Include="Views\Home\BulkOrders.cshtml" />
+    <Content Include="Views\Shop\ProductList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

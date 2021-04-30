@@ -8,9 +8,9 @@ using Neeledhaage.Dal;
 
 namespace Neeledhaage.Models.Shop
 {
-    public class ProductVM
+    public class ProductDetailVM
     {
-        public ProductVM(Tbl_Inventory_Products products)
+        public ProductDetailVM(Tbl_Inventory_Products products)
         {
             Id = products.IP_ProductID;
             Name = products.IP_ProductName;

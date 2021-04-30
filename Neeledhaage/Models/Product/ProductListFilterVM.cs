@@ -12,6 +12,7 @@ namespace Neeledhaage.Models.Product
         public string BrandsIds { get; set; }
         public string DiscountPer { get; set; }
         public string ProdcutTags { get; set; }
+        public string ProdcutPrices { get; set; }
 
         public string ProductName { get; set; }
         /// <summary>

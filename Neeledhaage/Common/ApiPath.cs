@@ -8,6 +8,7 @@ namespace Neeledhaage.Common
     public static class ApiPath
     {
         public static string APIBaseUrl { get; set; }
+        public static string ImageBasePath { get; set; }
 
         public static class ProductCategory
         {
@@ -18,6 +19,8 @@ namespace Neeledhaage.Common
         public static class Product
         {
             public static string GetProductList { get { return "api/Product/GetProductList"; } }
+            public static string GetTags { get { return "api/Product/GetTags"; } }
+            public static string GetProductById(int id) { return "api/Product/GetProductById/" + id; }
         }
     }
 }

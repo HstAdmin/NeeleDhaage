@@ -23,6 +23,7 @@ namespace Neeledhaage
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ApiPath.APIBaseUrl = ConfigurationManager.AppSettings["ApiPath"];
+            ApiPath.ImageBasePath = ConfigurationManager.AppSettings["ImageBasePath"];
         }
     }
 }

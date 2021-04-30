@@ -1,6 +1,13 @@
-﻿@model Neeledhaage.Models.Shop.ProductVM
+﻿@model Neeledhaage.Models.Product.ProductVM
 @{
-    var ImageUrl = Model.Imagepath + "/" + Model.ImageName;
+    //var ImageUrl = Model.Imagepath + "/" + Model.ImageName;
+    var varient = Model.Varients.FirstOrDefault();
+    var ImageUrl = "";
+    if (varient.productImages.Count > 0)
+    {
+        ImageUrl = ApiPath.ImageBasePath + varient.productImages.FirstOrDefault().ImagePath;
+    }
+
 }
 <link href="~/scripts/Magnifier/magnifier.css" rel="stylesheet" />
 <style>
@@ -63,13 +70,16 @@
             <div class="col-sm-7">
                 <div class="product-description">
                     <div class="product-top">
-                        <h3>Cotton Handblock print saree </h3>
+                        <h3>@varient.ProductName</h3>
                         @*<p>Ethnic Wear<p>*@
                         <p class="availability in-stock" style="font-size:14px;">Availability:  <abbr style="color:#090;"> In stock </abbr> </p>
                         <div class="product-price">
                             <div style="position:relative; display:inline-block">
-                                <del>₹@Html.DisplayFor(model => model.Price)</del>
-                                ₹@Html.DisplayFor(model => model.Price)
+                                @if (varient.DiscountPercentage > 0)
+                                {
+                                    <del>₹@Html.DisplayFor(model => model.Varients.FirstOrDefault().MRP)</del>
+                                }
+                                ₹@(varient.MRP+ (varient.MRP * varient.DiscountPercentage / 100))
                                 <!--<span class="sticker discount" style="top:-11px; right:-52px;"><strong>-->
                                 <!--10.1%-->
                                 <!--<br>off</strong></span>-->
@@ -80,15 +90,11 @@
                     <div class="size-choose">
                         <label>Select Size:</label>
                         <div class="radio-toolbar">
-                            <input type="radio" id="size36" name="size" value="96">
-                            <label for="size36">36</label>
-                            <input type="radio" id="size38" name="size" value="38">
-                            <label for="size38"> 38 </label>
-                            <input type="radio" id="size40" name="size" value="40">
-                            <label for="size40"> 40 </label>
-                            <input type="radio" id="size42" name="size" value="42">
-                            <label for="size42"> 42 </label>
-
+                            @for (int i = 0; i < Model.Varients.Count; i++)
+                            {
+                                <input type="radio" name="size" value="@Model.Varients[i].Id">
+                                <label>@Model.Varients[i].PS_Name</label>
+                            }
                         </div>
                     </div>
                     <!-- Product Color -->
@@ -142,7 +148,7 @@
                         <div id="1" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="headingOne" aria-expanded="false">
                             <div class="panel-body">
                                 <div class="products_description_holder">
-                                    <p><p>Cotton Handblock print saree</p></p>
+                                    <p><p>@varient.P_Description</p></p>
                                 </div>
                             </div>
                         </div>
@@ -495,7 +501,7 @@ $(function () {
 
         var url = "/cart/AddToCartPartial";
 
-        $.get(url, { id: @Model.Id }, function (data) {
+        $.get(url, { id: '@varient.Id' }, function (data) {
             $(".ajaxcart").html(data);
             location.reload(true);
         }).done(function () {

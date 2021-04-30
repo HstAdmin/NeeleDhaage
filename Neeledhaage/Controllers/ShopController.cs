@@ -13,6 +13,7 @@ using System.Threading.Tasks;
 using Neeledhaage.Models.ProductCategory;
 using Neeledhaage.Common;
 using Neeledhaage.Models.Product;
+using Neeledhaage.Models.Common;
 
 namespace Neeledhaage.Controllers
 {
@@ -57,40 +58,11 @@ namespace Neeledhaage.Controllers
         {
             try
             {
-                var filters = new ProductListFilterVM() { CategoryId = id };
-                var result = APIPostCaller<ProductListFilterVM, ProductBaseModelVM>(ApiPath.Product.GetProductList, filters);
-
-                //// Declare a list of ProductVM
-
-                //List<Tbl_Inventory_Products> productVMList;
-
-                //using (NeeledhaageEntities db = new NeeledhaageEntities())
-                //{
-                //    int catId = 0;
-                //    // Get category id
-                //    Tbl_Inventory_Category categoryDTO = db.Tbl_Inventory_Category.Where(x => x.IC_Name.Trim() == name).FirstOrDefault();
-                //    var parentCate = db.Tbl_Inventory_Category.Where(x => x.IC_CategoryID == categoryDTO.IC_ParentID).FirstOrDefault();
-                //    if (categoryDTO != null)
-                //    {
-                //        catId = categoryDTO.IC_CategoryID;
-                //        ViewBag.CategoryName = categoryDTO.IC_Name;
-                //        ViewBag.Imageroot = parentCate.IC_Name + "/" + categoryDTO.IC_Name;
-                //        TempData["Imageroot"] = parentCate.IC_Name + "/" + categoryDTO.IC_Name;
-                //    }
-
-                //    // Init the list
-                //    productVMList = db.Tbl_Inventory_Products.ToArray().Where(x => x.IP_IC_CategoryID == catId && x.IP_IsActive == true).ToList();
-
-                //    // Get category name
-                //    //var productCat = db.Tbl_Inventory_Products.Where(x => x.IP_IC_CategoryID == catId).FirstOrDefault();
-                //    //if (productCat != null)
-                //    //{
-                //    // ViewBag.CategoryName = productCat.IP_ProductName;
-                //    //}
-                //}
-
-                // Return view with list
-                return View(result.Data);
+                ViewBag.CategoryName = name;
+                ViewBag.CategoryId = id;
+                var result = APIGetCaller<List<DropdownModel>>(ApiPath.Product.GetTags);
+                ViewData["Tags"] = result.Data;
+                return View();
             }
             catch (Exception ex)
             {
@@ -98,45 +70,61 @@ namespace Neeledhaage.Controllers
                 return View();
             }
         }
-        [ActionName("product-details")]
-        public ActionResult ProductDetails(string name)
+
+        public ActionResult ProductList(ProductListFilterVM filters)
         {
             try
             {
-                // Declare the VM and DTO
-                ProductVM model;
-                //ProductDTO dto;
-                Tbl_Inventory_Products dto;
+                var result = APIPostCaller<ProductListFilterVM, ProductBaseModelVM>(ApiPath.Product.GetProductList, filters);
+                return PartialView(result.Data);
+            }
+            catch (Exception ex)
+            {
+                string msg = ex.Message;
+                return PartialView();
+            }
+        }
 
-                // Init product id
-                int id = 0;
-                string imageroot = string.Empty;
-                using (NeeledhaageEntities db = new NeeledhaageEntities())
-                {
-                    // Check if product exists
-                    if (!db.Tbl_Inventory_Products.Any(x => x.IP_SKU.Equals(name)))
-                    {
-                        return RedirectToAction("Index", "Shop");
-                    }
 
-                    // Init productDTO
-                    dto = db.Tbl_Inventory_Products.Where(x => x.IP_SKU == name).FirstOrDefault();
-                    // Get id
-                    id = dto.IP_ProductID;
-                    if (TempData["Imageroot"] != null)
-                    {
-                        imageroot = Convert.ToString(TempData["Imageroot"].ToString());
-                    }
-                    else
-                    {
-                        TempData["Imageroot"] = dto.IP_ImagePath;
-                        imageroot = dto.IP_ImagePath;//Convert.ToString(TempData["Imageroot"].ToString());
-                    }
+        [Route("shop/product-details/{id}")]
+        public ActionResult ProductDetails(int id)
+        {
+            try
+            {
+                //// Declare the VM and DTO
+                //ProductVM model;
+                ////ProductDTO dto;
+                //Tbl_Inventory_Products dto;
 
-                    // Init model
-                    model = new ProductVM(dto);
-                    // model.Imagepath = imageroot;
-                }
+                //// Init product id
+                //int id = 0;
+                //string imageroot = string.Empty;
+                //using (NeeledhaageEntities db = new NeeledhaageEntities())
+                //{
+                //    // Check if product exists
+                //    if (!db.Tbl_Inventory_Products.Any(x => x.IP_SKU.Equals(name)))
+                //    {
+                //        return RedirectToAction("Index", "Shop");
+                //    }
+
+                //    // Init productDTO
+                //    dto = db.Tbl_Inventory_Products.Where(x => x.IP_SKU == name).FirstOrDefault();
+                //    // Get id
+                //    id = dto.IP_ProductID;
+                //    if (TempData["Imageroot"] != null)
+                //    {
+                //        imageroot = Convert.ToString(TempData["Imageroot"].ToString());
+                //    }
+                //    else
+                //    {
+                //        TempData["Imageroot"] = dto.IP_ImagePath;
+                //        imageroot = dto.IP_ImagePath;//Convert.ToString(TempData["Imageroot"].ToString());
+                //    }
+
+                //    // Init model
+                //    model = new ProductVM(dto);
+                //    // model.Imagepath = imageroot;
+                //}
 
                 // Get gallery images
                 //model.GalleryImages = Directory.EnumerateFiles(Server.MapPath("~/Images/Uploads/Products/" + id + "/Gallery/Thumbs"))
@@ -145,7 +133,10 @@ namespace Neeledhaage.Controllers
                 //                                   .Select(fn => Path.GetFileName(fn));
 
                 // Return view with model
-                return View("ProductDetails", model);
+
+                var result = APIGetCaller<ProductVM>(ApiPath.Product.GetProductById(id));
+
+                return View("ProductDetails", result.Data);
                 // return View("ProductDetails", dto);
             }
             catch (Exception ex)
