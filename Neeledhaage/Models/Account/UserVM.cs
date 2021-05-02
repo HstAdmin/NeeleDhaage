@@ -16,12 +16,14 @@ namespace Neeledhaage.Models.Account
         [Required]
         [DataType(DataType.EmailAddress)]
         public string EmailAddress { get; set; }
-        [Required]
+        
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
         [Required]
+        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
+        [Required]
         public string MobileNo { get; set; }
         public DateTime CreatedDate { get; set; }
 

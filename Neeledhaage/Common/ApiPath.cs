@@ -22,5 +22,11 @@ namespace Neeledhaage.Common
             public static string GetTags { get { return "api/Product/GetTags"; } }
             public static string GetProductById(int id) { return "api/Product/GetProductById/" + id; }
         }
+
+        public static class User
+        {
+            public static string SaveUser { get { return "api/User/SaveUser"; } }
+            public static string ValidateUser { get { return "api/User/ValidateUser"; } }
+        }
     }
 }

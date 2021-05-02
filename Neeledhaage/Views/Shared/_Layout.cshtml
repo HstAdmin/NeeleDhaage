@@ -124,7 +124,7 @@
                 <div class="col-sm-4">
                     <div class="logo"><center><a href="@Url.Action("Index","Home")"><img class="img-responsive" src="~/assets/default/images/logo.png" /></a></center></div>
                 </div>
-                
+
                 <div class="col-md-4 col-sm-4">
                     <div class="search-form_div">
                         <form class="search-form" method="GET" id="top-search" action="shop/search-result.html">
@@ -139,11 +139,12 @@
 
 
                 </div>
-                
+
                 <div class="col-sm-4 search" id="myaccount">
                     @*<p class="hidden-xs hidden-sm"><strong>Customer Support:</strong>9950xxxxxx</p>*@
                     <!-- <a href="#" class="sign-btn" data-toggle="modal" data-target="#myModal">Sign up</a>-->
                     @*<a href="signin.html" class="sign-btn">Sign up</a>*@
+
                     @if (Request.IsAuthenticated)
                     {
                         <a href="/account/logout">Logout</a>
@@ -159,16 +160,9 @@
                             <a href="/account/Loginuser"><i class="fa fa-user-o" aria-hidden="true"></i></a>
                         }
                     }
-                    @if (Request.IsAuthenticated && User.IsInRole("User"))
+                    @if (Request.IsAuthenticated && User.IsInRole("Customer"))
                     {
-                        if (ViewBag.Title == "User Profile" || ViewBag.Title == "Orders")
-                        {
-                            @Html.Action("UserNavPartial", "Account", new { area = "" })
-                        }
-                        else
-                        {
-                            @Html.Action("UserNavPartial", "Account", new { area = "" })
-                        }
+                        <a href="/account/user-profile">(@SessionManager.UserFullName)</a>
                     }
 
                     <span>|</span>
@@ -417,160 +411,160 @@
         }
     </div>
 
-<footer class="FooterMobileView">
+    <footer class="FooterMobileView">
         <div class="container">
             <div class="row">
-    <div class="col-sm-2">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel s-menu">
-            <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer1" aria-expanded="false" aria-controls="footer1">
-                        Customer Service
-                    </a>
-                </h4>
-            </div>
-            <div id="footer1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="footer1" aria-expanded="false" style="height: 0px;">
-                <div class="panel-body smart-forms">
-                        <ul class="list-group">
-                           <li>
-                               <a href="/Home/TermsConditions">Terms &amp; conditions</a><br>
-                               <a href="/Home/TermsConditions">Exchange Policy</a><br>
-                           </li>
-                        </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div class="col-sm-3">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel s-menu">
-            <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer2" aria-expanded="false" aria-controls="footer2">
-                        Support
-                    </a>
-                </h4>
-            </div>
-            <div id="footer2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="footer2" aria-expanded="false" style="height: 0px;">
-                <div class="panel-body smart-forms">
-                        <ul class="list-group">
-                           <li>
-                               <a href="@Url.Action("TrackOrder","Home")">Order Tracking</a><br>
-                                <a href="@Url.Action("BulkOrders","Home")">Bulk Order</a><br>
-                                <a href="@Url.Action("ReturnsExchanges","Home")">Return & Cancellation</a><br>
-                                <a href="@Url.Action("ShippingPolicy","Home")">International Shipping</a><br>
-                                <a href="@Url.Action("PrivacySecurity","Home")">Payment Option</a><br>
-                           </li>
-                        </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div class="col-sm-2">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel s-menu">
-            <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer3" aria-expanded="false" aria-controls="footer3">
-                        Company
-                    </a>
-                </h4>
-            </div>
-            <div id="footer3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="footer3" aria-expanded="false" style="height: 0px;">
-                <div class="panel-body smart-forms">
-                        <ul class="list-group">
-                           <li>
-                               <a href="/Home/AboutUs">About Us</a><br>
-                    <a href="/Home/ContactUs">Contact Us</a><br>
-                           </li>
-                        </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div class="col-sm-2">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel s-menu">
-            <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer4" aria-expanded="false" aria-controls="footer4">
-                        About NeeleDhaage
-                    </a>
-                </h4>
-            </div>
-            <div id="footer4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="footer4" aria-expanded="false" style="height: 0px;">
-                <div class="panel-body smart-forms">
-                        <ul class="list-group">
-                           <li>
-                               <a href="/Home/ArtisansWork">30 years of Neeledhaage</a><br>
-                    <a href="/Home/OurProcess">Our Process</a><br>
-                    <a href="/Home/Video">Video</a><br>
-                           </li>
-                        </ul>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-<div class="col-sm-3">
-    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-        <div class="panel s-menu">
-            <div class="panel-heading" role="tab">
-                <h4 class="panel-title">
-                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer5" aria-expanded="false" aria-controls="footer5">
-                       get in touch
-                    </a>
-                </h4>
-            </div>
-            <div id="footer5" class="panel-collapse collapse in" role="tabpane5" aria-labelledby="footer5" aria-expanded="false" style="height: 0px;">
-                <div class="panel-body smart-forms contactInfo">
-                        <ul class="list-group">
-                           <li>
-                              <i class="fa fa-phone"></i> &nbsp; <a style="font-size:12px;">9887650979</a><br>
-                   
-                    <i class="fa fa-envelope-open"></i> &nbsp; <a href="javascript::" style="font-size:11px;">contact@neeldhaage.com</a>
-                    <br>
-               
-                    <!-- <i class="fa fa-facebook-square"></i> &nbsp; <a href="http//bagruboutiquefb.com" style="font-size:11px;">bagrujaipur</a>-->
-                    <div class="col-sm-12">
-                        <p>Follow Us</p>
-
-                        <a target="_blank" href="https://www.twitter.com"><img src="/assets/default/images/icon1.png" width="31"></a>    <a target="_blank" href="https://www.instagram.com"><img src="/assets/default/images/icon2.png" width="31"></a>    <a target="_blank" href="https://www.facebook.com"><img src="/assets/default/images/icon3.png" width="31"></a>    <a target="_blank" href="https://www.pinterest.com" style="margin-right:0;">
-                            <img src="/assets/default/images/icon4.png" width="31">
-                        </a>       <a target="_blank" href="https://www.youtube.com" style="margin-right:0;"><img src="/assets/default/images/icon6.png" width="31"></a>
+                <div class="col-sm-2">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel s-menu">
+                            <div class="panel-heading" role="tab">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer1" aria-expanded="false" aria-controls="footer1">
+                                        Customer Service
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="footer1" class="panel-collapse collapse" role="tabpanel" aria-labelledby="footer1" aria-expanded="false" style="height: 0px;">
+                                <div class="panel-body smart-forms">
+                                    <ul class="list-group">
+                                        <li>
+                                            <a href="/Home/TermsConditions">Terms &amp; conditions</a><br>
+                                            <a href="/Home/TermsConditions">Exchange Policy</a><br>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
                     </div>
-                           </li>
-                        </ul>
                 </div>
-            </div>
-        </div>
 
-    </div>
-</div>
+                <div class="col-sm-3">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel s-menu">
+                            <div class="panel-heading" role="tab">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer2" aria-expanded="false" aria-controls="footer2">
+                                        Support
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="footer2" class="panel-collapse collapse" role="tabpanel" aria-labelledby="footer2" aria-expanded="false" style="height: 0px;">
+                                <div class="panel-body smart-forms">
+                                    <ul class="list-group">
+                                        <li>
+                                            <a href="@Url.Action("TrackOrder","Home")">Order Tracking</a><br>
+                                            <a href="@Url.Action("BulkOrders","Home")">Bulk Order</a><br>
+                                            <a href="@Url.Action("ReturnsExchanges","Home")">Return & Cancellation</a><br>
+                                            <a href="@Url.Action("ShippingPolicy","Home")">International Shipping</a><br>
+                                            <a href="@Url.Action("PrivacySecurity","Home")">Payment Option</a><br>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
 
-<div class=" col-md-3 col-sm-3">
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel s-menu">
+                            <div class="panel-heading" role="tab">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer3" aria-expanded="false" aria-controls="footer3">
+                                        Company
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="footer3" class="panel-collapse collapse" role="tabpanel" aria-labelledby="footer3" aria-expanded="false" style="height: 0px;">
+                                <div class="panel-body smart-forms">
+                                    <ul class="list-group">
+                                        <li>
+                                            <a href="/Home/AboutUs">About Us</a><br>
+                                            <a href="/Home/ContactUs">Contact Us</a><br>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-2">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel s-menu">
+                            <div class="panel-heading" role="tab">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer4" aria-expanded="false" aria-controls="footer4">
+                                        About NeeleDhaage
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="footer4" class="panel-collapse collapse" role="tabpanel" aria-labelledby="footer4" aria-expanded="false" style="height: 0px;">
+                                <div class="panel-body smart-forms">
+                                    <ul class="list-group">
+                                        <li>
+                                            <a href="/Home/ArtisansWork">30 years of Neeledhaage</a><br>
+                                            <a href="/Home/OurProcess">Our Process</a><br>
+                                            <a href="/Home/Video">Video</a><br>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                        <div class="panel s-menu">
+                            <div class="panel-heading" role="tab">
+                                <h4 class="panel-title">
+                                    <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#footer5" aria-expanded="false" aria-controls="footer5">
+                                        get in touch
+                                    </a>
+                                </h4>
+                            </div>
+                            <div id="footer5" class="panel-collapse collapse in" role="tabpane5" aria-labelledby="footer5" aria-expanded="false" style="height: 0px;">
+                                <div class="panel-body smart-forms contactInfo">
+                                    <ul class="list-group">
+                                        <li>
+                                            <i class="fa fa-phone"></i> &nbsp; <a style="font-size:12px;">9887650979</a><br>
+
+                                            <i class="fa fa-envelope-open"></i> &nbsp; <a href="javascript::" style="font-size:11px;">contact@neeldhaage.com</a>
+                                            <br>
+
+                                            <!-- <i class="fa fa-facebook-square"></i> &nbsp; <a href="http//bagruboutiquefb.com" style="font-size:11px;">bagrujaipur</a>-->
+                                            <div class="col-sm-12">
+                                                <p>Follow Us</p>
+
+                                                <a target="_blank" href="https://www.twitter.com"><img src="/assets/default/images/icon1.png" width="31"></a>    <a target="_blank" href="https://www.instagram.com"><img src="/assets/default/images/icon2.png" width="31"></a>    <a target="_blank" href="https://www.facebook.com"><img src="/assets/default/images/icon3.png" width="31"></a>    <a target="_blank" href="https://www.pinterest.com" style="margin-right:0;">
+                                                    <img src="/assets/default/images/icon4.png" width="31">
+                                                </a>       <a target="_blank" href="https://www.youtube.com" style="margin-right:0;"><img src="/assets/default/images/icon6.png" width="31"></a>
+
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class=" col-md-3 col-sm-3">
                     <img src="~/Images/Logo/craftmark_logo.png" style="width: 50%;">
                     <p>Our Bagru Daabu prints are certified by Craftmark </p>
 
                 </div>
 
 
-</div>
+            </div>
 
- <div class="row footer-bottom">
+            <div class="row footer-bottom">
                 <div class="col-md-6  footer-text">
                     <p>© Copyright 2018 neeledhaage.com | All Rights Reserved</p>
                 </div>
@@ -579,8 +573,8 @@
                     <img src="~/assets/default/images/payment-option.png" class="img-responsive pull-right">
                 </div>
             </div>
-</div>
-</footer>
+        </div>
+    </footer>
 
 
     <footer class="FooterWebView">
@@ -683,6 +677,8 @@
     <!--</div>-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="~/assets/default/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.2/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.11/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/assets/default/owl-carousel/owl.carousel.js"></script>
     <script src="~/assets/default/js/jquery.form.js"></script>
     <script src="~/assets/default/js/formClass.js"></script>

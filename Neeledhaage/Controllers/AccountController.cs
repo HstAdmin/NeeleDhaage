@@ -9,11 +9,12 @@ using Neeledhaage.Models.Pages;
 using Neeledhaage.Models.Shop;
 using Neeledhaage.Dal;
 using System.Web.Security;
+using Neeledhaage.Common;
 
 namespace Neeledhaage.Controllers
 {
 
-    public class AccountController : Controller
+    public class AccountController : BaseController
     {
         // GET: Account
         public ActionResult Index()
@@ -45,7 +46,7 @@ namespace Neeledhaage.Controllers
             }
 
             // Check if the user is valid
-
+            /*
             bool isValid = false;
 
             using (NeeledhaageEntities db = new NeeledhaageEntities())
@@ -66,7 +67,42 @@ namespace Neeledhaage.Controllers
                 FormsAuthentication.SetAuthCookie(model.LoginUserVM.Username, model.LoginUserVM.RememberMe);
                 return Redirect(FormsAuthentication.GetRedirectUrl(model.LoginUserVM.Username, model.LoginUserVM.RememberMe));
                 //return RedirectToAction("Index","Home");
+            }*/
+
+            var obj = new UserViewModel()
+            {
+                UserName = model.LoginUserVM.Username,
+                Password = model.LoginUserVM.Password,
+                UserTypeId = 2//Customer
+            };
+            var objUser = APIPostCaller<UserViewModel, UserViewModel>(ApiPath.User.ValidateUser, obj);
+            if (objUser != null)
+            {
+                if (!string.IsNullOrEmpty(objUser.Message))
+                {
+                    ModelState.AddModelError("LoginError", "Invalid username or password.");
+                    return View("LoginUser", model);
+                }
+                else
+                {
+                    var authTicket = new FormsAuthenticationTicket(
+                    1,                             // version
+                    objUser.Data.FirstName + " " + objUser.Data.LastName,                      // user name
+                    DateTime.Now,                  // created
+                    DateTime.Now.AddMinutes(20),   // expires
+                    model.LoginUserVM.RememberMe,                    // persistent?
+                    "Customer"                        // can be used to store roles
+                    );
+
+                    string encryptedTicket = FormsAuthentication.Encrypt(authTicket);
+
+                    var authCookie = new HttpCookie(FormsAuthentication.FormsCookieName, encryptedTicket);
+                    System.Web.HttpContext.Current.Response.Cookies.Add(authCookie);
+                    return Redirect(FormsAuthentication.GetRedirectUrl(model.LoginUserVM.Username, model.LoginUserVM.RememberMe));
+                }
             }
+            ModelState.AddModelError("LoginError", "Invalid username or password.");
+            return View(model);
         }
         // GET: /account/create-account
         [ActionName("create-account")]
@@ -88,10 +124,32 @@ namespace Neeledhaage.Controllers
             // Check if passwords match
             if (!model.UserVM.Password.Equals(model.UserVM.ConfirmPassword))
             {
-                ModelState.AddModelError("", "Passwords do not match.");
+                ModelState.AddModelError("RegisterError", "Passwords do not match.");
                 return View("LoginUser", model);
             }
+            var input = new UserViewModel()
+            {
+                FirstName = model.UserVM.FirstName,
+                LastName = model.UserVM.LastName,
+                Email = model.UserVM.EmailAddress,
+                Mobile = model.UserVM.MobileNo,
+                Password = model.UserVM.Password,
+                UserTypeId = 2//customer
+            };
 
+            var result = APIPostCaller<UserViewModel, UserViewModel>(ApiPath.User.SaveUser, input);
+            if (result != null && result.Data != null && result.Data.Id > 0)
+            {
+                TempData["RegisterSM"] = "User Registered Successfully! Please Login With User Name .";
+                return Redirect("~/account/LoginUser");
+            }
+            else
+            {
+                string message = result != null && result.Data != null && !string.IsNullOrEmpty(result.Data.ErrorMessage) ? result.Data.ErrorMessage : "Something went wrong.";
+                ModelState.AddModelError("RegisterError", message);
+                return View("LoginUser", model);
+            }
+            /*
             using (NeeledhaageEntities db = new NeeledhaageEntities())
             {
                 // Make sure username is unique
@@ -139,10 +197,12 @@ namespace Neeledhaage.Controllers
                 db.SaveChanges();
             }
 
+            */
+
 
 
             // Redirect
-            return Redirect("~/account/LoginUser");
+
         }
         // GET: /account/Logout
         [Authorize]

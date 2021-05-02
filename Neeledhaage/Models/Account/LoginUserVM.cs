@@ -8,7 +8,7 @@ namespace Neeledhaage.Models.Account
 {
     public class LoginUserVM
     {
-        [Required]
+        [Required(ErrorMessage = "Mobile/Email is required")]
         public string Username { get; set; }
         [Required]
         public string Password { get; set; }
