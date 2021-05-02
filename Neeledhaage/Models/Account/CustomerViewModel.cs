@@ -5,7 +5,7 @@ using System.Web;
 
 namespace Neeledhaage.Models.Account
 {
-    public class UserViewModel
+    public class CustomerViewModel
     {
         public int Id { get; set; }
         public string FirstName { get; set; }
@@ -30,7 +30,7 @@ namespace Neeledhaage.Models.Account
         public int IsActive { get; set; }
         public string SocialType { get; set; }
         public string SocialId { get; set; }
-        public int? UserTypeId { get; set; }
+        public int? CustomerTypeId { get; set; }
         public string ErrorMessage { get; set; }
         public string Token { get; set; }
         public string RefreshToken { get; set; }

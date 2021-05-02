@@ -1679,7 +1679,7 @@
     <Compile Include="Models\Account\OrdersForUserVM.cs" />
     <Compile Include="Models\Account\UserNavPartialVM.cs" />
     <Compile Include="Models\Account\UserProfileVM.cs" />
-    <Compile Include="Models\Account\UserViewModel.cs" />
+    <Compile Include="Models\Account\CustomerViewModel.cs" />
     <Compile Include="Models\Account\UserVM.cs" />
     <Compile Include="Models\Cart\CartVM.cs" />
     <Compile Include="Models\Cart\CheckOutModel.cs" />

@@ -69,13 +69,13 @@ namespace Neeledhaage.Controllers
                 //return RedirectToAction("Index","Home");
             }*/
 
-            var obj = new UserViewModel()
+            var obj = new CustomerViewModel()
             {
                 UserName = model.LoginUserVM.Username,
                 Password = model.LoginUserVM.Password,
-                UserTypeId = 2//Customer
+                CustomerTypeId = 1//Customer
             };
-            var objUser = APIPostCaller<UserViewModel, UserViewModel>(ApiPath.User.ValidateUser, obj);
+            var objUser = APIPostCaller<CustomerViewModel, CustomerViewModel>(ApiPath.Customer.ValidateCustomer, obj);
             if (objUser != null)
             {
                 if (!string.IsNullOrEmpty(objUser.Message))
@@ -127,17 +127,17 @@ namespace Neeledhaage.Controllers
                 ModelState.AddModelError("RegisterError", "Passwords do not match.");
                 return View("LoginUser", model);
             }
-            var input = new UserViewModel()
+            var input = new CustomerViewModel()
             {
                 FirstName = model.UserVM.FirstName,
                 LastName = model.UserVM.LastName,
                 Email = model.UserVM.EmailAddress,
                 Mobile = model.UserVM.MobileNo,
                 Password = model.UserVM.Password,
-                UserTypeId = 2//customer
+                CustomerTypeId = 1//customer
             };
 
-            var result = APIPostCaller<UserViewModel, UserViewModel>(ApiPath.User.SaveUser, input);
+            var result = APIPostCaller<CustomerViewModel, CustomerViewModel>(ApiPath.Customer.SaveCustomer, input);
             if (result != null && result.Data != null && result.Data.Id > 0)
             {
                 TempData["RegisterSM"] = "User Registered Successfully! Please Login With User Name .";

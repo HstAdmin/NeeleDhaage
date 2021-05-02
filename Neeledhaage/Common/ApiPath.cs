@@ -23,10 +23,10 @@ namespace Neeledhaage.Common
             public static string GetProductById(int id) { return "api/Product/GetProductById/" + id; }
         }
 
-        public static class User
+        public static class Customer
         {
-            public static string SaveUser { get { return "api/User/SaveUser"; } }
-            public static string ValidateUser { get { return "api/User/ValidateUser"; } }
+            public static string SaveCustomer { get { return "api/Customer/SaveCustomer"; } }
+            public static string ValidateCustomer { get { return "api/Customer/ValidateCustomer"; } }
         }
     }
 }
