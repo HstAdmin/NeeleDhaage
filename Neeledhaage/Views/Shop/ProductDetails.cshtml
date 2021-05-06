@@ -37,7 +37,7 @@
                     @*<img src="@Model.Imagepath/@Model.ImageName" />*@
                     <div class="zoom-container">
                         <a class="magnifier-thumb-wrapper" href="javascript:void(0)">
-                            <img id="thumb" src="@ImageUrl">
+                            <img id="thumb" src="@(ApiPath.ImageBasePath+ImageUrl)">
                         </a>
                         <div class="magnifier-preview" id="preview"></div>
                     </div>
@@ -46,7 +46,7 @@
                         {
                             <div class="item">
                                 <div class=" p-box">
-                                    <a class="slider-image-link" href="javascript:;"><img src="@OtherImages[i]" title="" alt="" class="img-responsive  slider-image" width="200"></a>
+                                    <a class="slider-image-link" href="javascript:;"><img src="@(ApiPath.ImageBasePath+OtherImages[i])" title="" alt="" class="img-responsive  slider-image" width="200"></a>
                                     <div class="clr"></div>
                                 </div>
                             </div>
@@ -489,7 +489,7 @@
             m = new Magnifier(evt);
         m.attach({
             thumb: '#thumb',
-            large: '@ImageUrl',
+            large: '@(ApiPath.ImageBasePath + ImageUrl)',
             largeWrapper: 'preview'
         });
     </script>
