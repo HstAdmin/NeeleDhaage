@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Neeledhaage.Models.Product
 {
-    [DataContract]
+   // [DataContract]
     public class ProductVM
     {
 
@@ -26,9 +26,16 @@ namespace Neeledhaage.Models.Product
         public string P_Description { get; set; }
         [DataMember(Name = "Varients")]
         public List<ProductVarientVM> Varients { get; set; }
+
+        [DataMember(Name = "Heighlights")]
+        public string P_Heighlights { get; set; }
+        [DataMember(Name = "ShippingInfo")]
+        public string P_ShippingInfo { get; set; }
+        [DataMember(Name = "ReturnInfo")]
+        public string P_ReturnInfo { get; set; }
     }
 
-    [DataContract]
+    //[DataContract]
     public class ProductVarientVM
     {
         [DataMember(Name = "Id")]
@@ -67,9 +74,29 @@ namespace Neeledhaage.Models.Product
 
         [DataMember(Name = "ProductImages")]
         public IList<ProductImagesVM> productImages { get; set; }
+
+        [DataMember(Name = "Description")]
+        public string PV_Description { get; set; }
+        [DataMember(Name = "Pattern")]
+        public string PV_Pattern { get; set; }
+        [DataMember(Name = "Measurement")]
+        public string PV_Measurement { get; set; }
+        [DataMember(Name = "WashCare")]
+        public string PV_WashCare { get; set; }
+        [DataMember(Name = "SKUCode")]
+        public string PV_SKUCode { get; set; }
+        [DataMember(Name = "Name")]
+        public string PV_Name { get; set; }
+        [DataMember(Name = "PV_VarientFabricTags")]
+        public List<ProductTagVM> PV_VarientFabricTags { get; set; }
+        [DataMember(Name = "PV_VarientCraftTags")]
+        public List<ProductTagVM> PV_VarientCraftTags { get; set; }
+        [DataMember(Name = "PV_VarientColorTags")]
+        public List<ProductTagVM> PV_VarientColorTags { get; set; }
+
     }
 
-    [DataContract]
+    //[DataContract]
     public class ProductImagesVM
     {
         [DataMember(Name = "ProductId")]
@@ -80,5 +107,18 @@ namespace Neeledhaage.Models.Product
         public int ImageId { get; set; }
         [DataMember(Name = "ImagePath")]
         public string ImagePath { get; set; }
+    }
+
+    //[DataContract]
+    public class ProductTagVM
+    {
+        [DataMember(Name = "PT_ID")]
+        public int PT_ID { get; set; }
+        [DataMember(Name = "PT_TT_Id")]
+        public int PT_TT_Id { get; set; }
+        [DataMember(Name = "T_Name")]
+        public string T_Name { get; set; }
+        [DataMember(Name = "PT_PV_Id")]
+        public int PT_PV_Id { get; set; }
     }
 }

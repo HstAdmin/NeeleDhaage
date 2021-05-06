@@ -1,12 +1,23 @@
 ﻿@model Neeledhaage.Models.Product.ProductVM
 @{
     //var ImageUrl = Model.Imagepath + "/" + Model.ImageName;
-    var varient = Model.Varients.FirstOrDefault();
-    var ImageUrl = "";
-    if (varient.productImages.Count > 0)
+    var varient = ViewBag.VariantId > 0 ? Model.Varients.Where(m => m.VariantId == ViewBag.VariantId).FirstOrDefault() : Model.Varients.FirstOrDefault();
+    //var ImageUrl = "~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/02_1.jpg";
+    var ImageUrl = string.Empty;
+    var OtherImages = new List<string>();
+    if (varient.productImages != null)
     {
-        ImageUrl = ApiPath.ImageBasePath + varient.productImages.FirstOrDefault().ImagePath;
+        ImageUrl = varient.productImages.Select(m => m.ImagePath).FirstOrDefault();
+        if (!string.IsNullOrEmpty(ImageUrl))
+        {
+            OtherImages = varient.productImages.Where(m => m.ImagePath != ImageUrl).Select(m => m.ImagePath).ToList();
+        }
     }
+
+    //if (varient.productImages.Count > 0)
+    //{
+    //    ImageUrl = ApiPath.ImageBasePath + varient.productImages.FirstOrDefault().ImagePath;
+    //}
 
 }
 <link href="~/scripts/Magnifier/magnifier.css" rel="stylesheet" />
@@ -31,30 +42,15 @@
                         <div class="magnifier-preview" id="preview"></div>
                     </div>
                     <div id="owl-demo4" class="owl-carousel owl-theme">
-
-                        <div class="item">
-                            <div class=" p-box">
-                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/02_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
-
-
-                                <div class="clr"></div>
+                        @for (int i = 0; i < OtherImages.Count; i++)
+                        {
+                            <div class="item">
+                                <div class=" p-box">
+                                    <a class="slider-image-link" href="javascript:;"><img src="@OtherImages[i]" title="" alt="" class="img-responsive  slider-image" width="200"></a>
+                                    <div class="clr"></div>
+                                </div>
                             </div>
-                        </div>
-                        <div class="item">
-                            <div class=" p-box">
-                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/03_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
-
-                                <div class="clr"></div>
-                            </div>
-                        </div>
-                        <div class="item">
-                            <div class=" p-box">
-                                <a href="new-stylish-scarves.html"><img src="~/Images/Products/Sarees/Cotton Sarees/RelatedProduct/04_1.jpg" title="" alt="" class="img-responsive" width="683" height=""></a>
-
-
-                                <div class="clr"></div>
-                            </div>
-                        </div>
+                        }
                     </div>
 
                     <ul class="recent_list">
@@ -70,7 +66,7 @@
             <div class="col-sm-7">
                 <div class="product-description">
                     <div class="product-top">
-                        <h3>@varient.ProductName</h3>
+                        <h3 id="h-variant-name">@varient.PV_Name</h3>
                         @*<p>Ethnic Wear<p>*@
                         <p class="availability in-stock" style="font-size:14px;">Availability:  <abbr style="color:#090;"> In stock </abbr> </p>
                         <div class="product-price">
@@ -92,29 +88,41 @@
                         <div class="radio-toolbar">
                             @for (int i = 0; i < Model.Varients.Count; i++)
                             {
-                                <input type="radio" name="size" value="@Model.Varients[i].Id">
-                                <label>@Model.Varients[i].PS_Name</label>
+                                <input type="radio" name="size" class="rb-size" value="@Model.Varients[i].VariantId">
+                                <label onclick="openVariant('@Model.Varients[i].VariantId')" class="lbl-size">@Model.Varients[i].PS_Name</label>
                             }
                         </div>
                     </div>
                     <!-- Product Color -->
-                    <div class="product-color">
-                        <div class="color-choose">
-                            <div>
-                                <span style="float:left; font-size:14px; letter-spacing:2px; line-height:35px; margin-right:10px;font-weight: 600;">Color</span>
-                                <input data-image="red" type="radio" id="red" name="color" value="red" checked>
-                                <label for="red"><span></span></label>
+                    @if (varient.PV_VarientColorTags != null && varient.PV_VarientColorTags.Count > 0)
+                    {
+                        <div class="product-color">
+                            <label>Colors:</label>
+                            <div class="radio-toolbar">
+
+                                @for (int i = 0; i < varient.PV_VarientColorTags.Count; i++)
+                                {
+                                    <input type="radio" name="size" value="@varient.PV_VarientColorTags[i].PT_ID">
+                                    <label>@varient.PV_VarientColorTags[i].T_Name</label>
+                                }
                             </div>
-                            <div>
-                                <input data-image="blue" type="radio" id="blue" name="color" value="blue">
-                                <label for="blue"><span></span></label>
-                            </div>
-                            <div>
-                                <input data-image="black" type="radio" id="black" name="color" value="black">
-                                <label for="black"><span></span></label>
-                            </div>
+                            @*<div class="color-choose">
+                                    <div>
+                                        <span style="float:left; font-size:14px; letter-spacing:2px; line-height:35px; margin-right:10px;font-weight: 600;">Color</span>
+                                        <input data-image="red" type="radio" id="red" name="color" value="red" checked>
+                                        <label for="red"><span></span></label>
+                                    </div>
+                                    <div>
+                                        <input data-image="blue" type="radio" id="blue" name="color" value="blue">
+                                        <label for="blue"><span></span></label>
+                                    </div>
+                                    <div>
+                                        <input data-image="black" type="radio" id="black" name="color" value="black">
+                                        <label for="black"><span></span></label>
+                                    </div>
+                                </div>*@
                         </div>
-                    </div>
+                    }
                     <div class="qty">
                         <div class="btn-group actions" role="group">
                             <span style="float:left; font-size:14px; letter-spacing:2px; line-height:35px; margin-right:10px;font-weight: 600;">Qty</span>
@@ -122,10 +130,9 @@
                             <input name="quantity" readonly class="btn btn-default" id="count" value="1" style="width: 46px; text-align: center; border: solid 1px #e5cc76; height:33px;" type="text">
                             <button style="border:1px solid #e5cc76;" type="button" class="btn btn-default  plus" id="quantitys">+</button>
                         </div>
-                        @*<a href="javascript:" data-id="cotton-handblock-print-saree" class="addtocart btn"><i class="fa fa-shopping-basket"></i> Add to Cart</a>*@
+                        @*<a href="javascript:" data-id="cotton-handblock-print-saree" class="addtocart btn"><i class="fa fa-shopping-basket"></i> Add to Cart</a>*@<a href="javascript:" data-id="cotton-handblock-print-saree" class="addtocart btn"><i class="fa fa-shopping-basket"></i></a>
                         <a href="#" class="addtocart" style="background-color: #e5cc76 !important;padding: 1rem;height: auto !important;font-weight: bold;"><i class="fa fa-shopping-basket"></i>Add to cart</a>
                     </div>
-
                     <div class="wishlist-btn">
                         <!--<div class="heart_list_holder2"><img src="images/heart-icon.png" class="heart_inactive" style="opacity:1"><img src="images/heart-icon1.png" class="heart_active" style="opacity:0"></div>-->
                         <!--<a href="../../signin.html" title="Add To Wishlist"><i class="fa fa-heart"></i></a>									-->
@@ -177,45 +184,54 @@
                                 <tbody>
                                     <tr>
                                         <td>FABRIC</td>
-                                        <td>Cottons</td>
+                                        <td>
+                                            @if (varient.PV_VarientFabricTags != null)
+                                            {
+                                                var str = string.Join(", ", varient.PV_VarientFabricTags.Select(m => m.T_Name).ToArray());
+                                                <span>@str</span>
+                                            }
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>WASH CARE</td>
                                         <td>
-                                            Dry  Clean Recommended For This Product. Do Not Bleach And Expose This Product To Excessive Heat And Sunlight For Long.
-                                            , Hand Wash And Machine wash
+                                            @varient.PV_WashCare
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>MANUFACTURER ADDRESS</td>
-                                        <td>
-                                            Plot No. 8, Mahadev Nagar, Lal Khoti , Bagru (Jaipur), Rajasthan
-                                        </td>
-                                    </tr>
+                                    @*<tr>
+                                            <td>MANUFACTURER ADDRESS</td>
+                                            <td>
+                                                Plot No. 8, Mahadev Nagar, Lal Khoti , Bagru (Jaipur), Rajasthan
+                                            </td>
+                                        </tr>*@
                                     <tr>
                                         <td>PATTERN</td>
                                         <td>
-                                            Indigo Dabu Print
+                                            @varient.PV_Pattern
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>FABRIC</td>
-                                        <td>
-                                            Ethnic Wear
-                                        </td>
-                                    </tr>
+                                    @*<tr>
+                                            <td>FABRIC</td>
+                                            <td>
+                                                Ethnic Wear
+                                            </td>
+                                        </tr>*@
                                     <tr>
                                         <td>CRAFT</td>
                                         <td>
-                                            Neele Dhaage
+                                            @if (varient.PV_VarientCraftTags != null)
+                                            {
+                                                var str = string.Join(", ", varient.PV_VarientCraftTags.Select(m => m.T_Name).ToArray());
+                                                <span>@str</span>
+                                            }
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <td>LENGTH</td>
-                                        <td>
-                                            5 mtr
-                                        </td>
-                                    </tr>
+                                    @*<tr>
+                                            <td>LENGTH</td>
+                                            <td>
+                                                5 mtr
+                                            </td>
+                                        </tr>*@
 
 
                                 </tbody>
@@ -233,7 +249,7 @@
                         <div class="tab-pane" id="shipping">
                             <h4>Description</h4>
                             <p>
-                            <p>Cotton Handblock print saree</p>
+                            <p>@varient.PV_Description</p>
                             </p>
                             <hr>
                         </div>
@@ -397,8 +413,7 @@
 
 @*<div class="clr"></div>
     </div>
-    </div>*@
-
+    </div>*@<div class="clr"></div>
 <!-- Modal -->
 <div class="modal fade" id="enquiryModal" role="dialog">
     <div class="modal-dialog modal-lg">
@@ -513,10 +528,29 @@ $(function () {
             }, 1000);
         });
     });
+    $(".slider-image-link").on("click", function () {
+        var linkElement = $(this);
+        $("#thumb").attr("src", $(linkElement).children("img").attr("src"));
+        var evt = new Event(),
+            m = new Magnifier(evt);
+        m.attach({
+            thumb: '#thumb',
+            large: $(linkElement).children("img").attr("src"),
+            largeWrapper: 'preview'
+        });
+        $("img.magnifier-large").attr("src", $(linkElement).children("img").attr("src"));
 
+    });
     ////////////////////////////////////////////////////////
-
+    $('.rb-size[value="@varient.VariantId"]').attr('checked', 'checked')
 });
-    </script>
 
+
+
+    </script>
+    <script type="text/javascript">
+        function openVariant(variantId) {
+            window.location.href = "/shop/product-details/@varient.Id/" + variantId;
+        }
+    </script>
 }

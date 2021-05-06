@@ -86,8 +86,8 @@ namespace Neeledhaage.Controllers
         }
 
 
-        [Route("shop/product-details/{id}")]
-        public ActionResult ProductDetails(int id)
+        [Route("shop/product-details/{id}/{variantId?}")]
+        public ActionResult ProductDetails(int id, int variantId = 0)
         {
             try
             {
@@ -133,7 +133,7 @@ namespace Neeledhaage.Controllers
                 //                                   .Select(fn => Path.GetFileName(fn));
 
                 // Return view with model
-
+                ViewBag.VariantId = variantId;
                 var result = APIGetCaller<ProductVM>(ApiPath.Product.GetProductById(id));
 
                 return View("ProductDetails", result.Data);
@@ -145,5 +145,6 @@ namespace Neeledhaage.Controllers
                 return View();
             }
         }
+
     }
 }
