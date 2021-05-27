@@ -1,0 +1,338 @@
+﻿@model Neeledhaage.Models.CartModel
+
+@{
+    int customerid = 1;
+    ViewBag.Title = "ShoppingCart";
+
+    var ImageUrl = String.Empty;
+    decimal total = 0m;
+    foreach (var item in Model.cartModel)
+    {
+        total += item.MRP * item.CartQty;
+    }
+    ViewBag.GrandTotal = total;
+}
+
+
+@*<h2>Cart</h2>
+
+    <div class="col-xs-9 col-md-9 cart-page">*@
+
+
+@*@if (ViewBag.Message != null)
+    {
+        <h3>@ViewBag.Message</h3>
+    }
+    else
+    {*@
+<div data-cart-wrapper="">
+    <div class="cart-header">
+        <h1 class="cart-header__title">Your cart</h1>
+        <a href="/" class="text-link text-link--accent">
+            Continue shopping
+        </a>
+    </div>
+    <form action="/cart?oseid=SoMmtYJLSDUUNL3hCePaWJYf" method="post" novalidate="" class="cart" data-editor-form-attribute="">
+
+        @if (Model != null && Model.cartModel != null && Model.cartModel.Count() > 0)
+
+        {
+
+            foreach (var item in Model.cartModel)
+            {
+                <table>
+                    <thead class="cart__row cart__row--heading">
+                    <thead class="cart__row cart__row--heading">
+                        <tr>
+                            <th scope="col">Name</th>
+                            <th class="text-right" scope="col">Quantity</th>
+                            <th class="text-right small--hide" scope="col">Price</th>
+                            <th class="text-right small--hide" scope="col">Image</th>
+                            <th class="text-right small--hide" scope="col">Total</th>
+
+                        </tr>
+                    </thead>
+
+
+                    @*@foreach (var item in Model.cartModel)
+                        {*@
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ProductName)
+                        </td>
+                        <td class="qty@(item.Id)">
+                            @Html.DisplayFor(modelItem => item.CartQty)
+                        </td>
+                        <td>
+                            ₹@Html.DisplayFor(modelItem => item.MRP)
+                        </td>
+                        <td>
+                            @*<img class="cart-img" src="/Images/Uploads/Products/@item.ProductId/Thumbs/@item.Image" />*@
+                            @*<img class="cart-img" src="@item.Imagepath/@item.Image" />*@
+                            @*<div class="cart__image-wrapper">
+                                    @{ ImageUrl = item.productImages.Where(r => r.ImagePath != null).FirstOrDefault().ImagePath;}
+                                    <img class="cart__image" src="@(AppSettings.ImageBasePath+ImageUrl)" alt="" data-cart-item-image="" style="cursor: pointer;">
+                                </div>*@
+                        </td>
+                        <td>
+                            <a href="#" class="incrproduct" data-id="@item.Id">+</a>
+                            <a href="#" class="decrproduct" data-id="@item.Id">-</a>
+                            @*<a href="#" class="removeproduct" data-id="@item.ProductId">Remove</a>*@
+                            @*<a href="#" class="removeproduct" data-id="@item.ProductId">Remove</a>*@
+                            <p class="cart__remove">
+                                <a href="javascript:
+                          (@customerid,@item.VariantId)" class="text-link text-link--accent" aria-label="Remove Intricate concentric classic pendant with black spinel" data-cart-remove="" data-role="product-remove">Remove</a>
+                            </p>
+                        </td>
+                        <td class="total@(item.Id)">
+                            @*₹@Html.DisplayFor(modelItem => item.Total)*@
+                            @(item.MRP * item.CartQty)
+                        </td>
+                    </tr>
+                    }
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="grandtotal"><b>Grand total</b> ₹<span>@ViewBag.GrandTotal</span></td>
+                    </tr>
+
+                </table>
+
+
+                @*<div class="paypaldiv">
+                        <form class="paypalform" action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
+                            <input type="hidden" name="cmd" value="_cart">
+                            <input type="hidden" name="upload" value="1">
+                            <input type="hidden" name="business" value="jultranet-facilitator@gmail.com">
+
+                            @foreach (var item in Model)
+                            {
+                                <input type="hidden" name="item_name_@count" value="@item.ProductName">
+                                <input type="hidden" name="amount_@count" value="@item.Price">
+                                <input type="hidden" name="quantity_@count" value="@item.Quantity">
+                                count++;
+                            }
+
+                            <input type="hidden" name="currency_code" value="USD">
+                            <input type="image" src="http://www.paypal.com/en_US/i/btn/x-click-but01.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!">
+                        </form>
+                    </div>*@
+
+                @*<button id="rzp-button1">Pay</button>
+                    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+                    <script>
+                         var options = {
+                            "key": "rzp_test_9EzlZHDRF5VQyy", // Enter the Key ID generated from the Dashboard-rzp_live_mGwkzrvyPiXdqw
+                            "amount": @ViewBag.GrandTotal+"00", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+                            "currency": "INR",
+                             "name": "Bagru Boutique",
+                            "description": "Test Transaction",
+                            "image": "https://example.com/your_logo",
+                             "order_id": "order_FHwzS5ot9dmsff", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+                            "handler": function (response) {
+                                alert(response.razorpay_payment_id);
+                                alert(response.razorpay_order_id);
+                                alert(response.razorpay_signature)
+                            },
+                            "prefill": {
+                                "name": "Gaurav Kumar",
+                                "email": "gaurav.kumar@example.com",
+                                "contact": "9999999999"
+                            },
+                            "notes": {
+                                "address": "Razorpay Corporate Office"
+                            },
+                            "theme": {
+                                "color": "#F37254"
+                            }
+                        };
+                        var rzp1 = new Razorpay(options);
+                        document.getElementById('rzp-button1').onclick = function (e) {
+                            //razororder.open();
+                            rzp1.open();
+                            e.preventDefault();
+                        }
+                    </script>*@
+
+
+                <br />
+
+
+
+
+                @*</div>*@
+                <div class="col-xs-3 col-md-3 cart-pages">
+                    <div class="cart-item">
+                        <h3 style="
+            padding :1rem;
+            background-color :#e5cc76;">
+                            Order Summary
+                        </h3>
+                    </div>
+                    <p class="grandtotal" style="font-weight:bold "><b>Cart Sub Total</b> <span style="float: right;">: @ViewBag.GrandTotal</span></p>
+                    <p class="grandtotal" style="font-weight:bold "> <b>Total Cart Amount</b> <span style="float: right;">: @ViewBag.GrandTotal</span></p>
+                    @if (Request.IsAuthenticated)
+                    {
+                        <a href="@Url.Action("CheckOut", "Cart")" class=" btn cart-btn">Proceed to Checkout</a>
+
+                        @*<a href="#" class="placeorder btn cart-btn">Proceed to Checkout</a>*@
+                        @*<button class="add_to_cart btn cart-btn">Proceed to Checkout</button>*@
+                    }
+                    else
+                    {
+                        <a href="@Url.Action("LoginUser", "account")" class=" btn cart-btn">Proceed to Checkout</a>
+                    }
+
+                </div>
+            }
+
+        }
+        else
+        {
+            <h2>Empty Cart</h2>
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        @section Scripts {
+            <script src="~/Content/js/cart/shopping-cart.js"></script>
+            <script>
+
+                $(function () {
+
+                    /*
+                    * Increment product
+                    */
+
+                    $("a.incrproduct").click(function (e) {
+                        e.preventDefault();
+
+                        var productId = $(this).data("id");
+                        var url = "/cart/IncrementProduct";
+
+                        $.getJSON(url, { productId: productId }, function (data) {
+
+                            $("td.qty" + productId).html(data.qty);
+
+                            var price = data.qty * data.price;
+                            var priceHtml = "$" + price.toFixed(2);
+
+                            $("td.total" + productId).html(priceHtml);
+
+                            var gt = parseFloat($("td.grandtotal span").text());
+                            var grandtotal = (gt + data.price).toFixed(2);
+
+                            $("td.grandtotal span").text(grandtotal);
+                            $("p.grandtotal span").text(grandtotal);
+                        }).done(function (data) {
+                            var url2 = "/cart/PaypalPartial";
+
+                            $.get(url2, {}, function (data) {
+                                $('div.paypaldiv').html(data);
+                            });
+                        });
+                    });
+
+                    //////////////////////////////////////////////////////////////
+
+                    /*
+                    * Decrement product
+                    */
+
+                    $("a.decrproduct").click(function (e) {
+                        e.preventDefault();
+
+                        var $this = $(this);
+                        var productId = $(this).data("id");
+                        var url = "/cart/DecrementProduct";
+
+                        $.getJSON(url, { productId: productId }, function (data) {
+                            if (data.qty == 0) {
+                                $this.parent().parent().fadeOut("fast", function () {
+                                    location.reload();
+                                });
+                            }
+                            else {
+                                $("td.qty" + productId).html(data.qty);
+
+                                var price = data.qty * data.price;
+                                var priceHtml = "$" + price.toFixed(2);
+
+                                $("td.total" + productId).html(priceHtml);
+
+                                var gt = parseFloat($("td.grandtotal span").text());
+                                var grandtotal = (gt - data.price).toFixed(2);
+
+                                $("td.grandtotal span").text(grandtotal);
+                                $("p.grandtotal span").text(grandtotal);
+                            }
+
+                        }).done(function (data) {
+                            var url2 = "/cart/PaypalPartial";
+
+                            $.get(url2, {}, function (data) {
+                                $('div.paypaldiv').html(data);
+                            });
+                        });
+                    });
+
+                    //////////////////////////////////////////////////////////////
+
+                    /*
+                    * Remove product
+                    */
+
+                    $("a.removeproduct").click(function (e) {
+                        e.preventDefault();
+
+                        var $this = $(this);
+                        var productId = $(this).data("id");
+                        var url = "/cart/RemoveProduct";
+
+                        $.get(url, { productId: productId }, function (data) {
+                            location.reload();
+                        });
+                    });
+
+                    //////////////////////////////////////////////////////////////
+
+                    /*
+                    * Place order
+                    */
+
+                    $("a.placeorder").click(function (e) {
+                        e.preventDefault();
+                        var $this = $(this);
+                        var url = "/cart/PlaceOrder";
+                        $(".ajaxbg").show();
+                        $.post(url, {}, function (data) {
+
+                            $(".ajaxbg span").text("Thank you. You will now be redirected to RazorPay.");
+                            setTimeout(function () {
+                                $('form input[name="submit"]').click();
+                            }, 2000);
+                        });
+                    });
+
+                    //////////////////////////////////////////////////////////////
+
+                });
+
+            </script>
+
+        }

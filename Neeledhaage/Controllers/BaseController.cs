@@ -12,6 +12,7 @@ namespace Neeledhaage.Controllers
 {
     public class BaseController : Controller
     {
+        
         protected ResponseData<TResponse> APIPostCaller<TRequest, TResponse>(string url, TRequest request)
         {
             url = ApiPath.APIBaseUrl + url;
@@ -23,20 +24,23 @@ namespace Neeledhaage.Controllers
             return response;
         }
 
-        protected ResponseData<T> APIGetCaller<T>(string url)
+        protected static string Token { get; set; }
+        protected static string RefreshToken { get; set; }
+
+        protected async Task<ResponseData<T>> APIGetCaller<T>(string url)
         {
             url = ApiPath.APIBaseUrl + url;
-            string authToken = "";
+            string authToken = Token;
             ResponseData<T> response = url.ToGetAPI<T>(authToken);
 
             //IsAuthorized<T>(response);
 
             return response;
         }
-        protected ResponseData<TResponse> APIAnonymousPostCaller<TRequest, TResponse>(string url, TRequest request)
+        protected async Task<ResponseData<TResponse>> APIAnonymousPostCaller<TRequest, TResponse>(string url, TRequest request)
         {
             url = ApiPath.APIBaseUrl + url;
-            string authToken = "";
+            string authToken = Token;
             ResponseData<TResponse> response = url.ToPostAPI<TRequest, TResponse>(request, authToken);
 
             return response;

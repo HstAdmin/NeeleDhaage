@@ -22,6 +22,10 @@
     <link href="~/assets/default/css/jquery.mCustomScrollbar.css" rel="stylesheet">
 
     <link href="~/assets/default/css/toastr.css" rel="stylesheet">
+    <script src="~/Content/js/common.js"></script>
+    <script src="~/scripts/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/scripts/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </head>
 <body>
@@ -528,7 +532,7 @@
                                     </a>
                                 </h4>
                             </div>
-                            <div id="footer5" class="panel-collapse collapse in" role="tabpane5" aria-labelledby="footer5" aria-expanded="false" style="height: 0px;">
+                            <div id="footer5" class="panel-collapse collapse in" role="tabpanel" aria-labelledby="footer5" aria-expanded="false" style="height: 0px;">
                                 <div class="panel-body smart-forms contactInfo">
                                     <ul class="list-group">
                                         <li>
@@ -683,10 +687,10 @@
     <script src="~/assets/default/js/jquery.form.js"></script>
     <script src="~/assets/default/js/formClass.js"></script>
     <script src="~/assets/default/js/toastr.min.js"></script>
-
+    @RenderSection("Scripts", required: false)
     @*@Scripts.Render("~/bundles/jquery")
         @Scripts.Render("~/bundles/bootstrap")*@
-    @RenderSection("scripts", required: false)
+   
     <script>
         $(document).ready(function () {
             //Sort random function

@@ -21,6 +21,14 @@ namespace Neeledhaage.Common
             public static string GetProductList { get { return "api/Product/GetProductList"; } }
             public static string GetTags { get { return "api/Product/GetTags"; } }
             public static string GetProductById(int id) { return "api/Product/GetProductById/" + id; }
+            
+            public static string GetCartProductsByCustomerId(int id) { return "api/Product/GetCartProducts/" + id; }
+            public static string AddCart { get { return "api/Product/AddCart"; } }
+            public static string RemoveCart { get { return "api/Product/RemoveCart"; } }
+            public static string GetAll { get { return "api/Product/GetAll"; } }
+
+
+
         }
 
         public static class Customer

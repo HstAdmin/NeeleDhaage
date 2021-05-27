@@ -1,0 +1,52 @@
+﻿@using Neeledhaage.Models.ViewModels;
+@model Neeledhaage.Models.Product.ProductBaseModelVM
+
+    @{
+        ViewBag.Title = "ProductList";
+    }
+
+    <h2>ProductList</h2>
+
+    @if (Model != null && Model.productLists != null)
+    {
+        foreach (var item in Model.productLists)
+        {
+            <div class="col-md-3 col-sm-6 product-item">
+                <div class="single-product-item-6">
+                    <div class="thumb">
+                        <a href="/shop/product-details/@item.Id">
+                            <div class="img-wrapper">
+                                <img src="@(ApiPath.ImageBasePath+item.ImagePath)" title="" alt="" class="img-responsive" width="" height="" />
+                            </div>
+                        </a>
+                        <span class="tag">New</span>
+                        <!--<ul class="meta-infos">-->
+                        <!--<li><a href="#"><i class="fa fa-shopping-cart"></i></a></li>-->
+                        <!--<li><a href="#"><i class="fa fa-heart"></i></a></li>-->
+                        <!--<li><a href="#"><i class="fa fa-eye"></i></a></li>-->
+                        <!--</ul>-->
+                        <div class="hover_addcart">
+
+                            <a href="/collections/product-details/@item.Id" class="addtocart">Add To Cart</a>
+                            <div>
+                                <a href="/collections/product-details/@item.Id" class="addtocart" style="bottom: -125px;width: 50%;background-color: #e5cc76;">Quick View</a>
+                                <a href="/collections/product-details/@item.Id" class="addtocart" style="bottom: -125px;right: 0px;width: 50%;background-color: #333333;">Buy Now</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="content">
+                        <a href="#">
+                            <h4 class="title">@Html.DisplayFor(modelItem => item.ProductName)</h4>
+                        </a>
+                        @if (item.DiscountPercentage > 0)
+                        {
+                            <del class="del-price">₹@Html.DisplayFor(modelItem => item.MRP)</del>
+                        }
+
+                        <span class="price">₹@(item.MRP-(item.MRP*item.DiscountPercentage/100))</span>
+
+                    </div>
+                </div>
+            </div>
+        }
+    }

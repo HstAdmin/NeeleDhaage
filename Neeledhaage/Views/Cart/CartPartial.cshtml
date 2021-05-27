@@ -67,7 +67,7 @@ else
         <h3 class="text-right subtotal" id="cartTotal"> Total:<span style="text-transform: none;">Rs. </span>@ViewBag.GrandTotal</h3>
         @*<a class="btn btn-black" href="view-cart.html" style="color:#fff;width: 100%;background: #e5cc76 !important;"> <i class="fa fa-shopping-cart"> </i> VIEW CART </a>*@
         @*@Html.ActionLink("View Cart", "Index", null, new { @class = "colordesign btn btn-black" })*@ 
-        <a href="@Url.Action("Index","Cart")" class = "colordesign btn btn-black">View Cart <i  class="fa fa-shopping-cart"> </i></a>
+        <a href="@Url.Action("Cart","ShoppingCart")" class = "colordesign btn btn-black">View Cart <i  class="fa fa-shopping-cart"> </i></a>
          
     </div>
     <!--/.miniCartFooter-->

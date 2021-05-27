@@ -24,12 +24,12 @@ namespace Neeledhaage.Controllers
         {
             return RedirectToAction("Index", "Pages");
         }
-        public ActionResult CategoryMenuPartial()
+        public async Task<ActionResult> CategoryMenuPartial()
         {
             try
             {
 
-                var result = APIGetCaller<List<ProductCategoriesModel>>(ApiPath.ProductCategory.GetAllProductCategories);
+                var result =await APIGetCaller<List<ProductCategoriesModel>>(ApiPath.ProductCategory.GetAllProductCategories);
 
                 // Declare list of CategoryVM
                 //List<tblCategory> categoryVMList;
@@ -54,13 +54,13 @@ namespace Neeledhaage.Controllers
         }
         // GET: /shop/category/name
         [Route("shop/category/{id}/{name}")]
-        public ActionResult Category(int id, string name)
+        public async Task<ActionResult> Category(int id, string name)
         {
             try
             {
                 ViewBag.CategoryName = name;
                 ViewBag.CategoryId = id;
-                var result = APIGetCaller<List<DropdownModel>>(ApiPath.Product.GetTags);
+                var result =await APIGetCaller<List<DropdownModel>>(ApiPath.Product.GetTags);
                 ViewData["Tags"] = result.Data;
                 return View();
             }
@@ -87,7 +87,7 @@ namespace Neeledhaage.Controllers
 
 
         [Route("shop/product-details/{id}/{variantId?}")]
-        public ActionResult ProductDetails(int id, int variantId = 0)
+        public async Task<ActionResult> ProductDetails(int id, int variantId = 0)
         {
             try
             {
@@ -134,7 +134,7 @@ namespace Neeledhaage.Controllers
 
                 // Return view with model
                 ViewBag.VariantId = variantId;
-                var result = APIGetCaller<ProductVM>(ApiPath.Product.GetProductById(id));
+                var result =await APIGetCaller<ProductVM>(ApiPath.Product.GetProductById(id));
 
                 return View("ProductDetails", result.Data);
                 // return View("ProductDetails", dto);

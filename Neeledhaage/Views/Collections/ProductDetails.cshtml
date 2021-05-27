@@ -522,11 +522,11 @@ $(function () {
     * Add to cart
     */
 
-    $("a.addtocart").click(function (e) {
+    $("a.addToCart").click(function (e) {
         e.preventDefault();
               $("span.loader").addClass("ib");
 
-        var url = "/cart/AddToCartPartial";
+        var url = "/shoppingcart/addcart";
 
         $.get(url, { id: '@varient.Id' }, function (data) {
             $(".ajaxcart").html(data);
@@ -562,7 +562,7 @@ $(function () {
     </script>
     <script type="text/javascript">
         function openVariant(variantId) {
-            window.location.href = "/shop/product-details/@varient.Id/" + variantId;
+            window.location.href = "/collections/product-details/@varient.Id/" + variantId;
         }
     </script>
 }
